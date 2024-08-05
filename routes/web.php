@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\JurusanController;
+use App\Http\Controllers\backend\KonsentrasiController;
 use App\Http\Controllers\backend\PerusahaanController;
 use App\Http\Controllers\backend\TahunAjaranController;
 
@@ -72,6 +73,15 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend','prefix' => 'admin',
             Route::get('edit/{jurusan}', [JurusanController::class , 'edit'])->name('edit');
             Route::post('/update/{jurusan}', [JurusanController::class, 'update'])->name('update');
             Route::get('delete/{jurusan}', [JurusanController::class , 'delete'])->name('delete');
+        });
+        Route::group(['prefix' => 'konsentrasi' ,'as' => 'konsentrasi.'], function(){
+            Route::get('/konsentrasi', [KonsentrasiController::class, 'konsentrasi'])->name('konsentrasi');
+            Route::get('/', [KonsentrasiController::class, 'index'])->name('index');
+            Route::get('/create', [KonsentrasiController::class, 'create'])->name('create');
+            Route::post('/store', [KonsentrasiController::class, 'store'])->name('store');
+            Route::get('edit/{konsentrasi}', [KonsentrasiController::class , 'edit'])->name('edit');
+            Route::post('/update/{konsentrasi}', [KonsentrasiController::class, 'update'])->name('update');
+            Route::get('delete/{konsentrasi}', [KonsentrasiController::class , 'delete'])->name('delete');
         });
 
         // Route::group(['prefix' => 'section1' ,'as' => 'section1.'], function(){

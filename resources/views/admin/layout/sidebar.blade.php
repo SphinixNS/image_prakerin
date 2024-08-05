@@ -31,6 +31,11 @@
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Jurusan</span>
                 </a>
             </li>
+            <li class="sidebar-item  {{ request()->routeIs('admin.konsentrasi*') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{route('admin.konsentrasi.index')}}">
+                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Konsentrasi Keahlian</span>
+                </a>
+            </li>
 
             {{-- <li class="sidebar-item  {{ request()->routeIs('admin.dashboard*') ? 'active' : '' }}">
                 <a class="sidebar-link" href="pages-sign-in.html">
