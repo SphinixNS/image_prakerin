@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\backend\JurusanController;
 use App\Http\Controllers\backend\PerusahaanController;
+use App\Http\Controllers\backend\TahunAjaranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +51,27 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend','prefix' => 'admin',
             Route::get('edit/{perusahaan}', [PerusahaanController::class , 'edit'])->name('edit');
             Route::post('/update/{perusahaan}', [PerusahaanController::class, 'update'])->name('update');
             Route::get('delete/{perusahaan}', [PerusahaanController::class , 'delete'])->name('delete');
+        });
+
+        Route::group(['prefix' => 'tahun_ajaran' ,'as' => 'tahun_ajaran.'], function(){
+            Route::get('/tahun_ajaran', [TahunAjaranController::class, 'tahun_ajaran'])->name('tahun_ajaran');
+            Route::get('/', [TahunAjaranController::class, 'index'])->name('index');
+            Route::get('/create', [TahunAjaranController::class, 'create'])->name('create');
+            Route::post('/store', [TahunAjaranController::class, 'store'])->name('store');
+            Route::get('edit/{tahun_ajaran}', [TahunAjaranController::class , 'edit'])->name('edit');
+            Route::post('/update/{tahun_ajaran}', [TahunAjaranController::class, 'update'])->name('update');
+            Route::get('/status/{tahun_ajaran}', [TahunAjaranController::class, 'status'])->name('update');
+            Route::get('delete/{tahun_ajaran}', [TahunAjaranController::class , 'delete'])->name('delete');
+        });
+        
+        Route::group(['prefix' => 'jurusan' ,'as' => 'jurusan.'], function(){
+            Route::get('/jurusan', [JurusanController::class, 'jurusan'])->name('jurusan');
+            Route::get('/', [JurusanController::class, 'index'])->name('index');
+            Route::get('/create', [JurusanController::class, 'create'])->name('create');
+            Route::post('/store', [JurusanController::class, 'store'])->name('store');
+            Route::get('edit/{jurusan}', [JurusanController::class , 'edit'])->name('edit');
+            Route::post('/update/{jurusan}', [JurusanController::class, 'update'])->name('update');
+            Route::get('delete/{jurusan}', [JurusanController::class , 'delete'])->name('delete');
         });
 
         // Route::group(['prefix' => 'section1' ,'as' => 'section1.'], function(){

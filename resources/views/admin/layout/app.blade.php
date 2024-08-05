@@ -22,97 +22,96 @@
 
     <style>
         /* Gaya khusus untuk pagination DataTables */
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-    padding: 0.5em 1em;
-    margin-left: 2px;
-    margin-right: 2px;
-    color: #007bff !important;
-    background: #fff !important;
-    border: 1px solid #dee2e6;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    text-decoration: none;
-}
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0.5em 1em;
+            margin-left: 2px;
+            margin-right: 2px;
+            color: #007bff !important;
+            background: #fff !important;
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    color: #fff !important;
-    background: #007bff !important;
-    border: 1px solid #007bff;
-}
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            color: #fff !important;
+            background: #007bff !important;
+            border: 1px solid #007bff;
+        }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button.current {
-    color: #fff !important;
-    background: #007bff !important;
-    border: 1px solid #007bff;
-    cursor: default;
-}
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            color: #fff !important;
+            background: #007bff !important;
+            border: 1px solid #007bff;
+            cursor: default;
+        }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
-    cursor: default;
-    color: #6c757d !important;
-    background: #fff !important;
-    border: 1px solid #dee2e6;
-}
+        .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+            cursor: default;
+            color: #6c757d !important;
+            background: #fff !important;
+            border: 1px solid #dee2e6;
+        }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button:active {
-    outline: none;
-    border: 1px solid #007bff;
-    background-color: #0056b3;
-    color: #fff !important;
-}
+        .dataTables_wrapper .dataTables_paginate .paginate_button:active {
+            outline: none;
+            border: 1px solid #007bff;
+            background-color: #0056b3;
+            color: #fff !important;
+        }
 
-/* Tambahkan padding di sekitar elemen pagination untuk memastikan semuanya rata */
-.dataTables_wrapper .dataTables_paginate {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        /* Tambahkan padding di sekitar elemen pagination untuk memastikan semuanya rata */
+        .dataTables_wrapper .dataTables_paginate {
+            padding-top: 1em;
+            padding-bottom: 1em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-/* Gaya khusus untuk elemen ul dan li dalam pagination */
-.dataTables_wrapper .dataTables_paginate ul.pagination {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        /* Gaya khusus untuk elemen ul dan li dalam pagination */
+        .dataTables_wrapper .dataTables_paginate ul.pagination {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-.dataTables_wrapper .dataTables_paginate ul.pagination li {
-    margin: 0 2px;
-}
+        .dataTables_wrapper .dataTables_paginate ul.pagination li {
+            margin: 0 2px;
+        }
 
-.dataTables_wrapper .dataTables_paginate ul.pagination li a {
-    display: block;
-    padding: 0.5em 1em;
-    color: #007bff !important;
-    background: #fff !important;
-    border: 1px solid #dee2e6;
-    border-radius: 0.25rem;
-    text-decoration: none;
-}
+        .dataTables_wrapper .dataTables_paginate ul.pagination li a {
+            display: block;
+            padding: 0.5em 1em;
+            color: #007bff !important;
+            background: #fff !important;
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+            text-decoration: none;
+        }
 
-.dataTables_wrapper .dataTables_paginate ul.pagination li a:hover {
-    color: #fff !important;
-    background: #007bff !important;
-    border: 1px solid #007bff;
-}
+        .dataTables_wrapper .dataTables_paginate ul.pagination li a:hover {
+            color: #fff !important;
+            background: #007bff !important;
+            border: 1px solid #007bff;
+        }
 
-.dataTables_wrapper .dataTables_paginate ul.pagination li.active a {
-    color: #fff !important;
-    background: #007bff !important;
-    border: 1px solid #007bff;
-}
+        .dataTables_wrapper .dataTables_paginate ul.pagination li.active a {
+            color: #fff !important;
+            background: #007bff !important;
+            border: 1px solid #007bff;
+        }
 
-.dataTables_wrapper .dataTables_paginate ul.pagination li.disabled a {
-    cursor: default;
-    color: #6c757d !important;
-    background: #fff !important;
-    border: 1px solid #dee2e6;
-}
-
+        .dataTables_wrapper .dataTables_paginate ul.pagination li.disabled a {
+            cursor: default;
+            color: #6c757d !important;
+            background: #fff !important;
+            border: 1px solid #dee2e6;
+        }
     </style>
 </head>
 
@@ -136,7 +135,7 @@
     </div>
 
     <script src="{{ asset('backend/static/js/app.js') }}"></script>
-    
+
 
     {{-- <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -213,7 +212,7 @@
 
 
 
-    
+
 
 
     {{-- <script>
@@ -343,8 +342,8 @@
     </script> --}}
 
 
-     <!-- Bootstrap JS and dependencies -->
-  
+    <!-- Bootstrap JS and dependencies -->
+
 
     @yield('scripts')
 

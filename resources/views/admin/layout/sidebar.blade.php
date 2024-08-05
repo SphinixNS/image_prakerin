@@ -21,6 +21,16 @@
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Perusahaan</span>
                 </a>
             </li>
+            <li class="sidebar-item  {{ request()->routeIs('admin.tahun_ajaran*') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{route('admin.tahun_ajaran.index')}}">
+                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Tahun Ajaran</span>
+                </a>
+            </li>
+            <li class="sidebar-item  {{ request()->routeIs('admin.jurusan*') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{route('admin.jurusan.index')}}">
+                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Jurusan</span>
+                </a>
+            </li>
 
             {{-- <li class="sidebar-item  {{ request()->routeIs('admin.dashboard*') ? 'active' : '' }}">
                 <a class="sidebar-link" href="pages-sign-in.html">
