@@ -36,6 +36,16 @@
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Konsentrasi Keahlian</span>
                 </a>
             </li>
+            <li class="sidebar-item  {{ request()->routeIs('admin.kelas*') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{route('admin.kelas.index')}}">
+                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Kelas</span>
+                </a>
+            </li>
+            <li class="sidebar-item  {{ request()->routeIs('admin.guru*') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{route('admin.guru.index')}}">
+                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Guru</span>
+                </a>
+            </li>
 
             {{-- <li class="sidebar-item  {{ request()->routeIs('admin.dashboard*') ? 'active' : '' }}">
                 <a class="sidebar-link" href="pages-sign-in.html">

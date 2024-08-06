@@ -1,30 +1,29 @@
 @extends('admin.layout.app')
-@section('title', 'Perusahaan')
+@section('title', 'Kelas')
 @section('content')
 
 
     <main class="content">
         <div class="container-fluid p-0">
 
-
-            {{-- <h1 class="h3 mb-3">Perusahaan</h1> --}}
+            {{-- <h1 class="h3 mb-3">Kelas</h1> --}}
 
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="card-title mb-0">Data Perusahaan</h5>
-                            <a href="{{ route('admin.perusahaan.create') }}"> <button type="button"
+                            <h5 class="card-title mb-0">Data Kelas</h5>
+                            <a href="{{ route('admin.kelas.create') }}"> <button type="button"
                                     class="btn btn-primary">Add Data</button></a>
                         </div>
                         <div class="card-body">
 
-                            <table class="table" id="table-perusahaan">
+                            <table class="table" id="table-kelas">
                                 <thead>
                                     <tr>
                                         <td style="width: 10%">No</td>
                                         <td>Nama</td>
-                                        <td>Alamat</td>
+                                        <td>Konsentrasi</td>
                                         <td>Action</td>
                                     </tr>
                                 </thead>
@@ -53,15 +52,14 @@
     <script>
         $(document).ready(function() {
 
-            // Pastikan tabel HTML dengan ID 'table-perusahaan' sudah ada di DOM
-            $('#table-perusahaan').DataTable({
+            // Pastikan tabel HTML dengan ID 'table-kelas' sudah ada di DOM
+            $('#table-kelas').DataTable({
                 // Data: (Jika data diambil secara asynchronous, letakkan di sini)
                 data: [], // Contoh jika data kosong saat inisialisasi
 
                 // Kolom: Sesuaikan dengan nama properti di data JSON
                 columns: [{
                         data: null,
-                        // title: 'No',
                         render: function(data, type, row, meta) {
                             return meta.row + 1;
                         }
@@ -71,9 +69,8 @@
                         name: 'nama'
                     },
                     {
-                        data: 'alamat',
-                        name: 'alamat'
-
+                        data: 'konsentrasi.nama',
+                        name: 'konsentrasi.nama'
                     },
                     {
                         data: 'id',
@@ -85,16 +82,11 @@
                             <img src="/backend/align-justify.svg">
                           </button>
                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item"
-                               href="/admin/perusahaan/detail/${id}"">Detail</a>
-                            </li>
-                           
-                            <li><a class="dropdown-item"
-                               href="/admin/perusahaan/edit/${id}"">Edit</a>
-                            </li>
-                             <li><a class="dropdown-item" href="#"
+                            <li><a class="dropdown-item" href="#"
                                 onclick="deleteData(${id})">Delete</a></li>
-                            
+                            <li><a class="dropdown-item"
+                               href="/admin/kelas/edit/${id}"">Edit</a>
+                            </li>
                           </ul>
                         </div>
                 `
@@ -132,11 +124,11 @@
                 }
             });
             $.ajax({
-                url: "{{ route('admin.perusahaan.perusahaan') }}",
+                url: "{{ route('admin.kelas.kelas') }}",
                 method: "GET",
                 success: function(response) {
                     // Update data setelah respon Ajax diterima
-                    $('#table-perusahaan').DataTable().clear().rows.add(response).draw();
+                    $('#table-kelas').DataTable().clear().rows.add(response).draw();
                 }
             });
         });
@@ -159,7 +151,7 @@
                 if (result.isConfirmed) {
                     // Kirim permintaan AJAX ke server untuk menghapus data
                     $.ajax({
-                        url: 'perusahaan/delete/' + id, // Sesuaikan dengan route Anda
+                        url: 'kelas/delete/' + id, // Sesuaikan dengan route Anda
                         type: 'GET',
                         success: function(response) {
                             Swal.fire(
