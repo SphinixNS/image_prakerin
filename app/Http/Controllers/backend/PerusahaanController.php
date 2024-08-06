@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\backend;
 
+use App\Models\Jurusan;
 use App\Models\Perusahaan;
+use App\Models\TahunAjaran;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
+use App\Models\JurusanPerusahaan;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PerusahaanController extends Controller
@@ -14,7 +17,11 @@ class PerusahaanController extends Controller
      * Display a listing of the resource.
      */
 
-    public function getDataPerusahaan()
+    public function __construct() {
+        $this -> tahun = TahunAjaran::where('status', 'Aktif') -> first() -> id;
+    }
+
+    public function perusahaan()
     {
         $perusahaan = Perusahaan::latest()->get();
         return response()->json($perusahaan);
@@ -32,7 +39,8 @@ class PerusahaanController extends Controller
     public function create()
     {
         $data = null;
-        return view('admin.perusahaan.action', compact('data'));
+        $jurusan = Jurusan::where('tahun_id', $this -> tahun)->get();
+        return view('admin.perusahaan.action', compact('data', 'jurusan'));
     }
 
     public function store(Request $request)
@@ -40,20 +48,50 @@ class PerusahaanController extends Controller
         $request->validate([
             'nama' => 'required',
             'kuota' => 'required',
+            'jurusan' => 'required',
             // Add other validation rules as needed
         ]);
 
-        Perusahaan::create($request->except('_token'));
+
+        $perusahaan = Perusahaan::create(
+            [
+                "nama" => $request -> nama,
+                "mou" => $request -> mou,
+                "alamat" => $request -> alamat,
+                "lokasi" => $request -> lokasi,
+                "email" => $request -> email,
+                "no_telp" => $request -> no_telp,
+                "website" => $request -> website,
+                "tahun_id" => $this -> tahun
+            ]
+        );
+
+        foreach ($request -> jurusan as $key => $jurusan) {
+            JurusanPerusahaan::create([
+                'jurusan_id'    => $jurusan,
+                'perusahaan_id' => $perusahaan -> id,
+                'kuota'         => $request -> kuota[$key],
+                "tahun_id" => $this -> tahun
+            ]);
+        }
+
         Alert::success('Create Berhasil', 'Data Berhasil Di Tambah');
 
         return redirect()->route('admin.perusahaan.index')->with(['created' => 'created']);
     }
 
+    public function detail(Perusahaan $perusahaan)
+    {
+        $data = $perusahaan;
+        // dd($perusahaan -> jurusan);
+        return view('admin.perusahaan.detail', compact('data'));
+    }
+
     public function edit(Perusahaan $perusahaan)
     {
         $data = $perusahaan;
-
-        return view('admin.perusahaan.action', compact('data'));
+        $jurusan = Jurusan::where('tahun_id', $this -> tahun)->get();
+        return view('admin.perusahaan.action', compact('data', 'jurusan'));
     }
 
     public function update(Request $request, Perusahaan $perusahaan)
@@ -63,7 +101,6 @@ class PerusahaanController extends Controller
             'kuota' => 'required',
         ]);
 
-
         $perusahaan->update([
             'nama' => $request->nama,
             'alamat' => $request->alamat,
@@ -71,9 +108,19 @@ class PerusahaanController extends Controller
             'email' => $request->email,
             'no_telp' => $request->no_telp,
             'website' => $request->website,
-            'kuota' => $request->kuota,
             'mou' => $request->mou,
         ]);
+
+        JurusanPerusahaan::where('tahun_id', $this -> tahun)->where('perusahaan_id', $perusahaan -> id) -> delete();
+        
+        foreach ($request -> jurusan as $key => $jurusan) {
+            JurusanPerusahaan::create([
+                'jurusan_id'    => $jurusan,
+                'perusahaan_id' => $perusahaan -> id,
+                'kuota'         => $request -> kuota[$key],
+                "tahun_id" => $this -> tahun
+            ]);
+        }
         Alert::success('Update Berhasil', 'Data Berhasil Di Ubah');
 
 
@@ -83,6 +130,7 @@ class PerusahaanController extends Controller
     public function delete(Perusahaan $perusahaan)
     {
         // $this->upload->delete($perusahaan->image);
+        JurusanPerusahaan::where('tahun_id', $this -> tahun)->where('perusahaan_id', $perusahaan -> id) -> delete();
         $perusahaan->delete();
     }
 }

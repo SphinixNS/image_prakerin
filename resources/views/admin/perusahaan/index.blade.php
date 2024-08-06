@@ -25,7 +25,6 @@
                                         <td style="width: 10%">No</td>
                                         <td>Nama</td>
                                         <td>Alamat</td>
-                                        <td>Kuota</td>
                                         <td>Action</td>
                                     </tr>
                                 </thead>
@@ -77,11 +76,6 @@
 
                     },
                     {
-                        data: 'kuota',
-                        name: 'kuota'
-
-                    },
-                    {
                         data: 'id',
                         render: (id) => /* html */ `
                  <div class="dropdown">
@@ -91,11 +85,16 @@
                             <img src="/backend/align-justify.svg">
                           </button>
                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#"
-                                onclick="deleteData(${id})">Delete</a></li>
+                            <li><a class="dropdown-item"
+                               href="/admin/perusahaan/detail/${id}"">Detail</a>
+                            </li>
+                           
                             <li><a class="dropdown-item"
                                href="/admin/perusahaan/edit/${id}"">Edit</a>
                             </li>
+                             <li><a class="dropdown-item" href="#"
+                                onclick="deleteData(${id})">Delete</a></li>
+                            
                           </ul>
                         </div>
                 `
@@ -133,7 +132,7 @@
                 }
             });
             $.ajax({
-                url: "{{ route('admin.perusahaan.getDataPerusahaan') }}",
+                url: "{{ route('admin.perusahaan.perusahaan') }}",
                 method: "GET",
                 success: function(response) {
                     // Update data setelah respon Ajax diterima
