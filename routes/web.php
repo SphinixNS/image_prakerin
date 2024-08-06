@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\backend\GuruController;
 use App\Http\Controllers\backend\JurusanController;
 use App\Http\Controllers\backend\KelasController;
 use App\Http\Controllers\backend\KonsentrasiController;
@@ -94,6 +95,16 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend','prefix' => 'admin',
             Route::get('edit/{kelas}', [KelasController::class , 'edit'])->name('edit');
             Route::post('/update/{kelas}', [KelasController::class, 'update'])->name('update');
             Route::get('delete/{kelas}', [KelasController::class , 'delete'])->name('delete');
+        });
+
+        Route::group(['prefix' => 'guru' ,'as' => 'guru.'], function(){
+            Route::get('/guru', [GuruController::class, 'guru'])->name('guru');
+            Route::get('/', [GuruController::class, 'index'])->name('index');
+            Route::get('/create', [GuruController::class, 'create'])->name('create');
+            Route::post('/store', [GuruController::class, 'store'])->name('store');
+            Route::get('edit/{guru}', [GuruController::class , 'edit'])->name('edit');
+            Route::post('/update/{guru}', [GuruController::class, 'update'])->name('update');
+            Route::get('delete/{guru}', [GuruController::class , 'delete'])->name('delete');
         });
 
         // Route::group(['prefix' => 'section1' ,'as' => 'section1.'], function(){
