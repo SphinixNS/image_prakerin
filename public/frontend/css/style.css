@@ -239,6 +239,264 @@ strong {
   color: var(--white-color);
 }
 
+/*---------------------------------------
+  LOGIN FORM
+-----------------------------------------*/
+.body-login {
+    background: url('/frontend/img/4940019.jpg') repeat;
+}
+
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.login-box {
+    display: flex;
+    width: 900px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.login-left {
+    padding: 30px;
+    width: 50%;
+}
+
+.login-right {
+    width: 60%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-icon {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.login-icon i {
+    margin-right: 10px;
+    font-size: 30px;
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.login-icon i:hover {
+    color: var(--primary-color);
+}
+
+.login-icon span {
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.login-right img {
+    max-width: 100%;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.login-right img:hover {
+    transform: scale(1.05);
+}
+
+.login-text {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 22px;
+    color: #333;
+}
+
+p {
+    font-size: 14px;
+    color: #666;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    background: #f0f0f0;
+    border-radius: 8px;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.input-group:focus-within {
+    background-color: #e0e0e0;
+}
+
+.input-group i {
+    margin-right: 10px;
+    font-size: 18px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.input-group i:hover {
+    color: var(--primary-color);
+}
+
+.input-group input[type="text"],
+.input-group input[type="password"] {
+    border: none;
+    background: transparent;
+    outline: none;
+    flex: 1;
+    font-size: 14px;
+    color: #333;
+}
+
+.forgot-password {
+    display: block;
+    text-align: right;
+    color: var(--primary-color);
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.login-btn {
+    background: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    padding: 12px 0;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-btn:hover {
+    transform: scale(1.02);
+}
+
+.main-page-btn {
+    display: block;
+    text-align: center;
+    color: #333;
+    background: #f0f0f0;
+    padding: 12px 0;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.main-page-btn:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+    .login-box {
+        flex-direction: column;
+        width: 100%;
+        border-radius: 0;
+        transition: all 0.3s ease;
+    }
+
+    .login-left, .login-right {
+        width: 100%;
+    }
+
+    .login-right {
+        display: none;
+    }
+
+    .login-icon i {
+        font-size: 24px;
+    }
+
+    .login-icon span {
+        font-size: 20px;
+    }
+
+    .login-text {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    .input-group {
+        padding: 8px;
+    }
+
+    .input-group img {
+        width: 20px;
+    }
+
+    input[type="text"], input[type="password"] {
+        font-size: 14px;
+    }
+
+    .forgot-password, .login-btn, .main-page-btn {
+        font-size: 14px;
+    }
+
+    .login-btn, .main-page-btn {
+        padding: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-icon {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .login-icon i {
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+
+    .login-icon span {
+        font-size: 18px;
+    }
+
+    .login-text {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 11px;
+    }
+
+    .input-group {
+        padding: 6px;
+    }
+
+    .input-group img {
+        width: 18px;
+    }
+
+    input[type="text"], input[type="password"] {
+        font-size: 14px;
+    }
+
+    .forgot-password, .login-btn, .main-page-btn {
+        font-size: 13px;
+    }
+
+    .login-btn, .main-page-btn {
+        padding: 8px 0;
+    }
+}
 
 /*---------------------------------------
   SITE HEADER

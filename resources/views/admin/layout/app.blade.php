@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Prakerin">
 
-
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
     <title>Admin | @yield('title')</title>
@@ -18,110 +17,89 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap5.min.css" rel="stylesheet">
-
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-        /* Gaya khusus untuk pagination DataTables */
-        .dataTables_wrapper .dataTables_paginate .paginate_button {
-            padding: 0.5em 1em;
-            margin-left: 2px;
-            margin-right: 2px;
-            color: #007bff !important;
-            background: #fff !important;
-            border: 1px solid #dee2e6;
-            border-radius: 0.25rem;
-            cursor: pointer;
-            text-decoration: none;
-        }
+.dataTables_wrapper .dataTables_paginate .pagination {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.357rem;
+}
 
-        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-            color: #fff !important;
-            background: #007bff !important;
-            border: 1px solid #007bff;
-        }
+.dataTables_wrapper .dataTables_paginate .pagination-lg .page-link {
+    padding: 0.5575rem 1rem;
+    font-size: 2rem;
+    line-height: 1.25;
+}
 
-        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-            color: #fff !important;
-            background: #007bff !important;
-            border: 1px solid #007bff;
-            cursor: default;
-        }
+.dataTables_wrapper .dataTables_paginate .pagination-lg .page-item:first-child .page-link {
+    border-top-left-radius: 0.6rem;
+    border-bottom-left-radius: 0.6rem;
+}
 
-        .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
-            cursor: default;
-            color: #6c757d !important;
-            background: #fff !important;
-            border: 1px solid #dee2e6;
-        }
+.dataTables_wrapper .dataTables_paginate .pagination-lg .page-item:last-child .page-link {
+    border-top-right-radius: 0.6rem;
+    border-bottom-right-radius: 0.6rem;
+}
 
-        .dataTables_wrapper .dataTables_paginate .paginate_button:active {
-            outline: none;
-            border: 1px solid #007bff;
-            background-color: #0056b3;
-            color: #fff !important;
-        }
+.dataTables_wrapper .dataTables_paginate .pagination-sm .page-link {
+    padding: 0.443rem 0.745rem;
+    font-size: 1rem;
+    line-height: 1;
+}
 
-        /* Tambahkan padding di sekitar elemen pagination untuk memastikan semuanya rata */
-        .dataTables_wrapper .dataTables_paginate {
-            padding-top: 1em;
-            padding-bottom: 1em;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+.dataTables_wrapper .dataTables_paginate .pagination-sm .page-item:first-child .page-link {
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
 
-        /* Gaya khusus untuk elemen ul dan li dalam pagination */
-        .dataTables_wrapper .dataTables_paginate ul.pagination {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+.dataTables_wrapper .dataTables_paginate .pagination-sm .page-item:last-child .page-link {
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
 
-        .dataTables_wrapper .dataTables_paginate ul.pagination li {
-            margin: 0 2px;
-        }
+.dataTables_wrapper .dataTables_paginate .page-item {
+    margin: 0;
+}
 
-        .dataTables_wrapper .dataTables_paginate ul.pagination li a {
-            display: block;
-            padding: 0.5em 1em;
-            color: #007bff !important;
-            background: #fff !important;
-            border: 1px solid #dee2e6;
-            border-radius: 0.25rem;
-            text-decoration: none;
-        }
+.dataTables_wrapper .dataTables_paginate .page-link {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
 
-        .dataTables_wrapper .dataTables_paginate ul.pagination li a:hover {
-            color: #fff !important;
-            background: #007bff !important;
-            border: 1px solid #007bff;
-        }
+.dataTables_wrapper .dataTables_paginate .page-link:hover {
+    color: #fff;
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
 
-        .dataTables_wrapper .dataTables_paginate ul.pagination li.active a {
-            color: #fff !important;
-            background: #007bff !important;
-            border: 1px solid #007bff;
-        }
+.dataTables_wrapper .dataTables_paginate .page-item.disabled .page-link {
+    color: #6c757d;
+    background-color: #fff;
+    border-color: #dee2e6;
+    cursor: not-allowed;
+}
 
-        .dataTables_wrapper .dataTables_paginate ul.pagination li.disabled a {
-            cursor: default;
-            color: #6c757d !important;
-            background: #fff !important;
-            border: 1px solid #dee2e6;
-        }
+.dataTables_wrapper .dataTables_paginate .page-item.active .page-link {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
     </style>
+
 </head>
 
 <body>
     @include('sweetalert::alert')
     <div class="wrapper">
         @include('admin.layout.sidebar')
-
-
-
 
         <div class="main">
             @include('admin.layout.navbar')
@@ -130,12 +108,10 @@
 
             @include('admin.layout.footer')
 
-
         </div>
     </div>
 
     <script src="{{ asset('backend/static/js/app.js') }}"></script>
-
 
     {{-- <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -209,11 +185,6 @@
             });
         });
     </script> --}}
-
-
-
-
-
 
     {{-- <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -341,11 +312,23 @@
         });
     </script> --}}
 
-
     <!-- Bootstrap JS and dependencies -->
 
-
     @yield('scripts')
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#yourTableId').DataTable({
+                "pagingType": "simple_numbers",
+                "language": {
+                    "paginate": {
+                        "previous": "<",
+                        "next": ">"
+                    }
+                }
+            });
+        });
+    </script>
 
 </body>
 

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-12 mb-4 pb-2">
-                <a class="navbar-brand mb-2" href="index.html">
+                <a class="navbar-brand mb-2" href="#">
                     <i class="bi-back footer" style="color: black"></i>
                     <span style="color: black">PRAKERIN</span>
                 </a>

@@ -4,38 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <link href="{{ asset('/frontend/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/frontend/css/bootstrap-icons.css') }}" rel="stylesheet">
 </head>
 
-<body>
-   <div class="container mt-5">
-    <form action="/auth" method="POST">
-        @csrf
-        <!-- Email input -->
-        <div data-mdb-input-init class="form-outline mb-4">
-            <input type="email" name="email" id="form2Example1" class="form-control" />
-            <label class="form-label" for="form2Example1">Email address</label>
+<body class="body-login">
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-left">
+                <div class="login-icon" href="#">
+                    <i class="bi-back" style="color: black"></i>
+                    <span style="color: black">PRAKERIN</span>
+                </div>
+                <h2 class="login-text">Selamat datang di Prakerin</h2>
+                <p>Selesaikan Semua Yang Telah Dilakukan Dengan Cara Yang Terbaik.</p>
+                <form action="/auth" method="POST">
+                    @csrf
+                    <div class="input-group">
+                        <i class="bi bi-person"></i>
+                        <input type="text" name="email" placeholder="Username">
+                    </div>
+                    <div class="input-group">
+                        <i class="bi bi-lock"></i>
+                        <input type="password" name="password" placeholder="Password">
+                    </div>
+                    <a href="#" class="forgot-password">Lupa kata sandi?</a>
+                    <button type="submit" class="login-btn">Login</button>
+                    <a href="/" class="main-page-btn">Ke Halaman Utama</a>
+                </form>
+            </div>
+            <div class="login-right">
+                <img src="{{ asset('frontend/img/4620564.jpg') }}" alt="Right Image">
+            </div>
         </div>
-
-        <!-- Password input -->
-        <div data-mdb-input-init class="form-outline mb-4">
-            <input type="password" name="password" id="form2Example2" class="form-control" />
-            <label class="form-label" for="form2Example2">Password</label>
-        </div>
-
-        <!-- 2 column grid layout for inline styling -->
-      
-
-        <!-- Submit button -->
-        <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Sign
-            in</button>
-
-        <!-- Register buttons -->
-    
-    </form>
-   </div>
+    </div>
 </body>
 
 </html>

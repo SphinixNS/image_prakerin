@@ -8,7 +8,7 @@
                 untuk mewujudkan Pengalaman Prakerin Terbaik.</h6>
 
             <div class="buttons">
-                <a href="#" class=" btn btn-primary button-text-a">Login Sekarang</a>
+                <a href="login" class=" btn btn-primary button-text-a">Login Sekarang</a>
             </div>
 
             <div class="cards">
