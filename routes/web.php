@@ -10,6 +10,7 @@ use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\PembimbingController;
 use App\Http\Controllers\backend\PerusahaanController;
 use App\Http\Controllers\backend\KonsentrasiController;
+use App\Http\Controllers\backend\SiswaController;
 use App\Http\Controllers\backend\TahunAjaranController;
 
 /*
@@ -94,6 +95,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend','prefix' => 'admin',
         Route::group(['prefix' => 'kelas' ,'as' => 'kelas.'], function(){
             Route::get('/kelas', [KelasController::class, 'kelas'])->name('kelas');
             Route::get('/', [KelasController::class, 'index'])->name('index');
+            Route::get('search', [KelasController::class , 'search'])->name('search');
             Route::get('/create', [KelasController::class, 'create'])->name('create');
             Route::post('/store', [KelasController::class, 'store'])->name('store');
             Route::get('edit/{kelas}', [KelasController::class , 'edit'])->name('edit');
@@ -120,6 +122,17 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend','prefix' => 'admin',
             Route::get('edit/{pembimbing}', [PembimbingController::class , 'edit'])->name('edit');
             Route::post('/update/{pembimbing}', [PembimbingController::class, 'update'])->name('update');
             Route::get('delete/{pembimbing}', [PembimbingController::class , 'delete'])->name('delete');
+        });
+
+        
+        Route::group(['prefix' => 'siswa' ,'as' => 'siswa.'], function(){
+            Route::get('/siswa', [SiswaController::class, 'siswa'])->name('siswa');
+            Route::get('/', [SiswaController::class, 'index'])->name('index');
+            Route::get('/create', [SiswaController::class, 'create'])->name('create');
+            Route::post('/store', [SiswaController::class, 'store'])->name('store');
+            Route::get('edit/{siswa}', [SiswaController::class , 'edit'])->name('edit');
+            Route::post('/update/{siswa}', [SiswaController::class, 'update'])->name('update');
+            Route::get('delete/{siswa}', [SiswaController::class , 'delete'])->name('delete');
         });
 
         // Route::group(['prefix' => 'section1' ,'as' => 'section1.'], function(){

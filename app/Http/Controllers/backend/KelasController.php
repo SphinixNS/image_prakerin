@@ -24,6 +24,14 @@ class KelasController extends Controller
         return response()->json($kelas);
         
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->q;
+        $kelas = Kelas::where('nama', 'like', '%' . $search . '%')->get();
+        return response()->json($kelas);
+    }
+
     public function index()
     {
 

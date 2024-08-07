@@ -51,6 +51,11 @@
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Pembimbing</span>
                 </a>
             </li>
+            <li class="sidebar-item  {{ request()->routeIs('admin.siswa*') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{route('admin.siswa.index')}}">
+                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Siswa</span>
+                </a>
+            </li>
 
             {{-- <li class="sidebar-item  {{ request()->routeIs('admin.dashboard*') ? 'active' : '' }}">
                 <a class="sidebar-link" href="pages-sign-in.html">

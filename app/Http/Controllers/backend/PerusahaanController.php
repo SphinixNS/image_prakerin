@@ -37,7 +37,6 @@ class PerusahaanController extends Controller
     public function search(Request $request)
     {
         $search = $request->q;
-
         // Query untuk mencari perusahaan berdasarkan nama
         $perusahaan = Perusahaan::where('nama', 'like', '%' . $search . '%')->get();
         return response()->json($perusahaan);
