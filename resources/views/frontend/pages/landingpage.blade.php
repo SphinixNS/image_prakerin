@@ -111,86 +111,46 @@
         <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
             <div class="container">
                 <div class="text-center">
-                    <h1 class="mb-3">Daftar Perusahaan!</h1>
+                    <h1 class="mb-3 text-testi">Daftar Perusahaan!</h1>
                     <h6 class="section-title bg-white text-center px-3 mb-5 testi-text">Yang Telah Bekerja Sama Dengan
                         Kami</h6>
                 </div>
                 <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="testimonial-item rounded p-4 bg-light me-3">
-                        <div class="d-flex align-items-center mb-4">
-
-                            <div class="ms-4">
-                                <h6 class="mb-1">PT. ForIt Asta Solusiindo</h6>
-                                <p class="mb-1">
-                                    Pengembangan Perangkat Lunak dan Gim (Kuota 6 orang) <br>
-                                </p>
-
-                            </div>
+                    <div class="testimonial-item rounded p-4 bg-light me-3 text-center">
+                        <div class="mb-4">
+                            <img src="{{ asset('/frontend/img/chlorine.jpg') }}" alt="Logo Perusahaan" style="max-width: 150px;">
                         </div>
-                        <p class="text-center">Google Maps</p>
-                        <div class="mb-0">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.9607077767278!2d107.53966857332063!3d-6.895303417473201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e59b48322cdb%3A0x10a755b12e9aef37!2sBITC%20(Baros%20Information%2C%20Technology%2C%20%26%20Creative%20Center!5e0!3m2!1sen!2sid!4v1700614722986!5m2!1sen!2sid"
-                                width="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
+                        <h6 class="mb-1">PT. ForIt Asta Solusiindo</h6>
+                        <p class="mb-1">
+                            Pengembangan Perangkat Lunak dan Gim (Kuota 6 orang)
+                        </p>
                     </div>
-                    <div class="testimonial-item rounded p-4 bg-light me-3">
-                        <div class="d-flex align-items-center mb-4">
-
-                            <div class="ms-4">
-                                <h6 class="mb-1">PT. Testing Pedia</h6>
-                                <p class="mb-1">
-                                    Pengembangan Perangkat Lunak dan Gim (Kuota 6 orang) <br>
-                                </p>
-
-                            </div>
+                    <div class="testimonial-item rounded p-4 bg-light me-3 text-center">
+                        <div class="mb-4">
+                            <img src="{{ asset('/frontend/img/chlorine.jpg') }}" alt="Logo Perusahaan" style="max-width: 150px;">
                         </div>
-                        <p class="text-center">Google Maps</p>
-                        <div class="mb-0">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.9607077767278!2d107.53966857332063!3d-6.895303417473201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e59b48322cdb%3A0x10a755b12e9aef37!2sBITC%20(Baros%20Information%2C%20Technology%2C%20%26%20Creative%20Center!5e0!3m2!1sen!2sid!4v1700614722986!5m2!1sen!2sid"
-                                width="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
+                        <h6 class="mb-1">PT. Testing Pedia</h6>
+                        <p class="mb-1">
+                            Pengembangan Perangkat Lunak dan Gim (Kuota 6 orang)
+                        </p>
                     </div>
-                    <div class="testimonial-item rounded p-4 bg-light me-3">
-                        <div class="d-flex align-items-center mb-4">
-
-                            <div class="ms-4">
-                                <h6 class="mb-1">PT. Coba Pedia</h6>
-                                <p class="mb-1">
-                                    Pengembangan Perangkat Lunak dan Gim (Kuota 6 orang) <br>
-                                </p>
-
-                            </div>
+                    <div class="testimonial-item rounded p-4 bg-light me-3 text-center">
+                        <div class="mb-4">
+                            <img src="{{ asset('/frontend/img/chlorine.jpg') }}" alt="Logo Perusahaan" style="max-width: 150px;">
                         </div>
-                        <p class="text-center">Google Maps</p>
-                        <div class="mb-0">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.9607077767278!2d107.53966857332063!3d-6.895303417473201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e59b48322cdb%3A0x10a755b12e9aef37!2sBITC%20(Baros%20Information%2C%20Technology%2C%20%26%20Creative%20Center!5e0!3m2!1sen!2sid!4v1700614722986!5m2!1sen!2sid"
-                                width="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
+                        <h6 class="mb-1">PT. Coba Pedia</h6>
+                        <p class="mb-1">
+                            Pengembangan Perangkat Lunak dan Gim (Kuota 6 orang)
+                        </p>
                     </div>
-                    <div class="testimonial-item rounded p-4 bg-light me-3">
-                        <div class="d-flex align-items-center mb-4">
-
-                            <div class="ms-4">
-                                <h6 class="mb-1">PT. Lorem Ipsum</h6>
-                                <p class="mb-1">
-                                    Pengembangan Perangkat Lunak dan Gim (Kuota 6 orang) <br>
-                                </p>
-
-                            </div>
+                    <div class="testimonial-item rounded p-4 bg-light me-3 text-center">
+                        <div class="mb-4">
+                            <img src="{{ asset('/frontend/img/chlorine.jpg') }}" alt="Logo Perusahaan" style="max-width: 150px;">
                         </div>
-                        <p class="text-center">Google Maps</p>
-                        <div class="mb-0">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.9607077767278!2d107.53966857332063!3d-6.895303417473201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e59b48322cdb%3A0x10a755b12e9aef37!2sBITC%20(Baros%20Information%2C%20Technology%2C%20%26%20Creative%20Center!5e0!3m2!1sen!2sid!4v1700614722986!5m2!1sen!2sid"
-                                width="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
+                        <h6 class="mb-1">PT. Lorem Ipsum</h6>
+                        <p class="mb-1">
+                            Pengembangan Perangkat Lunak dan Gim (Kuota 6 orang)
+                        </p>
                     </div>
                 </div>
             </div>
