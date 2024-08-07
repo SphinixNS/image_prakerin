@@ -40,9 +40,16 @@
                 </li>
             </ul>
 
-            <div class="d-none d-lg-block">
+            <li class="nav-item dropdown">
+                <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
+                    data-bs-toggle="dropdown"></a>
                 <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
-            </div>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="login">Log in</a>
+                </div>
+            </li>
+            </ul>
         </div>
     </div>
 </nav>
