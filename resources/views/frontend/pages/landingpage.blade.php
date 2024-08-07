@@ -7,9 +7,9 @@
             <h6 class="hero-text-small">Mudah digunakan, andal, dan aman. Tidak heran aplikasi ini menjadi pilihan terbaik
                 untuk mewujudkan Pengalaman Prakerin Terbaik.</h6>
 
-            <div class="buttons">
+            {{-- <div class="buttons">
                 <a href="login" class=" btn btn-primary button-text-a">Login Sekarang</a>
-            </div>
+            </div> --}}
 
             <div class="cards">
                 <div class="card">

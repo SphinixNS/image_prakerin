@@ -27,6 +27,7 @@
         }
     });
 
+
     $(window).on('scroll', function () {
         function isScrollIntoView(elem, index) {
             var docViewTop = $(window).scrollTop();
@@ -69,6 +70,5 @@
             }
         });
     });
-
 
 })(window.jQuery);
