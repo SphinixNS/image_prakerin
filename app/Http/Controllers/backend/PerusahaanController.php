@@ -17,19 +17,33 @@ class PerusahaanController extends Controller
      * Display a listing of the resource.
      */
 
-    public function __construct() {
-        $this -> tahun = TahunAjaran::where('status', 'Aktif') -> first() -> id;
+    public function __construct()
+    {
+        $this->tahun = TahunAjaran::where('status', 'Aktif')->first()->id;
     }
 
     public function perusahaan()
     {
         $perusahaan = Perusahaan::latest()->get();
         return response()->json($perusahaan);
-        
+    }
+
+    public function jurusan(Perusahaan $perusahaan)
+    {
+        $jurusan = JurusanPerusahaan::with('jurusan')->where('perusahaan_id', $perusahaan->id)->get();
+        return response()->json($jurusan);
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->q;
+
+        // Query untuk mencari perusahaan berdasarkan nama
+        $perusahaan = Perusahaan::where('nama', 'like', '%' . $search . '%')->get();
+        return response()->json($perusahaan);
     }
     public function index()
     {
-
         $perusahaan = Perusahaan::latest()->get();
         // dd($data);
         return view('admin.perusahaan.index', compact('perusahaan'));
@@ -39,7 +53,7 @@ class PerusahaanController extends Controller
     public function create()
     {
         $data = null;
-        $jurusan = Jurusan::where('tahun_id', $this -> tahun)->get();
+        $jurusan = Jurusan::where('tahun_id', $this->tahun)->get();
         return view('admin.perusahaan.action', compact('data', 'jurusan'));
     }
 
@@ -55,23 +69,23 @@ class PerusahaanController extends Controller
 
         $perusahaan = Perusahaan::create(
             [
-                "nama" => $request -> nama,
-                "mou" => $request -> mou,
-                "alamat" => $request -> alamat,
-                "lokasi" => $request -> lokasi,
-                "email" => $request -> email,
-                "no_telp" => $request -> no_telp,
-                "website" => $request -> website,
-                "tahun_id" => $this -> tahun
+                "nama" => $request->nama,
+                "mou" => $request->mou,
+                "alamat" => $request->alamat,
+                "lokasi" => $request->lokasi,
+                "email" => $request->email,
+                "no_telp" => $request->no_telp,
+                "website" => $request->website,
+                "tahun_id" => $this->tahun
             ]
         );
 
-        foreach ($request -> jurusan as $key => $jurusan) {
+        foreach ($request->jurusan as $key => $jurusan) {
             JurusanPerusahaan::create([
                 'jurusan_id'    => $jurusan,
-                'perusahaan_id' => $perusahaan -> id,
-                'kuota'         => $request -> kuota[$key],
-                "tahun_id" => $this -> tahun
+                'perusahaan_id' => $perusahaan->id,
+                'kuota'         => $request->kuota[$key],
+                "tahun_id" => $this->tahun
             ]);
         }
 
@@ -83,14 +97,15 @@ class PerusahaanController extends Controller
     public function detail(Perusahaan $perusahaan)
     {
         $data = $perusahaan;
-        // dd($perusahaan -> jurusan);
         return view('admin.perusahaan.detail', compact('data'));
     }
+
+
 
     public function edit(Perusahaan $perusahaan)
     {
         $data = $perusahaan;
-        $jurusan = Jurusan::where('tahun_id', $this -> tahun)->get();
+        $jurusan = Jurusan::where('tahun_id', $this->tahun)->get();
         return view('admin.perusahaan.action', compact('data', 'jurusan'));
     }
 
@@ -111,14 +126,14 @@ class PerusahaanController extends Controller
             'mou' => $request->mou,
         ]);
 
-        JurusanPerusahaan::where('tahun_id', $this -> tahun)->where('perusahaan_id', $perusahaan -> id) -> delete();
-        
-        foreach ($request -> jurusan as $key => $jurusan) {
+        JurusanPerusahaan::where('tahun_id', $this->tahun)->where('perusahaan_id', $perusahaan->id)->delete();
+
+        foreach ($request->jurusan as $key => $jurusan) {
             JurusanPerusahaan::create([
                 'jurusan_id'    => $jurusan,
-                'perusahaan_id' => $perusahaan -> id,
-                'kuota'         => $request -> kuota[$key],
-                "tahun_id" => $this -> tahun
+                'perusahaan_id' => $perusahaan->id,
+                'kuota'         => $request->kuota[$key],
+                "tahun_id" => $this->tahun
             ]);
         }
         Alert::success('Update Berhasil', 'Data Berhasil Di Ubah');
@@ -130,7 +145,7 @@ class PerusahaanController extends Controller
     public function delete(Perusahaan $perusahaan)
     {
         // $this->upload->delete($perusahaan->image);
-        JurusanPerusahaan::where('tahun_id', $this -> tahun)->where('perusahaan_id', $perusahaan -> id) -> delete();
+        JurusanPerusahaan::where('tahun_id', $this->tahun)->where('perusahaan_id', $perusahaan->id)->delete();
         $perusahaan->delete();
     }
 }

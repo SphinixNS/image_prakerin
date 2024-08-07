@@ -3,12 +3,13 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\GuruController;
-use App\Http\Controllers\backend\JurusanController;
 use App\Http\Controllers\backend\KelasController;
-use App\Http\Controllers\backend\KonsentrasiController;
+use App\Http\Controllers\backend\JurusanController;
+use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\backend\PembimbingController;
 use App\Http\Controllers\backend\PerusahaanController;
+use App\Http\Controllers\backend\KonsentrasiController;
 use App\Http\Controllers\backend\TahunAjaranController;
 
 /*
@@ -52,6 +53,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend','prefix' => 'admin',
             Route::get('/create', [PerusahaanController::class, 'create'])->name('create');
             Route::post('/store', [PerusahaanController::class, 'store'])->name('store');
             Route::get('detail/{perusahaan}', [PerusahaanController::class , 'detail'])->name('detail');
+            Route::get('search', [PerusahaanController::class , 'search'])->name('search');
+            Route::get('jurusan/{perusahaan}', [PerusahaanController::class , 'jurusan'])->name('jurusan');
             Route::get('edit/{perusahaan}', [PerusahaanController::class , 'edit'])->name('edit');
             Route::post('/update/{perusahaan}', [PerusahaanController::class, 'update'])->name('update');
             Route::get('delete/{perusahaan}', [PerusahaanController::class , 'delete'])->name('delete');
@@ -97,6 +100,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend','prefix' => 'admin',
             Route::post('/update/{kelas}', [KelasController::class, 'update'])->name('update');
             Route::get('delete/{kelas}', [KelasController::class , 'delete'])->name('delete');
         });
+        
 
         Route::group(['prefix' => 'guru' ,'as' => 'guru.'], function(){
             Route::get('/guru', [GuruController::class, 'guru'])->name('guru');
@@ -106,6 +110,16 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend','prefix' => 'admin',
             Route::get('edit/{guru}', [GuruController::class , 'edit'])->name('edit');
             Route::post('/update/{guru}', [GuruController::class, 'update'])->name('update');
             Route::get('delete/{guru}', [GuruController::class , 'delete'])->name('delete');
+        });
+
+        Route::group(['prefix' => 'pembimbing' ,'as' => 'pembimbing.'], function(){
+            Route::get('/pembimbing', [PembimbingController::class, 'pembimbing'])->name('pembimbing');
+            Route::get('/', [PembimbingController::class, 'index'])->name('index');
+            Route::get('/create', [PembimbingController::class, 'create'])->name('create');
+            Route::post('/store', [PembimbingController::class, 'store'])->name('store');
+            Route::get('edit/{pembimbing}', [PembimbingController::class , 'edit'])->name('edit');
+            Route::post('/update/{pembimbing}', [PembimbingController::class, 'update'])->name('update');
+            Route::get('delete/{pembimbing}', [PembimbingController::class , 'delete'])->name('delete');
         });
 
         // Route::group(['prefix' => 'section1' ,'as' => 'section1.'], function(){

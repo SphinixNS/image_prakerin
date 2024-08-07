@@ -1,36 +1,34 @@
 @extends('admin.layout.app')
-@section('title', 'Perusahaan')
+@section('title', 'Pembimbing')
 @section('content')
 
 
     <main class="content">
         <div class="container-fluid p-0">
 
-
-            {{-- <h1 class="h3 mb-3">Perusahaan</h1> --}}
+            {{-- <h1 class="h3 mb-3">Pembimbing</h1> --}}
 
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="card-title mb-0">Data Perusahaan</h5>
-                            <a href="{{ route('admin.perusahaan.create') }}"> <button type="button"
+                            <h5 class="card-title mb-0">Data Pembimbing</h5>
+                            <a href="{{ route('admin.pembimbing.create') }}"> <button type="button"
                                     class="btn btn-primary">Add Data</button></a>
                         </div>
                         <div class="card-body">
 
-                            <div class="table-responsive">
-                                <table class="table" id="table-perusahaan">
-                                    <thead>
-                                        <tr>
-                                            <td style="width: 10%">No</td>
-                                            <td>Nama</td>
-                                            <td>Action</td>
-                                        </tr>
-                                    </thead>
+                            <table class="table" id="table-pembimbing">
+                                <thead>
+                                    <tr>
+                                        <td style="width: 10%">No</td>
+                                        <td>Nama</td>
+                                        <td>Perusahaan</td>
+                                        <td>Action</td>
+                                    </tr>
+                                </thead>
 
-                                </table>
-                            </div>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -54,15 +52,14 @@
     <script>
         $(document).ready(function() {
 
-            // Pastikan tabel HTML dengan ID 'table-perusahaan' sudah ada di DOM
-            $('#table-perusahaan').DataTable({
+            // Pastikan tabel HTML dengan ID 'table-pembimbing' sudah ada di DOM
+            $('#table-pembimbing').DataTable({
                 // Data: (Jika data diambil secara asynchronous, letakkan di sini)
                 data: [], // Contoh jika data kosong saat inisialisasi
 
                 // Kolom: Sesuaikan dengan nama properti di data JSON
                 columns: [{
                         data: null,
-                        // title: 'No',
                         render: function(data, type, row, meta) {
                             return meta.row + 1;
                         }
@@ -72,19 +69,27 @@
                         name: 'nama'
                     },
                     {
+                        data: 'perusahaan.perusahaan.nama',
+                        name: 'perusahaan.perusahaan.nama'
+                    },
+                    {
                         data: 'id',
                         render: (id) => /* html */ `
-        <div class="dropdown" style="display: flex; justify-content: center; align-items: center;">
-            <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="/backend/align-justify.svg">
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="left: 50%; transform: translateX(-50%);">
-                <li><a class="dropdown-item" href="/admin/perusahaan/detail/${id}">Detail</a></li>
-                <li><a class="dropdown-item" href="/admin/perusahaan/edit/${id}">Edit</a></li>
-                <li><a class="dropdown-item" href="#" onclick="deleteData(${id})">Delete</a></li>
-            </ul>
-        </div>
-    `
+                 <div class="dropdown">
+                          <button class="btn" type="button"
+                            id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <img src="/backend/align-justify.svg">
+                          </button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#"
+                                onclick="deleteData(${id})">Delete</a></li>
+                            <li><a class="dropdown-item"
+                               href="/admin/pembimbing/edit/${id}"">Edit</a>
+                            </li>
+                          </ul>
+                        </div>
+                `
                     },
 
                 ],
@@ -92,7 +97,7 @@
                     "targets": '_all', // Menerapkan ke semua kolom
                     "render": function(data, type, row, meta) {
                         return '<div style="white-space: nowrap;">' + data +
-                            '</div>'; // Membungkus konten dalam div untuk menghindari pemotongan teks
+                        '</div>'; // Membungkus konten dalam div untuk menghindari pemotongan teks
                     }
                 }],
                 // dom:'rtp',
@@ -119,11 +124,11 @@
                 }
             });
             $.ajax({
-                url: "{{ route('admin.perusahaan.perusahaan') }}",
+                url: "{{ route('admin.pembimbing.pembimbing') }}",
                 method: "GET",
                 success: function(response) {
                     // Update data setelah respon Ajax diterima
-                    $('#table-perusahaan').DataTable().clear().rows.add(response).draw();
+                    $('#table-pembimbing').DataTable().clear().rows.add(response).draw();
                 }
             });
         });
@@ -146,7 +151,7 @@
                 if (result.isConfirmed) {
                     // Kirim permintaan AJAX ke server untuk menghapus data
                     $.ajax({
-                        url: 'perusahaan/delete/' + id, // Sesuaikan dengan route Anda
+                        url: 'pembimbing/delete/' + id, // Sesuaikan dengan route Anda
                         type: 'GET',
                         success: function(response) {
                             Swal.fire(
