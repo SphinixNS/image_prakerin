@@ -32,6 +32,12 @@ class SiswaController extends Controller
         return view('admin.siswa.index', compact('siswa', 'kelas'));
     }
 
+    public function detail(Siswa $siswa)
+    {
+        return view('admin.siswa.detail', compact('siswa'));
+    }
+
+
 
     public function create()
     {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Models\Kelas;
+use App\Models\Siswa;
 use App\Models\Konsentrasi;
 use App\Models\TahunAjaran;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class KelasController extends Controller
 
     public function kelas()
     {
-        $kelas = Kelas::with('konsentrasi')->latest()->get();
+        $kelas = Kelas::withCount('siswa')->get();
         return response()->json($kelas);
         
     }
@@ -32,12 +33,23 @@ class KelasController extends Controller
         return response()->json($kelas);
     }
 
+    public function siswa(Kelas $kelas)
+    {
+        $siswa = Siswa::where('kelas_id', $kelas -> id)->get();
+        return response()->json($siswa);
+    }
+
     public function index()
     {
 
         $kelas = Kelas::latest()->get();
-        // dd($data);
         return view('admin.kelas.index', compact('kelas'));
+    }
+
+    public function detail(Kelas $kelas)
+    {
+        $siswa = $kelas -> siswa;
+        return view('admin.kelas.detail', compact('kelas', 'siswa'));
     }
 
 
@@ -52,7 +64,6 @@ class KelasController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            // Add other validation rules as needed
         ]);
 
         Kelas::create([

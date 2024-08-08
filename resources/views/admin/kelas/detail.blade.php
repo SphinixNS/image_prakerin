@@ -6,15 +6,95 @@
     <main class="content">
         <div class="container-fluid p-0">
 
-            {{-- <h1 class="h3 mb-3">Kelas</h1> --}}
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col mt-0">
+                                    <h5 class="card-title">Siswa</h5>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="stat text-primary">
+                                        <i class="align-middle" data-feather="truck"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <h1 class="mt-1 mb-3">34</h1>
+                            <div class="mb-0">
+                                <span class="text-muted">Tahun 2024-2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col mt-0">
+                                    <h5 class="card-title">Terpetakan</h5>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="stat text-primary">
+                                        <i class="align-middle" data-feather="users"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <h1 class="mt-1 mb-3">14</h1>
+                            <div class="mb-0">
+                                <span class="text-muted">Tahun 2024-2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col mt-0">
+                                    <h5 class="card-title">Mencari </h5>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="stat text-primary">
+                                        <i class="align-middle" data-feather="users"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <h1 class="mt-1 mb-3">10</h1>
+                            <div class="mb-0">
+                                <span class="text-muted">Tahun 2024-2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col mt-0">
+                                    <h5 class="card-title">Konfirmasi</h5>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="stat text-primary">
+                                        <i class="align-middle" data-feather="users"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <h1 class="mt-1 mb-3">10</h1>
+                            <div class="mb-0">
+                                <span class="text-muted">Tahun 2024-2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="card-title mb-0">Data Kelas</h5>
-                            <a href="{{ route('admin.kelas.create') }}"> <button type="button" class="btn btn-primary">Add
-                                    Data</button></a>
+                            <h5 class="card-title mb-0">Data {{ $kelas->nama }}</h5>
                         </div>
                         <div class="card-body">
 
@@ -23,7 +103,8 @@
                                     <tr>
                                         <td style="width: 10%">No</td>
                                         <td>Nama</td>
-                                        <td>Siswa</td>
+                                        <td>Terpetakan</td>
+                                        <td>Periode</td>
                                         <td>Action</td>
                                     </tr>
                                 </thead>
@@ -69,9 +150,12 @@
                         name: 'nama'
                     },
                     {
-                        data: 'siswa_count',
-                        name: 'siswa_count',
-                        render: (siswa_count) => `${siswa_count} orang`
+                        data: 'terpetakan',
+                        name: 'terpetakan',
+                    },
+                    {
+                        data: 'periode',
+                        name: 'periode',
                     },
                     {
                         data: 'id',
@@ -83,14 +167,11 @@
                             <img src="/backend/align-justify.svg">
                           </button>
                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#"
+                                onclick="deleteData(${id})">Delete</a></li>
                             <li><a class="dropdown-item"
-                               href="/admin/kelas/detail/${id}"">Detail</a>
+                               href="/admin/kelas/edit/${id}"">Edit</a>
                             </li>
-                            <li><a class="dropdown-item"
-                                href="/admin/kelas/edit/${id}"">Edit</a>
-                                </li>
-                                <li><a class="dropdown-item" href="#"
-                                    onclick="deleteData(${id})">Delete</a></li>
                           </ul>
                         </div>
                 `
@@ -128,7 +209,7 @@
                 }
             });
             $.ajax({
-                url: "{{ route('admin.kelas.kelas') }}",
+                url: "{{ route('admin.kelas.siswa', $kelas->id) }}",
                 method: "GET",
                 success: function(response) {
                     // Update data setelah respon Ajax diterima
