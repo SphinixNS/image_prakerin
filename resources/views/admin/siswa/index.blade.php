@@ -55,6 +55,90 @@
 
     <main class="content">
 
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col mt-0">
+                                <h5 class="card-title">Siswa</h5>
+                            </div>
+                            <div class="col-auto">
+                                <div class="stat text-primary">
+                                    <i class="align-middle" data-feather="truck"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <h1 class="mt-1 mb-3">34</h1>
+                        <div class="mb-0">
+                            <span class="text-muted">Tahun 2024-2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col mt-0">
+                                <h5 class="card-title">Terpetakan</h5>
+                            </div>
+                            <div class="col-auto">
+                                <div class="stat text-primary">
+                                    <i class="align-middle" data-feather="users"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <h1 class="mt-1 mb-3">14</h1>
+                        <div class="mb-0">
+                            <span class="text-muted">Tahun 2024-2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col mt-0">
+                                <h5 class="card-title">Mencari </h5>
+                            </div>
+                            <div class="col-auto">
+                                <div class="stat text-primary">
+                                    <i class="align-middle" data-feather="users"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <h1 class="mt-1 mb-3">10</h1>
+                        <div class="mb-0">
+                            <span class="text-muted">Tahun 2024-2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col mt-0">
+                                <h5 class="card-title">Konfirmasi</h5>
+                            </div>
+                            <div class="col-auto">
+                                <div class="stat text-primary">
+                                    <i class="align-middle" data-feather="users"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <h1 class="mt-1 mb-3">10</h1>
+                        <div class="mb-0">
+                            <span class="text-muted">Tahun 2024-2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         {{-- Modal Import Start --}}
         <div id="myModal" class="modal">
             <div class="modal-content">
@@ -203,8 +287,9 @@
                                 <img src="/backend/align-justify.svg">
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#" onclick="deleteData(${id})">Delete</a></li>
+                                <li><a class="dropdown-item" href="/admin/siswa/detail/${id}">Detail</a></li>
                                 <li><a class="dropdown-item" href="/admin/siswa/edit/${id}">Edit</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="deleteData(${id})">Delete</a></li>
                             </ul>
                         </div>
                     `

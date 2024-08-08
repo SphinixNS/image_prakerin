@@ -100,10 +100,12 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend','prefix' => 'admin',
 
         Route::group(['prefix' => 'kelas' ,'as' => 'kelas.'], function(){
             Route::get('/kelas', [KelasController::class, 'kelas'])->name('kelas');
+            Route::get('/detail/{kelas}/siswa', [KelasController::class, 'siswa'])->name('siswa');
             Route::get('/', [KelasController::class, 'index'])->name('index');
             Route::get('search', [KelasController::class , 'search'])->name('search');
             Route::get('/create', [KelasController::class, 'create'])->name('create');
             Route::post('/store', [KelasController::class, 'store'])->name('store');
+            Route::get('detail/{kelas}', [KelasController::class , 'detail'])->name('detail');
             Route::get('edit/{kelas}', [KelasController::class , 'edit'])->name('edit');
             Route::post('/update/{kelas}', [KelasController::class, 'update'])->name('update');
             Route::get('delete/{kelas}', [KelasController::class , 'delete'])->name('delete');
@@ -137,17 +139,11 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend','prefix' => 'admin',
             Route::post('/import', [ImportsSiswaController::class, 'import'])->name('import');
             Route::get('/create', [SiswaController::class, 'create'])->name('create');
             Route::post('/store', [SiswaController::class, 'store'])->name('store');
+            Route::get('detail/{siswa}', [SiswaController::class , 'detail'])->name('detail');
             Route::get('edit/{siswa}', [SiswaController::class , 'edit'])->name('edit');
             Route::post('/update/{siswa}', [SiswaController::class, 'update'])->name('update');
             Route::get('delete/{siswa}', [SiswaController::class , 'delete'])->name('delete');
         });
-
-        // Route::group(['prefix' => 'section1' ,'as' => 'section1.'], function(){
-        //     Route::get('/', [Section1Controller::class, 'index'])->name('index');
-        //     Route::post('/store', [Section1Controller::class, 'store'])->name('store');
-        //     Route::post('/update/{content}', [Section1Controller::class, 'update'])->name('update');
-        // });
-
 
 
     });
