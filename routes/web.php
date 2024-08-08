@@ -28,6 +28,11 @@ use App\Http\Controllers\backend\TahunAjaranController;
 Route::get('/', function () {
     return view('frontend.pages.landingpage');
 });
+
+Route::get('/siswa', function () {
+    return view('frontend.pages.siswa.index');
+});
+
 // Route::get('/login', function () {
 //     return view('auth.login');
 // }) -> name('login');
@@ -45,7 +50,7 @@ Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 Route::group(['namespace' => 'App\Http\Controllers\Backend','prefix' => 'admin', 'as' => 'admin.'], function () {
     // Auth::routes();
     Route::middleware('auth')->group(function () {
-        
+
 
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -72,7 +77,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend','prefix' => 'admin',
             Route::get('/status/{tahun_ajaran}', [TahunAjaranController::class, 'status'])->name('update');
             Route::get('delete/{tahun_ajaran}', [TahunAjaranController::class , 'delete'])->name('delete');
         });
-        
+
         Route::group(['prefix' => 'jurusan' ,'as' => 'jurusan.'], function(){
             Route::get('/jurusan', [JurusanController::class, 'jurusan'])->name('jurusan');
             Route::get('/', [JurusanController::class, 'index'])->name('index');
@@ -82,7 +87,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend','prefix' => 'admin',
             Route::post('/update/{jurusan}', [JurusanController::class, 'update'])->name('update');
             Route::get('delete/{jurusan}', [JurusanController::class , 'delete'])->name('delete');
         });
-        
+
         Route::group(['prefix' => 'konsentrasi' ,'as' => 'konsentrasi.'], function(){
             Route::get('/konsentrasi', [KonsentrasiController::class, 'konsentrasi'])->name('konsentrasi');
             Route::get('/', [KonsentrasiController::class, 'index'])->name('index');
@@ -103,7 +108,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend','prefix' => 'admin',
             Route::post('/update/{kelas}', [KelasController::class, 'update'])->name('update');
             Route::get('delete/{kelas}', [KelasController::class , 'delete'])->name('delete');
         });
-        
+
 
         Route::group(['prefix' => 'guru' ,'as' => 'guru.'], function(){
             Route::get('/guru', [GuruController::class, 'guru'])->name('guru');
@@ -125,7 +130,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend','prefix' => 'admin',
             Route::get('delete/{pembimbing}', [PembimbingController::class , 'delete'])->name('delete');
         });
 
-        
+
         Route::group(['prefix' => 'siswa' ,'as' => 'siswa.'], function(){
             Route::get('/siswa', [SiswaController::class, 'siswa'])->name('siswa');
             Route::get('/', [SiswaController::class, 'index'])->name('index');
@@ -143,7 +148,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend','prefix' => 'admin',
         //     Route::post('/update/{content}', [Section1Controller::class, 'update'])->name('update');
         // });
 
-       
+
 
     });
 });
