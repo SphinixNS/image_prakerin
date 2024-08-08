@@ -30,7 +30,7 @@
                     <li>Jumlah Absen: 0</li>
                     <li>Tidak Absen: 0</li>
                 </ul>
-                <button class="card-btn">Lihat Absen</button>
+                <a href="/absen" class="card-btn">Lihat Absen</a>
             </div>
 
             <div class="card card-2">
@@ -43,7 +43,7 @@
                     <li>Belum Mengikuti: 0</li>
                     <li>Sudah Mengikuti: 0</li>
                 </ul>
-                <button class="card-btn">Lihat Kuis</button>
+                <a href="/aktivitas" class="card-btn">Lihat Aktivitas</a>
             </div>
 
             <div class="card card-3">
@@ -56,7 +56,7 @@
                     <li>Belum Diberi: 0</li>
                     <li>Sudah Diberi: 0</li>
                 </ul>
-                <button class="card-btn">Lihat Nilai</button>
+                <a href="/nilai" class="card-btn">Lihat Nilai</a>
             </div>
 
             <div class="card card-4">
@@ -69,7 +69,7 @@
                     <li>Belum Mengikuti: 0</li>
                     <li>Sudah Mengikuti: 0</li>
                 </ul>
-                <button class="card-btn">Lihat Materi</button>
+                <a href="/kehadiran" class="card-btn">Lihat Kehadiran</a>
             </div>
         </div>
 
@@ -92,7 +92,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 @endsection

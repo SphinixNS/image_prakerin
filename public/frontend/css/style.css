@@ -451,22 +451,32 @@ p {
 
     .login-left, .login-right {
         width: 100%;
+        padding: 15px;
     }
 
     .login-right {
         display: none;
     }
 
+    .login-icon {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
     .login-icon i {
-        font-size: 24px;
+        font-size: 30px;
+        margin-right: 15px;
     }
 
     .login-icon span {
-        font-size: 20px;
+        font-size: 24px;
     }
 
     .login-text {
         font-size: 20px;
+        margin-bottom: 10px;
     }
 
     p {
@@ -474,15 +484,17 @@ p {
     }
 
     .input-group {
-        padding: 8px;
+        padding: 10px;
+        margin-bottom: 20px;
     }
 
-    .input-group img {
-        width: 20px;
+    .input-group i {
+        font-size: 20px;
     }
 
-    input[type="text"], input[type="password"] {
-        font-size: 14px;
+    .input-group input[type="text"],
+    .input-group input[type="password"] {
+        font-size: 16px;
     }
 
     .forgot-password, .login-btn, .main-page-btn {
@@ -490,27 +502,29 @@ p {
     }
 
     .login-btn, .main-page-btn {
-        padding: 10px 0;
+        padding: 12px 0;
+        margin-bottom: 20px;
     }
 }
 
 @media (max-width: 480px) {
     .login-icon {
-        flex-direction: column;
-        align-items: center;
+        margin-bottom: 20px;
+        justify-content: flex-start;
     }
 
     .login-icon i {
-        font-size: 20px;
-        margin-bottom: 5px;
+        font-size: 36px;
+        margin-right: 20px;
     }
 
     .login-icon span {
-        font-size: 18px;
+        font-size: 28px;
     }
 
     .login-text {
         font-size: 18px;
+        margin-bottom: 15px;
     }
 
     p {
@@ -518,15 +532,17 @@ p {
     }
 
     .input-group {
-        padding: 6px;
+        padding: 12px;
+        margin-bottom: 20px;
     }
 
-    .input-group img {
-        width: 18px;
+    .input-group i {
+        font-size: 18px;
     }
 
-    input[type="text"], input[type="password"] {
-        font-size: 14px;
+    .input-group input[type="text"],
+    .input-group input[type="password"] {
+        font-size: 16px;
     }
 
     .forgot-password, .login-btn, .main-page-btn {
@@ -534,7 +550,8 @@ p {
     }
 
     .login-btn, .main-page-btn {
-        padding: 8px 0;
+        padding: 10px 0;
+        margin-bottom: 20px;
     }
 }
 
