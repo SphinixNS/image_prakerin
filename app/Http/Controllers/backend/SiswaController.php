@@ -28,7 +28,8 @@ class SiswaController extends Controller
     {
 
         $siswa = Siswa::latest()->get();
-        return view('admin.siswa.index', compact('siswa'));
+        $kelas = Kelas::where('tahun_id', $this -> tahun)->get();
+        return view('admin.siswa.index', compact('siswa', 'kelas'));
     }
 
 
@@ -48,6 +49,7 @@ class SiswaController extends Controller
 
         Siswa::create([
              'nama' => $request->nama,
+             'nis' => $request->nis,
              'kelas_id' => $request -> kelas_id,
              'tahun_id' => $this -> tahun
         ]);
@@ -73,6 +75,7 @@ class SiswaController extends Controller
 
         $siswa->update([
             'nama' => $request->nama,
+            'nis' => $request->nis,
             'kelas_id' => $request -> kelas_id,
         ]);
         Alert::success('Update Berhasil', 'Data Berhasil Di Ubah');

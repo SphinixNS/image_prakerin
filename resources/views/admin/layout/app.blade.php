@@ -12,7 +12,7 @@
     <title>Admin | @yield('title')</title>
 
     <link href="{{ asset('backend/static/css/app.css') }}" rel="stylesheet">
-
+    
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
@@ -317,6 +317,8 @@
 
     @yield('scripts')
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+
     <script>
         $(document).ready(function() {
             $('#yourTableId').DataTable({

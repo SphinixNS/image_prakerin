@@ -7,6 +7,7 @@ use App\Http\Controllers\backend\GuruController;
 use App\Http\Controllers\backend\KelasController;
 use App\Http\Controllers\backend\JurusanController;
 use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\backend\imports\ImportsSiswaController;
 use App\Http\Controllers\backend\PembimbingController;
 use App\Http\Controllers\backend\PerusahaanController;
 use App\Http\Controllers\backend\KonsentrasiController;
@@ -128,6 +129,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend','prefix' => 'admin',
         Route::group(['prefix' => 'siswa' ,'as' => 'siswa.'], function(){
             Route::get('/siswa', [SiswaController::class, 'siswa'])->name('siswa');
             Route::get('/', [SiswaController::class, 'index'])->name('index');
+            Route::post('/import', [ImportsSiswaController::class, 'import'])->name('import');
             Route::get('/create', [SiswaController::class, 'create'])->name('create');
             Route::post('/store', [SiswaController::class, 'store'])->name('store');
             Route::get('edit/{siswa}', [SiswaController::class , 'edit'])->name('edit');

@@ -2,22 +2,115 @@
 @section('title', 'Siswa')
 @section('content')
 
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
 
     <main class="content">
+
+        {{-- Modal Import Start --}}
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 class="card-title mb-0"> Import Data </h2>
+                <form action="{{ route('admin.siswa.import') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="container">
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <label for="file" class="form-label">Pilih File</label>
+                                </td>
+                                <td> : </td>
+                                <td>
+                                    <input type="file" class="form-control" id="file" name="file" required>
+                                    <span class="text-danger" style="font-size: 0.75em;">*pastikan file yang di upload
+                                        sesuai dengan template</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="kelas" class="form-label">Pilih Kelas</label>
+                                </td>
+                                <td> : </td>
+                                <td>
+                                    <select id="kelasDropdown" name="kelas_id" class="select2" style=" width: 100%;"
+                                        required></select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Import</button>
+                </form>
+            </div>
+        </div>
+        {{-- Modal Import End --}}
+
+
+
+
+
         <div class="container-fluid p-0">
-
-            {{-- <h1 class="h3 mb-3">Siswa</h1> --}}
-
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
+                        <div class="card-header">
                             <h5 class="card-title mb-0">Data Siswa</h5>
-                            <a href="{{ route('admin.siswa.create') }}"> <button type="button"
-                                    class="btn btn-primary">Add Data</button></a>
+                            <div class="d-flex justify-content-end align-items-center">
+                                <button type="button" class="btn btn-primary mx-2" id="openModalBtn">Import Data</button>
+                                <a href="{{ route('admin.siswa.create') }}">
+                                    <button type="button" class="btn btn-primary mx-2">Add Data</button>
+                                </a>
+                            </div>
                         </div>
                         <div class="card-body">
-
                             <table class="table" id="table-siswa">
                                 <thead>
                                     <tr>
@@ -27,7 +120,6 @@
                                         <td>Action</td>
                                     </tr>
                                 </thead>
-
                             </table>
                         </div>
                     </div>
@@ -41,7 +133,6 @@
 @endsection
 
 @section('scripts')
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
@@ -49,15 +140,47 @@
     <script src="https://cdn.datatables.net/responsive/2.4.1/js/responsive.bootstrap5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <!-- jQuery UI CSS -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
+    <!-- jQuery UI JS -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+
+    {{-- Modal JS --}}
+    <script>
+        // Get modal element
+        var modal = document.getElementById("myModal");
+        // Get open modal button
+        var openModalBtn = document.getElementById("openModalBtn");
+        // Get close button
+        var closeBtn = document.getElementsByClassName("close")[0];
+
+        // Listen for open click
+        openModalBtn.addEventListener("click", function() {
+            modal.style.display = "flex";
+        });
+
+        // Listen for close click
+        closeBtn.addEventListener("click", function() {
+            modal.style.display = "none";
+        });
+
+        // Listen for outside click
+        window.addEventListener("click", function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+    {{-- End Modal JS --}}
+
     <script>
         $(document).ready(function() {
-
-            // Pastikan tabel HTML dengan ID 'table-siswa' sudah ada di DOM
             $('#table-siswa').DataTable({
-                // Data: (Jika data diambil secara asynchronous, letakkan di sini)
-                data: [], // Contoh jika data kosong saat inisialisasi
-
-                // Kolom: Sesuaikan dengan nama properti di data JSON
+                data: [],
+                responsive: true, // Menambahkan opsi responsif
                 columns: [{
                         data: null,
                         render: function(data, type, row, meta) {
@@ -74,48 +197,37 @@
                     },
                     {
                         data: 'id',
-                        render: (id) => /* html */ `
-                 <div class="dropdown">
-                          <button class="btn" type="button"
-                            id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <img src="/backend/align-justify.svg">
-                          </button>
-                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#"
-                                onclick="deleteData(${id})">Delete</a></li>
-                            <li><a class="dropdown-item"
-                               href="/admin/siswa/edit/${id}"">Edit</a>
-                            </li>
-                          </ul>
+                        render: (id) => `
+                        <div class="dropdown">
+                            <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="/backend/align-justify.svg">
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="#" onclick="deleteData(${id})">Delete</a></li>
+                                <li><a class="dropdown-item" href="/admin/siswa/edit/${id}">Edit</a></li>
+                            </ul>
                         </div>
-                `
-                    },
-
+                    `
+                    }
                 ],
-                "columnDefs": [{
-                    "targets": '_all', // Menerapkan ke semua kolom
-                    "render": function(data, type, row, meta) {
-                        return '<div style="white-space: nowrap;">' + data +
-                        '</div>'; // Membungkus konten dalam div untuk menghindari pemotongan teks
+                columnDefs: [{
+                    targets: '_all',
+                    render: function(data, type, row, meta) {
+                        return '<div style="white-space: nowrap;">' + data + '</div>';
                     }
                 }],
-                // dom:'rtp',
-                pagingType: 'simple_numbers',
+                pagingType: 'simple',
                 orderCellsTop: true,
-
-                // Konfigurasi tambahan (opsional)
                 order: [
                     [0, 'asc']
-                ], // Urutkan berdasarkan kolom pertama secara ascending
-                paging: true, // Aktifkan pagination
-                searching: true, // Aktifkan pencarian
-                info: true, // Tampilkan informasi jumlah data
-
+                ],
+                paging: true,
+                searching: true,
+                info: true,
                 lengthMenu: [
                     [10, 25, 50, -1],
                     [10, 25, 50, "All"]
-                ] // Opsi jumlah data per halaman
+                ]
             });
 
             $.ajaxSetup({
@@ -127,16 +239,13 @@
                 url: "{{ route('admin.siswa.siswa') }}",
                 method: "GET",
                 success: function(response) {
-                    // Update data setelah respon Ajax diterima
                     $('#table-siswa').DataTable().clear().rows.add(response).draw();
                 }
             });
+
+
         });
-    </script>
 
-
-
-    <script>
         function deleteData(id) {
             Swal.fire({
                 title: 'Apakah Anda yakin?',
@@ -145,33 +254,52 @@
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-
                 confirmButtonText: 'Ya, hapus!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    // Kirim permintaan AJAX ke server untuk menghapus data
                     $.ajax({
-                        url: 'siswa/delete/' + id, // Sesuaikan dengan route Anda
+                        url: 'siswa/delete/' + id,
                         type: 'GET',
                         success: function(response) {
-                            Swal.fire(
-                                'Terhapus!',
-                                'Data berhasil dihapus.',
-                                'success'
-                            )
-                            // Refresh halaman atau update tampilan tabel
-                            location.reload()
+                            Swal.fire('Terhapus!', 'Data berhasil dihapus.', 'success');
+                            $('#table-siswa').DataTable().clear().rows.add(response).draw();
+                            
                         },
                         error: function(error) {
-                            Swal.fire(
-                                'Gagal!',
-                                'Terjadi kesalahan saat menghapus data.',
-                                'error'
-                            )
+                            Swal.fire('Gagal!', 'Terjadi kesalahan saat menghapus data.', 'error');
                         }
                     });
                 }
             })
         }
+    </script>
+
+   
+
+
+
+    <script>
+        $(document).ready(function() {
+            // Inisialisasi select2 untuk kelas
+            $('#kelasDropdown').select2({
+                ajax: {
+                    url: '/admin/kelas/search',
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function(data) {
+                        return {
+                            results: data.map(function(item) {
+                                return {
+                                    id: item.id,
+                                    text: item.nama
+                                };
+                            })
+                        };
+                    }
+                }
+            });
+
+
+        });
     </script>
 @endsection
