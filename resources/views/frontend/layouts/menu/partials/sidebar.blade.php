@@ -41,7 +41,7 @@
         </li>
 
         <li class="menu-item">
-            <a href="index.html" class="menu-link">
+            <a href="/riwayat-kehadiran" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-calendar-check"></i>
                 <div data-i18n="Analytics">Riwayat Kehadiran</div>
             </a>

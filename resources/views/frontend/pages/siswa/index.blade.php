@@ -12,7 +12,7 @@
                                 <p class="mb-4">
                                     Selamat <span class="fw-bold">Anda</span> Sudah Berhasil Login, Silahkan lengkapi profile anda Segera
                                 </p>
-                                <a href="#" class="btn btn-sm btn-outline-primary">My Profile</a>
+                                <a href="/edit-profile" class="btn btn-sm btn-outline-primary">My Profile</a>
                             </div>
                         </div>
                     </div>

@@ -14,6 +14,7 @@ use App\Http\Controllers\backend\KonsentrasiController;
 use App\Http\Controllers\backend\PemetaanController;
 use App\Http\Controllers\backend\SiswaController;
 use App\Http\Controllers\backend\TahunAjaranController;
+use App\Http\Controllers\RiwayatKehadiranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,15 @@ Route::get('/siswa', function () {
 Route::get('/absen', function () {
     return view('frontend.pages.absen.index');
 });
+
+Route::get('/riwayat-kehadiran', function () {
+    return view('frontend.pages.riwayatKehadiran.index');
+});
+
+Route::get('/edit-profile', function () {
+    return view('frontend.pages.profile.index');
+});
+
 
 // Route::get('/login', function () {
 //     return view('auth.login');

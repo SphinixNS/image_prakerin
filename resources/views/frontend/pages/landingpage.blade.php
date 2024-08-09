@@ -7,10 +7,6 @@
             <h6 class="hero-text-small">Mudah digunakan, andal, dan aman. Tidak heran aplikasi ini menjadi pilihan terbaik
                 untuk mewujudkan Pengalaman Prakerin Terbaik.</h6>
 
-            {{-- <div class="buttons">
-                <a href="login" class=" btn btn-primary button-text-a">Login Sekarang</a>
-            </div> --}}
-
             <div class="cards">
                 <div class="card">
                     <i class="fas fa-user-check" style="font-size: 50px; color: #ffffff;"></i>
@@ -28,8 +24,8 @@
                     <a href="#nilai1">Pelajari selengkapnya</a>
                 </div>
                 <div class="card">
-                    <i class="fas fa-chart-line" style="font-size: 50px; color: #ffffff;"></i>
-                    <h4 class="card-text">NILAI</h4>
+                    <i class="fa fa-history card-icon" style="font-size: 50px; color: #ffffff;"></i>
+                    <h4 class="card-text">RIWAYAT KEHADIRAN</h4>
                     <a href="#nilai2">Pelajari selengkapnya</a>
                 </div>
             </div>
