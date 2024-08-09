@@ -40,7 +40,7 @@
                 </li>
             </ul>
 
-                <a class="btn btn-primary" href="login" role="button">Login</a>
+                <a class="btn btn-outline-light" href="login" role="button">Login</a>
             </ul>
         </div>
     </div>
