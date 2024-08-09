@@ -41,6 +41,23 @@ class PerusahaanController extends Controller
         $perusahaan = Perusahaan::where('nama', 'like', '%' . $search . '%')->get();
         return response()->json($perusahaan);
     }
+
+    public function pemetaan(Request $request, Jurusan $jurusan)
+    {
+        $search = $request->q;
+        $perusahaan = Perusahaan::with(['jurusan' => function($query) use($jurusan) {
+            $query->where('jurusan_id', $jurusan->id)
+                  ->where('kuota', '>=', 1);
+        }])
+        ->whereHas('jurusan', function($query) use($jurusan){
+            $query->where('jurusan_id', $jurusan->id)
+                  ->where('kuota', '>=', 1);
+        })
+        ->where('nama', 'like', '%' . $search . '%')
+        ->get();
+        // $perusahaan = Perusahaan::where('nama', 'like', '%' . $search . '%')->get();
+        return response()->json($perusahaan);
+    }
     public function index()
     {
         $perusahaan = Perusahaan::latest()->get();
@@ -84,6 +101,7 @@ class PerusahaanController extends Controller
                 'jurusan_id'    => $jurusan,
                 'perusahaan_id' => $perusahaan->id,
                 'kuota'         => $request->kuota[$key],
+                'total'         => $request->kuota[$key],
                 "tahun_id" => $this->tahun
             ]);
         }
@@ -96,6 +114,7 @@ class PerusahaanController extends Controller
     public function detail(Perusahaan $perusahaan)
     {
         $data = $perusahaan;
+        // dd($perusahaan -> jurusan[0] -> pembimbing);
         return view('admin.perusahaan.detail', compact('data'));
     }
 
@@ -125,15 +144,23 @@ class PerusahaanController extends Controller
             'mou' => $request->mou,
         ]);
 
-        JurusanPerusahaan::where('tahun_id', $this->tahun)->where('perusahaan_id', $perusahaan->id)->delete();
-
+        
         foreach ($request->jurusan as $key => $jurusan) {
-            JurusanPerusahaan::create([
-                'jurusan_id'    => $jurusan,
-                'perusahaan_id' => $perusahaan->id,
-                'kuota'         => $request->kuota[$key],
-                "tahun_id" => $this->tahun
-            ]);
+            $JurusanPerusahaan = JurusanPerusahaan::where('tahun_id', $this->tahun)->where('perusahaan_id', $perusahaan->id) -> where('jurusan_id', $jurusan) -> first();
+            if($JurusanPerusahaan){
+                $JurusanPerusahaan -> kuota = $JurusanPerusahaan -> kuota + ($request->kuota[$key] - $JurusanPerusahaan -> total);
+                $JurusanPerusahaan -> total = $request->kuota[$key];
+                $JurusanPerusahaan -> save();
+            }else {
+                JurusanPerusahaan::create([
+                    'jurusan_id'    => $jurusan,
+                    'perusahaan_id' => $perusahaan->id,
+                    'kuota'         => $request->kuota[$key],
+                    'total'         => $request->kuota[$key],
+                    "tahun_id"      => $this->tahun
+                ]);
+            }
+           
         }
         Alert::success('Update Berhasil', 'Data Berhasil Di Ubah');
 

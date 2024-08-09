@@ -6,7 +6,6 @@
     <main class="content">
         <div class="container-fluid p-0">
 
-
             <div class="row">
                 <div class="col-sm-3">
                     <div class="card">
@@ -21,9 +20,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <h1 class="mt-1 mb-3">34</h1>
+                            <h1 class="mt-1 mb-3" id="total_siswa"></h1>
                             <div class="mb-0">
-                                <span class="text-muted">Tahun 2024-2025</span>
+                                <span class="text-muted tahun-ajaran"></span>
                             </div>
                         </div>
                     </div>
@@ -41,9 +40,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <h1 class="mt-1 mb-3">14</h1>
+                            <h1 class="mt-1 mb-3" id="terpetakan"></h1>
                             <div class="mb-0">
-                                <span class="text-muted">Tahun 2024-2025</span>
+                                <span class="text-muted tahun-ajaran"></span>
                             </div>
                         </div>
                     </div>
@@ -61,9 +60,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <h1 class="mt-1 mb-3">10</h1>
+                            <h1 class="mt-1 mb-3" id="belum_terpetakan"></h1>
                             <div class="mb-0">
-                                <span class="text-muted">Tahun 2024-2025</span>
+                                <span class="text-muted tahun-ajaran"></span>
                             </div>
                         </div>
                     </div>
@@ -81,9 +80,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <h1 class="mt-1 mb-3">10</h1>
+                            <h1 class="mt-1 mb-3" id="konfirmasi"></h1>
                             <div class="mb-0">
-                                <span class="text-muted">Tahun 2024-2025</span>
+                                <span class="text-muted tahun-ajaran"></span>
                             </div>
                         </div>
                     </div>
@@ -94,17 +93,20 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="card-title mb-0">Data {{ $kelas->nama }}</h5>
+                            <h5 class="card-title mb-0">Data Kelas</h5>
+                            {{-- <a href="{{ route('admin.pemetaan.create') }}"> <button type="button" class="btn btn-primary">Pemetaan</button></a> --}}
                         </div>
                         <div class="card-body">
 
-                            <table class="table" id="table-kelas">
+                            <table class="table" id="table-pemetaan">
                                 <thead>
                                     <tr>
                                         <td style="width: 10%">No</td>
                                         <td>Nama</td>
-                                        <td>Terpetakan</td>
-                                        <td>Status</td>
+                                        <td>Siswa</td>
+                                        <td>Diterima</td>
+                                        <td>Konfirmasi</td>
+                                        <td>Mencari</td>
                                         <td>Action</td>
                                     </tr>
                                 </thead>
@@ -133,8 +135,8 @@
     <script>
         $(document).ready(function() {
 
-            // Pastikan tabel HTML dengan ID 'table-kelas' sudah ada di DOM
-            $('#table-kelas').DataTable({
+            // Pastikan tabel HTML dengan ID 'table-pemetaan' sudah ada di DOM
+            $('#table-pemetaan').DataTable({
                 // Data: (Jika data diambil secara asynchronous, letakkan di sini)
                 data: [], // Contoh jika data kosong saat inisialisasi
 
@@ -149,34 +151,27 @@
                         data: 'nama',
                         name: 'nama',
                         render: function(data, type, row) {
-                            var siswaName = data; // Menggunakan data yang sudah ada
-                            var siswaId = row.id; // Pastikan `id` adalah property yang ada pada row
-                            return '<a href="/admin/siswa/detail/' + siswaId + '" style="text-decoration: none; color: inherit;">' + siswaName + '</a>';
+                            var kelasName = data; // Menggunakan data yang sudah ada
+                            var kelasid = row.id; // Pastikan `id` adalah property yang ada pada row
+                            return '<a href="/admin/kelas/detail/' + kelasid + '" style="text-decoration: none; color: inherit;">' + kelasName + '</a>';
                         }
                     },
                     {
-                        data: 'perusahaan',
-                        name: 'perusahaan',
-                        render: function(data, type, row) {
-                            var perusahaanLinks = '';
-                            row.perusahaan.forEach(function(perusahaan) {
-                                var perusahaanName = perusahaan.perusahaan.perusahaan.nama;
-                                var perusahaanId = perusahaan.perusahaan.perusahaan.id; // Pastikan `id` adalah property yang ada
-                                perusahaanLinks += '<a href="/admin/perusahaan/detail/' + perusahaanId + '" style="text-decoration: none; color: inherit;">' + perusahaanName + '</a><br>';
-                            });
-                            return perusahaanLinks;
-                        }
+                        data: 'siswa_count',
+                        name: 'siswa_count',
+                        // render: (siswa_count) => `${siswa_count} orang`
                     },
                     {
-                        data: 'perusahaan',
-                        name: 'perusahaan',
-                        render: function(data, type, row) {
-                            var perusahaanNames = '';
-                            row.perusahaan.forEach(function(perusahaan) {
-                                perusahaanNames += (perusahaan.status == 'pending' ? 'Menunggu' + '<br>' : 'Diterima' + '<br>');
-                            });
-                            return perusahaanNames;
-                        }
+                        data: 'diterima',
+                        name: 'diterima'
+                    },
+                    {
+                        data: 'pending',
+                        name: 'pending'
+                    },
+                    {
+                        data: 'mencari',
+                        name: 'mencari'
                     },
                     {
                         data: 'id',
@@ -188,10 +183,10 @@
                             <img src="/backend/align-justify.svg">
                           </button>
                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                           
                             <li><a class="dropdown-item"
-                               href="/admin/siswa/detail/${id}"">Detail</a>
+                               href="/admin/pemetaan/create/${id}"">Pemetaan</a>
                             </li>
+                      
                           </ul>
                         </div>
                 `
@@ -229,11 +224,11 @@
                 }
             });
             $.ajax({
-                url: "{{ route('admin.kelas.siswa', $kelas->id) }}",
+                url: "{{ route('admin.pemetaan.pemetaan') }}",
                 method: "GET",
                 success: function(response) {
                     // Update data setelah respon Ajax diterima
-                    $('#table-kelas').DataTable().clear().rows.add(response).draw();
+                    $('#table-pemetaan').DataTable().clear().rows.add(response).draw();
                 }
             });
         });
@@ -256,7 +251,7 @@
                 if (result.isConfirmed) {
                     // Kirim permintaan AJAX ke server untuk menghapus data
                     $.ajax({
-                        url: 'kelas/delete/' + id, // Sesuaikan dengan route Anda
+                        url: 'pemetaan/delete/' + id, // Sesuaikan dengan route Anda
                         type: 'GET',
                         success: function(response) {
                             Swal.fire(
@@ -278,5 +273,37 @@
                 }
             })
         }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // Fungsi untuk mengambil data dari controller
+            function fetchData() {
+                $.ajax({
+                    url: '/admin/pemetaan/pemetaan_all', // Ganti dengan URL endpoint Anda
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function(response) {
+                        // Update nilai elemen HTML dengan data yang diterima
+                        $('#total_siswa').text(response.siswa);
+                        $('#terpetakan').text(response.terpetakan);
+                        $('#belum_terpetakan').text(response.belum_terpetakan);
+                        $('#konfirmasi').text(response.konfirmasi);
+
+                        // Update tahun ajaran
+                        $('.tahun-ajaran').text('Tahun Ajaran ' + response.tahun );
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Terjadi kesalahan: ', error);
+                    }
+                });
+            }
+
+            // Panggil fungsi fetchData() untuk pertama kali saat halaman dimuat
+            fetchData();
+
+            // Jika Anda ingin memperbarui data secara berkala, misalnya setiap 5 detik:
+            setInterval(fetchData, 5000); // 5000ms = 5 detik
+        });
     </script>
 @endsection

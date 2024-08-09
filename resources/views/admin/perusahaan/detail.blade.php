@@ -84,6 +84,34 @@
                 <div class="col-7">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0"> {{ $jurusan -> jurusan -> nama }} </h5>
+                        </div>
+                        <div class="card-body mt-0">
+                            <div class="table-responsive">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Kuota</th>
+                                            <td>:</td>
+                                            <td>
+                                                {{ $jurusan -> total }} orang
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="col">Siswa</th>
+                                            <td>:</td>
+                                            <td>
+                                                {{$jurusan -> total - $jurusan -> kuota}} orang
+                                            </td>
+                                        </tr>
+                                        
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
                             <h5 class="card-title mb-0"> List Siswa </h5>
                         </div>
                         <div class="card-body">
@@ -100,69 +128,49 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td style="width: 20%">
-                                                    CAHYA MUNARA PERMADI</td>
-                                            <td>11 PPLG 2</td>
-                                            <td>Diterima</td>
+                                       @foreach ($jurusan -> siswa as $siswa)
+                                       <tr>
+                                        <td>{{ $loop -> iteration }}</td>
+                                        <td><a href="/admin/siswa/detail/ {{ $siswa -> siswa -> id }}" style="text-decoration: none; color: inherit;" > {{ $siswa -> siswa -> nama }}</a></td>
+                                        <td> {{ $siswa -> siswa -> kelas -> nama }}</td>
+                                        <td>
+                                            <div class="dropdown" style="display: flex; justify-content: center; align-items: center;">
+                                                <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    {{ $siswa -> status == "pending" ? "Menunggu" : "Diterima" }}
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="left: 50%; transform: translateX(-50%);">
+                                                    <li><a class="dropdown-item" href="{{ route('admin.pemetaan.terima', $siswa -> id) }}">Terima</a></li>
+                                                    <li><a class="dropdown-item" href="{{ route('admin.pemetaan.tolak', $siswa -> id) }}">Tolak</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td> </td>
 
 
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td style="width: 20%">
-                                                    CHEPI SYAHBUDIEN BASIL</td>
-                                            <td>11 PPLG 2</td>
-                                            <td>Menunggu</td>
-                                        </tr>
-                                        
+                                    </tr>
+                                       @endforeach
                                         
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+                        
                     </div>
+
+                    
                 </div>
                 {{-- End List Siswa --}}
 
                 {{-- Start Detail Jurusan dan Pembimbing --}}
                 <div class="col-5">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="card-title mb-0"> {{ $jurusan -> jurusan -> nama }} </h5>
-                        </div>
-                        <div class="card-body mt-0">
-                            <div class="table-responsive">
-                                <table class="table ">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Kuota</th>
-                                            <td>:</td>
-                                            <td>
-                                                {{ $jurusan -> kuota }} orang
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col">Siswa</th>
-                                            <td>:</td>
-                                            <td>
-                                                ?? orang
-                                            </td>
-                                        </tr>
-                                        
-                                    </thead>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                    
 
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h5 class="card-title mb-0"> Pembimbing </h5>
                         </div>
                         
-                        @if ($data -> pembimbing)
+                        @if ($jurusan -> pembimbing)
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table ">
@@ -170,27 +178,23 @@
                                         <tr>
                                             <th scope="col">Nama</th>
                                             <td>:</td>
-                                            <td>Nina Nurhayani</td>
+                                            <td>{{ $jurusan -> pembimbing -> nama }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="col">NIP</th>
                                             <td>:</td>
-                                            <td>197912012010102010</td>
+                                            <td>{{ $jurusan -> pembimbing -> nip }}</td>
                                         </tr>
                                         <tr>
-                                        <th scope="col">Alamat</th>
-                                            <td>:</td>
-                                            <td>Tidak Tersedia</td>
-                                        </tr>
                                         <tr>
                                         <th scope="col">No. Telp</th>
                                             <td>:</td>
-                                            <td>081020001502</td>
+                                            <td>{{ $jurusan -> pembimbing -> no_telp }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="col">Jenis Kelamin</th>
                                             <td>:</td>
-                                            <td>Perempuan</td>
+                                            <td>{{ $jurusan -> pembimbing -> jenkel }}</td>
                                         </tr>
                                       
                                         </thead>

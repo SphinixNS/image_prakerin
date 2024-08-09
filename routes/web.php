@@ -11,6 +11,7 @@ use App\Http\Controllers\backend\imports\ImportsSiswaController;
 use App\Http\Controllers\backend\PembimbingController;
 use App\Http\Controllers\backend\PerusahaanController;
 use App\Http\Controllers\backend\KonsentrasiController;
+use App\Http\Controllers\backend\PemetaanController;
 use App\Http\Controllers\backend\SiswaController;
 use App\Http\Controllers\backend\TahunAjaranController;
 
@@ -61,6 +62,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend','prefix' => 'admin',
             Route::post('/store', [PerusahaanController::class, 'store'])->name('store');
             Route::get('detail/{perusahaan}', [PerusahaanController::class , 'detail'])->name('detail');
             Route::get('search', [PerusahaanController::class , 'search'])->name('search');
+            Route::get('pemetaan/{jurusan}', [PerusahaanController::class , 'pemetaan'])->name('pemetaan');
             Route::get('jurusan/{perusahaan}', [PerusahaanController::class , 'jurusan'])->name('jurusan');
             Route::get('edit/{perusahaan}', [PerusahaanController::class , 'edit'])->name('edit');
             Route::post('/update/{perusahaan}', [PerusahaanController::class, 'update'])->name('update');
@@ -135,6 +137,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend','prefix' => 'admin',
 
         Route::group(['prefix' => 'siswa' ,'as' => 'siswa.'], function(){
             Route::get('/siswa', [SiswaController::class, 'siswa'])->name('siswa');
+            Route::get('/search/{kelas}', [SiswaController::class, 'search'])->name('search');
             Route::get('/', [SiswaController::class, 'index'])->name('index');
             Route::post('/import', [ImportsSiswaController::class, 'import'])->name('import');
             Route::get('/create', [SiswaController::class, 'create'])->name('create');
@@ -143,6 +146,20 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend','prefix' => 'admin',
             Route::get('edit/{siswa}', [SiswaController::class , 'edit'])->name('edit');
             Route::post('/update/{siswa}', [SiswaController::class, 'update'])->name('update');
             Route::get('delete/{siswa}', [SiswaController::class , 'delete'])->name('delete');
+        });
+
+        Route::group(['prefix' => 'pemetaan' ,'as' => 'pemetaan.'], function(){
+            Route::get('/pemetaan', [PemetaanController::class, 'pemetaan'])->name('pemetaan');
+            Route::get('/pemetaan_all', [PemetaanController::class, 'pemetaan_all'])->name('pemetaan_all');
+            Route::get('/detail/{pemetaan}/siswa', [PemetaanController::class, 'siswa'])->name('siswa');
+            Route::get('/', [PemetaanController::class, 'index'])->name('index');
+            Route::get('search', [PemetaanController::class , 'search'])->name('search');
+            Route::get('/create/{kelas}', [PemetaanController::class, 'create'])->name('create');
+            Route::post('/store', [PemetaanController::class, 'store'])->name('store');
+            Route::get('detail/{pemetaan}', [PemetaanController::class , 'detail'])->name('detail');
+            Route::get('delete/{pemetaan}', [PemetaanController::class , 'delete'])->name('delete');
+            Route::get('terima/{siswaPerusahaan}', [PemetaanController::class , 'terima'])->name('terima');
+            Route::get('tolak/{siswaPerusahaan}', [PemetaanController::class , 'tolak'])->name('tolak');
         });
 
 

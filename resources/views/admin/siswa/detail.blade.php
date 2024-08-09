@@ -19,32 +19,32 @@
                                     <tr>
                                         <th scope="col">NIS</th>
                                         <td>:</td>
-                                        <td>{{ $siswa -> nis }}</td>
+                                        <td>{{ $siswa->nis }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="col">Nama</th>
                                         <td>:</td>
-                                        <td>{{ $siswa -> nama }}</td>
+                                        <td>{{ $siswa->nama }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="col">Kelas</th>
                                         <td>:</td>
-                                        <td>{{ $siswa -> kelas -> nama }}</td>
+                                        <td>{{ $siswa->kelas->nama }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="col">Jenis Kelamin</th>
                                         <td>:</td>
-                                        <td>{{ $siswa -> jenkel }}</td>
+                                        <td>{{ $siswa->jenkel }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="col">Alamat</th>
                                         <td>:</td>
-                                        <td>{{ $siswa -> alamat }}</td>
+                                        <td>{{ $siswa->alamat }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="col">Tanggal Lahir</th>
                                         <td>:</td>
-                                        <td>{{ $siswa -> tanggal_lahir }}</td>
+                                        <td>{{ $siswa->tanggal_lahir }}</td>
                                     </tr>
 
                                 </thead>
@@ -61,17 +61,17 @@
                                     <tr>
                                         <th>Nama Orang Tua / Wali</th>
                                         <td>:</td>
-                                        <td>{{ $siswa -> nama_ortu }}</td>
+                                        <td>{{ $siswa->nama_ortu }}</td>
                                     </tr>
                                     <tr>
                                         <th>Alamat Orang tua</th>
                                         <td>:</td>
-                                        <td>{{ $siswa -> alamat_ortu }}</td>
+                                        <td>{{ $siswa->alamat_ortu }}</td>
                                     </tr>
                                     <tr>
                                         <th>Telepon Orang Tua / Wali</th>
                                         <td>:</td>
-                                        <td>{{ $siswa -> no_telp_ortu }}</td>
+                                        <td>{{ $siswa->no_telp_ortu }}</td>
                                     </tr>
                                 </thead>
                             </table>
@@ -80,73 +80,72 @@
                 </div>
 
                 <div class="col-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title mb-0">Data Perusahaan</h5>
-                        </div>
-                        <div class="card-body">
-                            <table class="table ">
-                                <thead>
-                                    <tr>
-                                        <th>Periode</th>
-                                        <td>:</td>
-                                        <td>
-                                            <a href="/guru/detail-perusahaan/12">
-                                              
 
-                                            Oktober (2023) -
-                                            Maret (2024)
-                                            
+                    @foreach ($siswa->perusahaan as $perusahaan)
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Data Perusahaan</h5>
+                            </div>
+                            <div class="card-body">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th>Perusahaan</th>
+                                            <td>:</td>
+                                            <td>{{ $perusahaan -> perusahaan -> perusahaan -> nama }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Status</th>
+                                            <td>:</td>
+                                            <td>{{ $perusahaan -> status == 'pending' ? 'Menunggu' : 'Diterima' }}</td>
 
-                                        </td>
-                                    <tr>
-                                        <th>Perusahaan</th>
-                                        <td>:</td>
-                                        <td>
-                                            <div class="d-flex flex-column">
-                                                BMT SMKN 11
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    </tr>
-
-                                </thead>
-                            </table>
-                        </div>
-                    </div>
+                                        </tr>
+                                        <tr>
+                                            <th>Periode</th>
+                                            <td>:</td>
+                                            <td>{{ $perusahaan -> periode[0] }} {{ $perusahaan -> tahun_awal }} - {{ $perusahaan -> periode[array_key_last($perusahaan -> periode)] }} {{ $perusahaan -> tahun_akhir }}</td>
 
 
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title mb-0">Data Kehadiran</h5>
+                                        </tr>
+
+                                    </thead>
+                                </table>
+                            </div>
                         </div>
-                        <div class="card-body">
-                          
+
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Data Kehadiran</h5>
+                            </div>
+                            <div class="card-body">
+
+                            </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title mb-0">Data Nilai </h5>
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Data Nilai </h5>
+                            </div>
+                            <div class="card-body">
+
+                            </div>
                         </div>
-                        <div class="card-body">
-                          
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Catatan Perusahan</h5>
+                            </div>
+                            <div class="card-body">
+
+                            </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title mb-0">Catatan Perusahan</h5>
-                        </div>
-                        <div class="card-body">
-                          
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-                
 
-               
+
+
             </div>
 
-          
+
 
 
         </div>

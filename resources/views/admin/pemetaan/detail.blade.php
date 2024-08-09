@@ -104,7 +104,7 @@
                                         <td style="width: 10%">No</td>
                                         <td>Nama</td>
                                         <td>Terpetakan</td>
-                                        <td>Status</td>
+                                        <td>Periode</td>
                                         <td>Action</td>
                                     </tr>
                                 </thead>
@@ -147,36 +147,15 @@
                     },
                     {
                         data: 'nama',
-                        name: 'nama',
-                        render: function(data, type, row) {
-                            var siswaName = data; // Menggunakan data yang sudah ada
-                            var siswaId = row.id; // Pastikan `id` adalah property yang ada pada row
-                            return '<a href="/admin/siswa/detail/' + siswaId + '" style="text-decoration: none; color: inherit;">' + siswaName + '</a>';
-                        }
+                        name: 'nama'
                     },
                     {
-                        data: 'perusahaan',
-                        name: 'perusahaan',
-                        render: function(data, type, row) {
-                            var perusahaanLinks = '';
-                            row.perusahaan.forEach(function(perusahaan) {
-                                var perusahaanName = perusahaan.perusahaan.perusahaan.nama;
-                                var perusahaanId = perusahaan.perusahaan.perusahaan.id; // Pastikan `id` adalah property yang ada
-                                perusahaanLinks += '<a href="/admin/perusahaan/detail/' + perusahaanId + '" style="text-decoration: none; color: inherit;">' + perusahaanName + '</a><br>';
-                            });
-                            return perusahaanLinks;
-                        }
+                        data: 'terpetakan',
+                        name: 'terpetakan',
                     },
                     {
-                        data: 'perusahaan',
-                        name: 'perusahaan',
-                        render: function(data, type, row) {
-                            var perusahaanNames = '';
-                            row.perusahaan.forEach(function(perusahaan) {
-                                perusahaanNames += (perusahaan.status == 'pending' ? 'Menunggu' + '<br>' : 'Diterima' + '<br>');
-                            });
-                            return perusahaanNames;
-                        }
+                        data: 'periode',
+                        name: 'periode',
                     },
                     {
                         data: 'id',
@@ -188,9 +167,10 @@
                             <img src="/backend/align-justify.svg">
                           </button>
                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                           
+                            <li><a class="dropdown-item" href="#"
+                                onclick="deleteData(${id})">Delete</a></li>
                             <li><a class="dropdown-item"
-                               href="/admin/siswa/detail/${id}"">Detail</a>
+                               href="/admin/kelas/edit/${id}"">Edit</a>
                             </li>
                           </ul>
                         </div>

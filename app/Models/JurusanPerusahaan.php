@@ -23,6 +23,14 @@ class JurusanPerusahaan extends Model
     {
         return $this->belongsTo(Perusahaan::class);
     }
+    public function siswa()
+    {
+        return $this->hasMany(SiswaPerusahaan::class, 'perusahaan_id', 'id');
+    }
+    public function pembimbing()
+    {
+        return $this->belongsTo(Pembimbing::class, 'id', 'perusahaan_id');
+    }
    
 
 }

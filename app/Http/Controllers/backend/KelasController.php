@@ -35,7 +35,7 @@ class KelasController extends Controller
 
     public function siswa(Kelas $kelas)
     {
-        $siswa = Siswa::where('kelas_id', $kelas -> id)->get();
+        $siswa = Siswa::with('perusahaan', 'perusahaan.perusahaan.perusahaan')->where('kelas_id', $kelas -> id)->get();
         return response()->json($siswa);
     }
 

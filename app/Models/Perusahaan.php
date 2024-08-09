@@ -20,6 +20,7 @@ class Perusahaan extends Model
     {
         return $this->hasMany(JurusanPerusahaan::class);
     }
+   
 
 
 }

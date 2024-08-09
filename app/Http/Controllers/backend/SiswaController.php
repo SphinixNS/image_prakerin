@@ -24,6 +24,17 @@ class SiswaController extends Controller
         return response()->json($siswa);
         
     }
+
+    public function search(Kelas $kelas, Request $request)
+    {
+        $search = $request->input('q');
+        $siswa = Siswa::where('kelas_id', $kelas -> id)
+        ->where('nama', 'LIKE', '%' . $search . '%')
+        ->get();
+        return response()->json($siswa);
+        
+    }
+
     public function index()
     {
 
@@ -34,6 +45,7 @@ class SiswaController extends Controller
 
     public function detail(Siswa $siswa)
     {
+        // dd($siswa -> perusahaan);
         return view('admin.siswa.detail', compact('siswa'));
     }
 

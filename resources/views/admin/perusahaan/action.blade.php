@@ -109,7 +109,7 @@
                                                         @foreach ($data->jurusan as $item)
                                                             <div class="input-group mb-2 kuota-group">
                                                                 <input type="number" name="kuota[]" class="form-control"
-                                                                    placeholder="" value="{{ old('kuota', $item->kuota) }}"
+                                                                    placeholder="" value="{{ old('kuota', $item->total) }}"
                                                                     required>
                                                             </div>
                                                         @endforeach
@@ -335,45 +335,46 @@
             }
 
             function addField() {
-    // Mengambil semua nilai jurusan yang sudah dipilih dari semua dropdown
-    const selectedValues = new Set(Array.from(document.querySelectorAll('#jurusan-inputs select'))
-        .map(select => select.value));
+                // Mengambil semua nilai jurusan yang sudah dipilih dari semua dropdown
+                const selectedValues = new Set(Array.from(document.querySelectorAll('#jurusan-inputs select'))
+                    .map(select => select.value));
 
-    // Menyiapkan elemen dropdown jurusan baru
-    const newJurusanGroup = document.createElement('div');
-    newJurusanGroup.classList.add('input-group', 'mb-2', 'jurusan-group');
+                // Menyiapkan elemen dropdown jurusan baru
+                const newJurusanGroup = document.createElement('div');
+                newJurusanGroup.classList.add('input-group', 'mb-2', 'jurusan-group');
 
-    // Menyaring opsi jurusan yang belum dipilih
-    const uniqueOptions = new Set(); // Untuk menghindari opsi duplikat
+                // Menyaring opsi jurusan yang belum dipilih
+                const uniqueOptions = new Set(); // Untuk menghindari opsi duplikat
 
-    const optionsHtml = jurusanOptions
-        .filter(opt => !selectedValues.has(opt.value)) // Hanya ambil opsi yang belum dipilih
-        .map(opt => {
-            if (!uniqueOptions.has(opt.value)) { // Cek dan tambahkan jika belum ada
-                uniqueOptions.add(opt.value);
-                return `<option value="${opt.value}">${opt.text}</option>`;
-            }
-            return ''; // Lewati opsi yang sudah ada
-        })
-        .join('');
-    
-    newJurusanGroup.innerHTML = `
+                const optionsHtml = jurusanOptions
+                    .filter(opt => !selectedValues.has(opt.value)) // Hanya ambil opsi yang belum dipilih
+                    .map(opt => {
+                        if (!uniqueOptions.has(opt.value)) { // Cek dan tambahkan jika belum ada
+                            uniqueOptions.add(opt.value);
+                            return `<option value="${opt.value}">${opt.text}</option>`;
+                        }
+                        return ''; // Lewati opsi yang sudah ada
+                    })
+                    .join('');
+
+                newJurusanGroup.innerHTML = `
         <select name="jurusan[]" class="form-select" required>
             <option value="" hidden selected>Pilih Jurusan</option>
             ${optionsHtml}
         </select>
     `;
-    jurusanInputs.appendChild(newJurusanGroup);
+                jurusanInputs.appendChild(newJurusanGroup);
 
-    // Menambahkan field kuota yang sesuai
-    const newKuotaGroup = document.createElement('div');
-    newKuotaGroup.classList.add('input-group', 'mb-2', 'kuota-group');
-    newKuotaGroup.innerHTML = `<input type="number" name="kuota[]" class="form-control" placeholder="" required>`;
-    kuotaInputs.appendChild(newKuotaGroup);
+                // Menambahkan field kuota yang sesuai
+                const newKuotaGroup = document.createElement('div');
+                newKuotaGroup.classList.add('input-group', 'mb-2', 'kuota-group');
+                newKuotaGroup.innerHTML =
+                    `<input type="number" name="kuota[]" class="form-control" placeholder="" required>`;
+                kuotaInputs.appendChild(newKuotaGroup);
 
-    // Memperbarui opsi jurusan untuk dropdown yang ada
-    updateJurusanOptions();
-}
+                // Memperbarui opsi jurusan untuk dropdown yang ada
+                updateJurusanOptions();
+            }
 
 
             function removeField() {
