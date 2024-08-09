@@ -586,4 +586,14 @@ class Menu {
   }
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    var sidebarToggle = document.getElementById('sidebar-toggle');
+    var layoutMenu = document.getElementById('layout-menu');
+
+    sidebarToggle.addEventListener('click', function () {
+        layoutMenu.classList.toggle('show');
+    });
+});
+
+
 export { Menu }

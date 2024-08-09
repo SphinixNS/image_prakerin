@@ -19,10 +19,10 @@
                 </div>
             </div>
         </div>
-        <div class="cards-container">
+        <div class="cards-container mb-3">
             <div class="card card-1">
                 <div class="card-header">
-                    <i class="fa fa-calendar-check card-icon"></i>
+                    <i class="fa fa-calendar-day card-icon"></i>
                     <h2>Absen</h2>
                     <span class="badge">0</span>
                 </div>
@@ -30,25 +30,25 @@
                     <li>Jumlah Absen: 0</li>
                     <li>Tidak Absen: 0</li>
                 </ul>
-                <button class="card-btn">Lihat Absen</button>
+                <a href="/absen" class="card-btn">Lihat Absen</a>
             </div>
 
             <div class="card card-2">
                 <div class="card-header">
-                    <i class="fa fa-clipboard-list card-icon"></i>
-                    <h2>Kuis</h2>
+                    <i class="fa fa-tachometer-alt card-icon"></i>
+                    <h2>Aktivitas</h2>
                     <span class="badge">0</span>
                 </div>
                 <ul class="card-details">
                     <li>Belum Mengikuti: 0</li>
                     <li>Sudah Mengikuti: 0</li>
                 </ul>
-                <button class="card-btn">Lihat Kuis</button>
+                <a href="/aktivitas" class="card-btn">Lihat Aktivitas</a>
             </div>
 
             <div class="card card-3">
                 <div class="card-header">
-                    <i class="fa fa-graduation-cap card-icon"></i>
+                    <i class="fa fa-chart-line card-icon"></i>
                     <h2>Nilai</h2>
                     <span class="badge">0</span>
                 </div>
@@ -56,50 +56,39 @@
                     <li>Belum Diberi: 0</li>
                     <li>Sudah Diberi: 0</li>
                 </ul>
-                <button class="card-btn">Lihat Nilai</button>
+                <a href="/nilai" class="card-btn">Lihat Nilai</a>
             </div>
 
             <div class="card card-4">
                 <div class="card-header">
-                    <i class="fa fa-graduation-cap card-icon"></i>
-                    <h2>Nilai</h2>
+                    <i class="fa fa-history card-icon"></i>
+                    <h2>Riwayat Kehadiran</h2>
                     <span class="badge">0</span>
                 </div>
                 <ul class="card-details">
                     <li>Belum Mengikuti: 0</li>
                     <li>Sudah Mengikuti: 0</li>
                 </ul>
-                <button class="card-btn">Lihat Materi</button>
+                <a href="/kehadiran" class="card-btn">Lihat Kehadiran</a>
             </div>
         </div>
 
         <div class="attendance-container">
-            <h2>Absensi Kehadiran</h2>
             <div class="attendance-cards">
                 <div class="attendance-card">
-                    <h3>Hadir</h3>
-                    <p>0</p>
-                    <button class="card-btn">Lihat</button>
+                    <p>Hadir</p>
+                    <h2>0</h2>
+                    <button class="btn btn-primary"><span style="color: white">Lihat</span></button>
                 </div>
                 <div class="attendance-card">
-                    <h3>Alpa</h3>
-                    <p>0</p>
-                    <button class="card-btn">Lihat</button>
+                    <p>Izin</p>
+                    <h2>0</h2>
+                    <button class="btn btn-primary "><span style="color: white">Lihat</span></button>
                 </div>
                 <div class="attendance-card">
-                    <h3>Izin</h3>
-                    <p>0</p>
-                    <button class="card-btn">Lihat</button>
-                </div>
-                <div class="attendance-card">
-                    <h3>Sakit</h3>
-                    <p>0</p>
-                    <button class="card-btn">Lihat</button>
-                </div>
-                <div class="attendance-card">
-                    <h3>Belum Diabsen</h3>
-                    <p>0</p>
-                    <button class="card-btn">Lihat</button>
+                    <p>Sakit</p>
+                    <h2>0</h2>
+                    <button class="btn btn-primary"><span style="color: white">Lihat</span></button>
                 </div>
             </div>
         </div>

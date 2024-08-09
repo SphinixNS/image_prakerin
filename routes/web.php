@@ -34,6 +34,10 @@ Route::get('/siswa', function () {
     return view('frontend.pages.siswa.index');
 });
 
+Route::get('/absen', function () {
+    return view('frontend.pages.absen.index');
+});
+
 // Route::get('/login', function () {
 //     return view('auth.login');
 // }) -> name('login');
