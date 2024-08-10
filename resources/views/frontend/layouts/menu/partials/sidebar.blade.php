@@ -21,22 +21,15 @@
 
         <li class="menu-item">
             <a href="index.html" class="menu-link">
-                <i class="menu-icon tf-icons bi bi-clock"></i>
-                <div data-i18n="Analytics">Aktivitas</div>
-            </a>
-        </li>
-
-        <li class="menu-item">
-            <a href="index.html" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-task"></i>
                 <div data-i18n="Analytics">Nilai</div>
             </a>
         </li>
 
         <li class="menu-item">
-            <a href="index.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-building-house"></i>
-                <div data-i18n="Analytics">Perusahaan</div>
+            <a href="/absen" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-calendar"></i>
+                <div data-i18n="Analytics">Absen</div>
             </a>
         </li>
 

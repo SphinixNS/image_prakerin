@@ -43,7 +43,7 @@
                     <li>Belum Mengikuti: 0</li>
                     <li>Sudah Mengikuti: 0</li>
                 </ul>
-                <a href="/aktivitas" class="card-btn">Lihat Aktivitas</a>
+                <a href="/absen" class="card-btn">Lihat Aktivitas</a>
             </div>
 
             <div class="card card-3">
@@ -69,7 +69,7 @@
                     <li>Belum Mengikuti: 0</li>
                     <li>Sudah Mengikuti: 0</li>
                 </ul>
-                <a href="/kehadiran" class="card-btn">Lihat Kehadiran</a>
+                <a href="/riwayat-kehadiran" class="card-btn">Lihat Kehadiran</a>
             </div>
         </div>
 

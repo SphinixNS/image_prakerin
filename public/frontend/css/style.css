@@ -423,6 +423,76 @@ p {
     transform: scale(1.02);
 }
 
+.login-btn-guru {
+    background: pink;
+    color: #ffffff;
+    border: none;
+    padding: 12px 0;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-btn-guru:hover {
+    transform: scale(1.02);
+}
+
+.main-page-btn-guru {
+    display: block;
+    text-align: center;
+    color: #333;
+    background: #f0f0f0;
+    padding: 12px 0;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.main-page-btn:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.02);
+}
+
+.login-btn-perusahaan {
+    background: red;
+    color: #ffffff;
+    border: none;
+    padding: 12px 0;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-btn-perusahaan:hover {
+    transform: scale(1.02);
+}
+
+.main-page-btn-perusahaan {
+    display: block;
+    text-align: center;
+    color: #333;
+    background: #f0f0f0;
+    padding: 12px 0;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.main-page-btn:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.02);
+}
+
 .main-page-btn {
     display: block;
     text-align: center;
@@ -455,7 +525,7 @@ p {
     }
 
     .login-right {
-        display: none;
+        display: block;
     }
 
     .login-icon {
@@ -554,6 +624,7 @@ p {
         margin-bottom: 20px;
     }
 }
+
 
 /*---------------------------------------
   SITE HEADER

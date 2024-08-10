@@ -47,6 +47,22 @@ Route::get('/edit-profile', function () {
     return view('frontend.pages.profile.index');
 });
 
+Route::get('/nilai', function () {
+    return view('frontend.pages.nilai.index');
+});
+
+Route::get('/login-siswa', function () {
+    return view('auth.loginSiswa');
+});
+
+Route::get('/login-guru', function () {
+    return view('auth.loginGuru');
+});
+
+Route::get('/login-perusahaan', function () {
+    return view('auth.loginPerusahaan');
+});
+
 
 // Route::get('/login', function () {
 //     return view('auth.login');

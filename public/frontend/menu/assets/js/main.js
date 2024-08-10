@@ -1,29 +1,25 @@
-/**
- * Main
- */
-
 'use strict';
 
-let menu, animate;
-
+// Main function
 (function () {
   // Initialize menu
   //-----------------
+  let menu, animate;
 
-  let layoutMenuEl = document.querySelectorAll('#layout-menu');
-  layoutMenuEl.forEach(function (element) {
+  const layoutMenuEls = document.querySelectorAll('#layout-menu');
+  layoutMenuEls.forEach(element => {
     menu = new Menu(element, {
       orientation: 'vertical',
       closeChildren: false
     });
     // Change parameter to true if you want scroll animation
-    window.Helpers.scrollToActive((animate = false));
+    window.Helpers.scrollToActive(animate = false);
     window.Helpers.mainMenu = menu;
   });
 
   // Initialize menu togglers and bind click on each
-  let menuToggler = document.querySelectorAll('.layout-menu-toggle');
-  menuToggler.forEach(item => {
+  const menuTogglers = document.querySelectorAll('.layout-menu-toggle');
+  menuTogglers.forEach(item => {
     item.addEventListener('click', event => {
       event.preventDefault();
       window.Helpers.toggleCollapsed();
@@ -31,26 +27,22 @@ let menu, animate;
   });
 
   // Display menu toggle (layout-menu-toggle) on hover with delay
-  let delay = function (elem, callback) {
+  const delay = (elem, callback) => {
     let timeout = null;
-    elem.onmouseenter = function () {
+    elem.onmouseenter = () => {
       // Set timeout to be a timer which will invoke callback after 300ms (not for small screen)
-      if (!Helpers.isSmallScreen()) {
-        timeout = setTimeout(callback, 300);
-      } else {
-        timeout = setTimeout(callback, 0);
-      }
+      timeout = setTimeout(callback, Helpers.isSmallScreen() ? 0 : 300);
     };
 
-    elem.onmouseleave = function () {
+    elem.onmouseleave = () => {
       // Clear any timers set to timeout
       document.querySelector('.layout-menu-toggle').classList.remove('d-block');
       clearTimeout(timeout);
     };
   };
+
   if (document.getElementById('layout-menu')) {
-    delay(document.getElementById('layout-menu'), function () {
-      // not for small screen
+    delay(document.getElementById('layout-menu'), () => {
       if (!Helpers.isSmallScreen()) {
         document.querySelector('.layout-menu-toggle').classList.add('d-block');
       }
@@ -58,15 +50,12 @@ let menu, animate;
   }
 
   // Display in main menu when menu scrolls
-  let menuInnerContainer = document.getElementsByClassName('menu-inner'),
-    menuInnerShadow = document.getElementsByClassName('menu-inner-shadow')[0];
+  const menuInnerContainer = document.getElementsByClassName('menu-inner');
+  const menuInnerShadow = document.getElementsByClassName('menu-inner-shadow')[0];
+
   if (menuInnerContainer.length > 0 && menuInnerShadow) {
     menuInnerContainer[0].addEventListener('ps-scroll-y', function () {
-      if (this.querySelector('.ps__thumb-y').offsetTop) {
-        menuInnerShadow.style.display = 'block';
-      } else {
-        menuInnerShadow.style.display = 'none';
-      }
+      menuInnerShadow.style.display = this.querySelector('.ps__thumb-y').offsetTop ? 'block' : 'none';
     });
   }
 
@@ -75,21 +64,20 @@ let menu, animate;
 
   // Init BS Tooltip
   const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-  tooltipTriggerList.map(function (tooltipTriggerEl) {
-    return new bootstrap.Tooltip(tooltipTriggerEl);
-  });
+  tooltipTriggerList.forEach(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
   // Accordion active class
-  const accordionActiveFunction = function (e) {
-    if (e.type == 'show.bs.collapse' || e.type == 'show.bs.collapse') {
-      e.target.closest('.accordion-item').classList.add('active');
-    } else {
-      e.target.closest('.accordion-item').classList.remove('active');
+  const accordionActiveFunction = e => {
+    const accordionItem = e.target.closest('.accordion-item');
+    if (e.type === 'show.bs.collapse') {
+      accordionItem.classList.add('active');
+    } else if (e.type === 'hide.bs.collapse') {
+      accordionItem.classList.remove('active');
     }
   };
 
   const accordionTriggerList = [].slice.call(document.querySelectorAll('.accordion'));
-  const accordionList = accordionTriggerList.map(function (accordionTriggerEl) {
+  accordionTriggerList.forEach(accordionTriggerEl => {
     accordionTriggerEl.addEventListener('show.bs.collapse', accordionActiveFunction);
     accordionTriggerEl.addEventListener('hide.bs.collapse', accordionActiveFunction);
   });
@@ -105,48 +93,56 @@ let menu, animate;
 
   // Manage menu expanded/collapsed with templateCustomizer & local storage
   //------------------------------------------------------------------
-
-  // If current layout is horizontal OR current window screen is small (overlay menu) than return from here
   if (window.Helpers.isSmallScreen()) {
     return;
   }
 
-  // If current layout is vertical and current window screen is > small
-
-  // Auto update menu collapsed/expanded based on the themeConfig
   window.Helpers.setCollapsed(true, false);
 })();
 
-// Get the modal
-var modal = document.getElementById("modal-hadir");
+// Modal functionality
+const modal = document.getElementById("modal-hadir");
+const btn = document.getElementById("hadir-button");
+const span = document.getElementsByClassName("close-modal")[0];
+const cancelButton = document.getElementsByClassName("cancel-button")[0];
 
-// Get the button that opens the modal
-var btn = document.getElementById("hadir-button");
+// Open the modal
+btn.onclick = () => {
+  modal.classList.add("show");
+};
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close-modal")[0];
+// Close the modal
+const closeModal = () => {
+  modal.classList.remove("show");
+};
 
-// Get the cancel button that closes the modal
-var cancelButton = document.getElementsByClassName("cancel-button")[0];
+span.onclick = closeModal;
+cancelButton.onclick = closeModal;
 
-// When the user clicks the button, open the modal
-btn.onclick = function() {
-    modal.classList.add("show");
-}
+// Close the modal when clicking outside of it
+window.onclick = event => {
+  if (event.target === modal) {
+    closeModal();
+  }
+};
 
-// When the user clicks on <span> (x) or the cancel button, close the modal
-span.onclick = function() {
-    modal.classList.remove("show");
-}
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.accordion-header').forEach(button => {
+        button.addEventListener('click', () => {
+            // Toggle the accordion content
+            const content = button.nextElementSibling;
+            const isVisible = content.style.display === 'block';
 
-cancelButton.onclick = function() {
-    modal.classList.remove("show");
-}
+            // Hide all other accordion contents
+            document.querySelectorAll('.accordion-content').forEach(item => {
+                item.style.display = 'none';
+            });
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.classList.remove("show");
-    }
-}
+            // Toggle the clicked accordion content
+            content.style.display = isVisible ? 'none' : 'block';
+        });
+    });
+});
+
+
 
