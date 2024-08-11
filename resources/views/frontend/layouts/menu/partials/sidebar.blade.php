@@ -20,7 +20,7 @@
         </li>
 
         <li class="menu-item">
-            <a href="index.html" class="menu-link">
+            <a href="/nilai" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-task"></i>
                 <div data-i18n="Analytics">Nilai</div>
             </a>
