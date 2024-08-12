@@ -12,28 +12,28 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
-        <li class="menu-item active">
+        <li class="menu-item {{ request()->is('siswa') ? 'active' : '' }}">
             <a href="/siswa" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
         </li>
 
-        <li class="menu-item">
+        <li class="menu-item {{ request()->is('nilai') ? 'active' : '' }}">
             <a href="/nilai" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-task"></i>
                 <div data-i18n="Analytics">Nilai</div>
             </a>
         </li>
 
-        <li class="menu-item">
+        <li class="menu-item {{ request()->is('absen') ? 'active' : '' }}">
             <a href="/absen" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-calendar"></i>
                 <div data-i18n="Analytics">Absen</div>
             </a>
         </li>
 
-        <li class="menu-item">
+        <li class="menu-item {{ request()->is('riwayat-kehadiran') ? 'active' : '' }}">
             <a href="/riwayat-kehadiran" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-calendar-check"></i>
                 <div data-i18n="Analytics">Riwayat Kehadiran</div>
@@ -41,7 +41,6 @@
         </li>
     </ul>
 
-    <!-- Additional buttons -->
     <div class="menu-footer">
         <a href="/" class="btn btn-primary btn-footer">
             <i class="bi bi-house-door"></i> Kembali ke Halaman Utama

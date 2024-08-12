@@ -18,7 +18,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <div class="stat text-primary">
-                                                <i class="align-middle" data-feather="truck"></i>
+                                                <i class="align-middle" data-feather="user"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -38,7 +38,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <div class="stat text-primary">
-                                                <i class="align-middle" data-feather="users"></i>
+                                                <i class="align-middle" data-feather="briefcase"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -60,7 +60,7 @@
                                         </div>
                                         <div class="col-auto">
                                             <div class="stat text-primary">
-                                                <i class="align-middle" data-feather="dollar-sign"></i>
+                                                <i class="align-middle" data-feather="users"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -121,9 +121,9 @@
                 </div>
 
             </div>
-            
-            
-{{-- 
+
+
+{{--
             <div class="row">
               \
                 <div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">

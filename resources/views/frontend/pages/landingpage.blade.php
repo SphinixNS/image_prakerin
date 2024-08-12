@@ -11,22 +11,22 @@
                 <div class="card">
                     <i class="fas fa-user-check" style="font-size: 50px; color: #ffffff;"></i>
                     <h4 class="card-text">ABSEN</h4>
-                    <a href="#absen">Pelajari selengkapnya</a>
+                    <a href="#">Pelajari selengkapnya</a>
                 </div>
                 <div class="card">
                     <i class="fas fa-book" style="font-size: 50px; color: #ffffff;"></i>
                     <h4 class="card-text">JURNAL KEGIATAN</h4>
-                    <a href="#jurnal">Pelajari selengkapnya</a>
+                    <a href="#">Pelajari selengkapnya</a>
                 </div>
                 <div class="card">
                     <i class="fas fa-chart-line" style="font-size: 50px; color: #ffffff;"></i>
                     <h4 class="card-text">NILAI</h4>
-                    <a href="#nilai1">Pelajari selengkapnya</a>
+                    <a href="#">Pelajari selengkapnya</a>
                 </div>
                 <div class="card">
                     <i class="fa fa-history card-icon" style="font-size: 50px; color: #ffffff;"></i>
                     <h4 class="card-text">RIWAYAT KEHADIRAN</h4>
-                    <a href="#nilai2">Pelajari selengkapnya</a>
+                    <a href="#">Pelajari selengkapnya</a>
                 </div>
             </div>
         </div>

@@ -1,8 +1,6 @@
 @extends('admin.layout.app')
 @section('title', 'Kelas')
 @section('content')
-
-
     <main class="content">
         <div class="container-fluid p-0">
 
@@ -16,7 +14,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="stat text-primary">
-                                        <i class="align-middle" data-feather="truck"></i>
+                                        <i class="align-middle" data-feather="user"></i>
                                     </div>
                                 </div>
                             </div>
@@ -36,7 +34,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="stat text-primary">
-                                        <i class="align-middle" data-feather="users"></i>
+                                        <i class="align-middle" data-feather="map-pin"></i>
                                     </div>
                                 </div>
                             </div>
@@ -52,11 +50,11 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col mt-0">
-                                    <h5 class="card-title">Mencari </h5>
+                                    <h5 class="card-title">Mencari</h5>
                                 </div>
                                 <div class="col-auto">
                                     <div class="stat text-primary">
-                                        <i class="align-middle" data-feather="users"></i>
+                                        <i class="align-middle" data-feather="search"></i>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +74,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="stat text-primary">
-                                        <i class="align-middle" data-feather="users"></i>
+                                        <i class="align-middle" data-feather="check-circle"></i>
                                     </div>
                                 </div>
                             </div>
@@ -186,7 +184,7 @@
                             <li><a class="dropdown-item"
                                href="/admin/pemetaan/create/${id}"">Pemetaan</a>
                             </li>
-                      
+
                           </ul>
                         </div>
                 `

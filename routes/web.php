@@ -31,26 +31,7 @@ Route::get('/', function () {
     return view('frontend.pages.landingpage');
 });
 
-Route::get('/siswa', function () {
-    return view('frontend.pages.siswa.index');
-});
-
-Route::get('/absen', function () {
-    return view('frontend.pages.absen.index');
-});
-
-Route::get('/riwayat-kehadiran', function () {
-    return view('frontend.pages.riwayatKehadiran.index');
-});
-
-Route::get('/edit-profile', function () {
-    return view('frontend.pages.profile.index');
-});
-
-Route::get('/nilai', function () {
-    return view('frontend.pages.nilai.index');
-});
-
+// Tampilan Login
 Route::get('/login-siswa', function () {
     return view('auth.loginSiswa');
 });
@@ -61,6 +42,38 @@ Route::get('/login-guru', function () {
 
 Route::get('/login-perusahaan', function () {
     return view('auth.loginPerusahaan');
+});
+
+// Tampilan Siswa
+Route::get('/siswa', function () {
+    return view('frontend.pages.pageSiswa.siswa.index');
+});
+
+Route::get('/absen', function () {
+    return view('frontend.pages.pageSiswa.absen.index');
+});
+
+Route::get('/riwayat-kehadiran', function () {
+    return view('frontend.pages.pageSiswa.riwayatKehadiran.index');
+});
+
+Route::get('/edit-profile', function () {
+    return view('frontend.pages.pageSiswa.profile.index');
+});
+
+Route::get('/nilai', function () {
+    return view('frontend.pages.pageSiswa.nilai.index');
+});
+
+// Tampilan Guru
+Route::get('/guru', function () {
+    return view('frontend.pages.pageGuru.guru.index');
+});
+
+
+// Tampilan profile admin
+Route::get('/profile-admin', function () {
+    return view('admin.profile.index');
 });
 
 

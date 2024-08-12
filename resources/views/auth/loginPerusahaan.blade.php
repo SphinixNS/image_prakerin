@@ -24,11 +24,21 @@
                     @csrf
                     <div class="input-group">
                         <i class="bi bi-person"></i>
-                        <input type="text" name="email" placeholder="Username">
+                        <input type="text" name="email" placeholder="Username" value="{{ old('email') }}" class="@error('email') is-invalid @enderror">
+                        @error('email')
+                            <span class="invalid-feedback" role="alert" style="color: red;">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="input-group">
                         <i class="bi bi-lock"></i>
-                        <input type="password" id="password" name="password" placeholder="Password">
+                        <input type="password" id="password" name="password" placeholder="Password" class="@error('password') is-invalid @enderror">
+                        @error('password')
+                            <span class="invalid-feedback" role="alert" style="color: red;">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-group" style="font-size:14px;">
                         <input type="checkbox" class="form-check-input" id="show-password"> Show Password
