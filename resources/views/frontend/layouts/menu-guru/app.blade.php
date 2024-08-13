@@ -40,7 +40,7 @@
 
                 @yield('content')
 
-                {{-- @include('frontend.layouts.menu.partials.footer') --}}
+                {{-- @include('frontend.layouts.menu-guru.partials.footer') --}}
             </div>
         </div>
     </div>

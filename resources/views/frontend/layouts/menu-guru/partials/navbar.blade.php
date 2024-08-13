@@ -29,7 +29,7 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <span class="fw-semibold d-block">Lorem Ipsum</span>
-                                    <small class="text-muted">Siswa</small>
+                                    <small class="text-muted">Guru</small>
                                 </div>
                             </div>
                         </a>
@@ -38,7 +38,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="/edit-profile">
+                        <a class="dropdown-item" href="/edit-profile-guru">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
                         </a>

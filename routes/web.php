@@ -70,6 +70,14 @@ Route::get('/guru', function () {
     return view('frontend.pages.pageGuru.guru.index');
 });
 
+Route::get('/monitoring', function () {
+    return view('frontend.pages.pageGuru.monitoring.index');
+});
+
+Route::get('/detail-page', function () {
+    return view('frontend.pages.pageGuru.detailPerusahaan.index');
+});
+
 
 // Tampilan profile admin
 Route::get('/profile-admin', function () {
