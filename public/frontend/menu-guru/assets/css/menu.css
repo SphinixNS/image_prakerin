@@ -1014,11 +1014,6 @@ h3 {
     transition: background-color 0.3s ease;
 }
 
-.table-nilai thead {
-    background-color: #FB48C4;
-    color: #ffffff;
-}
-
 .table-nilai tbody tr:nth-child(even) {
     background-color: #f2f2f2;
 }
