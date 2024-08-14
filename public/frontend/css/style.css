@@ -169,14 +169,102 @@ strong {
 /*---------------------------------------
   SECTION
 -----------------------------------------*/
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .section-padding {
     padding-top: 100px;
     padding-bottom: 100px;
 }
 
-.section-padding-dump{
-    padding-top: 10px;
-    padding-bottom: 10px;
+.section-padding-dump {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #f0f0f0;
+}
+
+.card-container-login {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.card-login {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 550px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+    margin-bottom: 20px;
+}
+
+.card-content-login {
+    flex: 1;
+}
+
+.card-icon-login {
+    text-align: left;
+}
+
+.card-title-login h3 {
+    color: #1D75D9;
+    font-size: 28px;
+    margin: 15px 0;
+}
+
+.card-description-login p {
+    font-size: 18px;
+    color: #555;
+}
+
+.card-footer {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.card-buttons-login {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+.info-btn, .apply-btn {
+    border: none;
+    background-color: #1D75D9;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.info-btn .info-icon {
+    margin-right: 5px;
+}
+
+.apply-btn {
+    background-color: #007BFF;
+}
+
+.info-btn:hover, .apply-btn:hover {
+    opacity: 0.9;
 }
 
 .section-bg {
@@ -232,6 +320,62 @@ strong {
   border-bottom-color: var(--primary-color);
   color: var(--primary-color);
 }
+
+@media (max-width: 768px) {
+    .card-container-login {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .card-login {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .card-title-login h3 {
+        font-size: 24px;
+    }
+
+    .card-description-login p {
+        font-size: 16px;
+    }
+
+    .card-footer {
+        margin-top: 15px;
+        font-size: 12px;
+    }
+
+    .info-btn, .apply-btn {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-login {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .card-title-login h3 {
+        font-size: 20px;
+    }
+
+    .card-description-login p {
+        font-size: 14px;
+    }
+
+    .card-footer {
+        margin-top: 10px;
+        font-size: 10px;
+    }
+
+    .info-btn, .apply-btn {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+}
+
 
 
 /*---------------------------------------
@@ -786,14 +930,57 @@ p {
     transition: transform 0.3s ease;
   }
 
-  @media screen and (min-width: 992px) {
-    .navbar .dropdown:hover .dropdown-menu {
-      opacity: 1;
-      margin-top: 0;
-      pointer-events: auto;
-      transform: translateY(0);
+@media (max-width: 767px) {
+    .navbar {
+      padding: 10px;
+      border-bottom: none;
+      background-color: var(--primary-color);
+    }
+
+    .navbar-expand-lg .navbar-nav .nav-link {
+      margin: 5px;
+      padding: 8px;
+      font-size: var(--small-menu-font-size);
+    }
+
+    .navbar-toggler {
+      width: 25px;
+      height: 30px;
+    }
+
+    .navbar-toggler .navbar-toggler-icon,
+    .navbar-toggler .navbar-toggler-icon:before,
+    .navbar-toggler .navbar-toggler-icon:after {
+      width: 25px;
+    }
+
+    .navbar-icon {
+      width: 35px;
+      height: 35px;
+      line-height: 35px;
+    }
+
+    .sticky-wrapper {
+      top: 0;
+      left: 0;
+      right: 0;
     }
   }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .navbar-expand-lg .navbar-nav .nav-link {
+      margin: 8px;
+      padding: 10px;
+      font-size: var(--medium-menu-font-size);
+    }
+
+    .navbar-icon {
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+    }
+  }
+
 
   .navbar-icon {
     background: var(--white-color);
@@ -806,6 +993,17 @@ p {
     text-align: center;
     transition: background 0.3s ease, color 0.3s ease;
   }
+
+  .btn-outline-pink {
+    color: #e91e63;
+    border-color: #e91e63;
+  }
+
+  .btn-outline-pink:hover {
+    background-color: #e91e63;
+    color: #fff;
+  }
+
 
   .navbar-icon:hover {
     background: var(--primary-color);
