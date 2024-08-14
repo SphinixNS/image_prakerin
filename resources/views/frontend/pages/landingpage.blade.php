@@ -30,11 +30,67 @@
                 </div>
             </div>
         </div>
-
     </section>
 
     <section class="section-padding-dump">
+        <div class="card-container-login">
+            <div class="card-login">
+                <div class="card-content-login">
+                    <div class="card-icon-login">
+                        <i class="fas fa-user-graduate fa-3x" style="color:#1D75D9;"></i>
+                    </div>
+                    <div class="card-title-login">
+                        <h3>SISWA</h3>
+                    </div>
+                    <div class="card-description-login">
+                        <p>Ini adalah tombol untuk menuju halaman login bagi Siswa.</p>
+                    </div>
+                </div>
+                <div class="card-buttons-login">
+                    <a href="login" class="apply-btn-link">
+                        <button class="apply-btn">Ke Aplikasi</button>
+                    </a>
+                </div>
+            </div>
 
+            <div class="card-login">
+                <div class="card-content-login">
+                    <div class="card-icon-login">
+                        <i class="fas fa-chalkboard-teacher fa-3x" style="color:#1D75D9;"></i>
+                    </div>
+                    <div class="card-title-login">
+                        <h3>GURU</h3>
+                    </div>
+                    <div class="card-description-login">
+                        <p>Ini adalah tombol untuk menuju halaman login bagi Guru Pembimbing.</p>
+                    </div>
+                </div>
+                <div class="card-buttons-login">
+                    <a href="/login-guru" class="apply-btn-link">
+                        <button class="apply-btn">Ke Aplikasi</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card-login">
+                <div class="card-content-login">
+                    <div class="card-icon-login">
+                        <i class="fas fa-building fa-3x" style="color:#1D75D9;"></i>
+                    </div>
+                    <div class="card-title-login">
+                        <h3>Perusahaan</h3>
+                    </div>
+                    <div class="card-description-login">
+                        <p>Ini adalah tombol untuk menuju halaman login bagi Perusahaan.</p>
+                    </div>
+                </div>
+                <div class="card-buttons-login">
+                    <a href="/login-perusahaan" class="apply-btn-link">
+                        <button class="apply-btn">Ke Aplikasi</button>
+                    </a>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section class="timeline-section section-padding" id="section_2">
@@ -114,7 +170,8 @@
                 <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
                     <div class="testimonial-item rounded p-4 bg-light me-3 text-center">
                         <div class="mb-4">
-                            <img src="{{ asset('/frontend/img/chlorine.jpg') }}" alt="Logo Perusahaan" style="max-width: 150px;">
+                            <img src="{{ asset('/frontend/img/chlorine.jpg') }}" alt="Logo Perusahaan"
+                                style="max-width: 150px;">
                         </div>
                         <h6 class="mb-1">PT. ForIt Asta Solusiindo</h6>
                         <p class="mb-1">
@@ -123,7 +180,8 @@
                     </div>
                     <div class="testimonial-item rounded p-4 bg-light me-3 text-center">
                         <div class="mb-4">
-                            <img src="{{ asset('/frontend/img/chlorine.jpg') }}" alt="Logo Perusahaan" style="max-width: 150px;">
+                            <img src="{{ asset('/frontend/img/chlorine.jpg') }}" alt="Logo Perusahaan"
+                                style="max-width: 150px;">
                         </div>
                         <h6 class="mb-1">PT. Testing Pedia</h6>
                         <p class="mb-1">
@@ -132,7 +190,8 @@
                     </div>
                     <div class="testimonial-item rounded p-4 bg-light me-3 text-center">
                         <div class="mb-4">
-                            <img src="{{ asset('/frontend/img/chlorine.jpg') }}" alt="Logo Perusahaan" style="max-width: 150px;">
+                            <img src="{{ asset('/frontend/img/chlorine.jpg') }}" alt="Logo Perusahaan"
+                                style="max-width: 150px;">
                         </div>
                         <h6 class="mb-1">PT. Coba Pedia</h6>
                         <p class="mb-1">
@@ -141,7 +200,8 @@
                     </div>
                     <div class="testimonial-item rounded p-4 bg-light me-3 text-center">
                         <div class="mb-4">
-                            <img src="{{ asset('/frontend/img/chlorine.jpg') }}" alt="Logo Perusahaan" style="max-width: 150px;">
+                            <img src="{{ asset('/frontend/img/chlorine.jpg') }}" alt="Logo Perusahaan"
+                                style="max-width: 150px;">
                         </div>
                         <h6 class="mb-1">PT. Lorem Ipsum</h6>
                         <p class="mb-1">
