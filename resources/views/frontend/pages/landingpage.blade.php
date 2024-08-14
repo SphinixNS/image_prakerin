@@ -81,7 +81,7 @@
                         <h3>Perusahaan</h3>
                     </div>
                     <div class="card-description-login">
-                        <p>Ini adalah tombol untuk menuju halaman login bagi Pembimbing Perusahaan.</p>
+                        <p>Ini adalah tombol untuk menuju halaman login bagi Perusahaan.</p>
                     </div>
                 </div>
                 <div class="card-buttons-login">
