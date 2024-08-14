@@ -30,8 +30,14 @@ class PembimbingController extends Controller
     public function index()
     {
         $pembimbing = Pembimbing::latest()->get();
-        // dd($data);
         return view('admin.pembimbing.index', compact('pembimbing'));
+    }
+
+    public function detail(Pembimbing $pembimbing)
+    {
+        $data = $pembimbing;
+        // dd($data -> perusahaan);
+        return view('admin.pembimbing.detail', compact('data'));
     }
 
 
@@ -75,15 +81,13 @@ class PembimbingController extends Controller
         return redirect()->route('admin.pembimbing.index')->with(['created' => 'created']);
     }
 
-   
-
-
     public function edit(Pembimbing $pembimbing)
     {
+        $jurusan_perusahaanId = null;
         $data = $pembimbing;
-        $perusahaan = JurusanPerusahaan::all();
-        // dd($data -> perusahaan -> perusahaan -> nama);
-        return view('admin.pembimbing.action', compact('data', 'perusahaan'));
+        $perusahaan = Perusahaan::all();
+        // dd($data -> perusahaan[0] -> perusahaan -> perusahaan);
+        return view('admin.pembimbing.action', compact('data', 'perusahaan', 'jurusan_perusahaanId'));
     }
 
     public function update(Request $request, Pembimbing $pembimbing)
@@ -97,11 +101,18 @@ class PembimbingController extends Controller
 
         $pembimbing->update([
             'nama' => $request->nama,
-            'jenkel' => $request->jenkel,
-            'no_telp' => $request->no_telp,
-            'nip' => $request->nip,
-            'perusahaan_id' => $request -> jurusan_id,
+             'jenkel' => $request->jenkel,
+             'no_telp' => $request->no_telp,
+             'nip' => $request->nip,
         ]);
+
+        PembimbingPerusahaan::where('pembimbing_id', $pembimbing -> id) -> delete();
+        PembimbingPerusahaan::create([
+            'pembimbing_id' => $pembimbing -> id,
+            'perusahaan_id' => $request -> jurusan_id,
+            'tahun_id' => $this -> tahun
+        ]);
+        
         Alert::success('Update Berhasil', 'Data Berhasil Di Ubah');
 
 

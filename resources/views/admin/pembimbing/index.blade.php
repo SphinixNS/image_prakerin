@@ -93,6 +93,9 @@
                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             
                             <li><a class="dropdown-item"
+                               href="/admin/pembimbing/detail/${id}"">Detail</a>
+                            </li>
+                            <li><a class="dropdown-item"
                                href="/admin/pembimbing/edit/${id}"">Edit</a>
                             </li>
                             <li><a class="dropdown-item" href="#"
