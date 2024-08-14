@@ -7,6 +7,7 @@ use App\Models\TahunAjaran;
 use Illuminate\Http\Request;
 use App\Models\JurusanPerusahaan;
 use App\Http\Controllers\Controller;
+use App\Models\PembimbingPerusahaan;
 use App\Models\Perusahaan;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -21,7 +22,7 @@ class PembimbingController extends Controller
 
     public function pembimbing()
     {
-        $pembimbing = Pembimbing::with(['perusahaan', 'perusahaan.perusahaan'])->latest()->get();
+        $pembimbing = Pembimbing::with(['perusahaan.perusahaan.perusahaan'])->latest()->get();
         
         return response()->json($pembimbing);
         
@@ -34,11 +35,15 @@ class PembimbingController extends Controller
     }
 
 
-    public function create()
+    public function create(Request $request)
     {
+        $jurusan_perusahaanId = null;
         $data = null;
         $perusahaan = Perusahaan::all();
-        return view('admin.pembimbing.action', compact('data', 'perusahaan'));
+        if($request -> id){
+            $jurusan_perusahaanId = decrypt($request -> id);
+        }
+        return view('admin.pembimbing.action', compact('data', 'perusahaan', 'jurusan_perusahaanId'));
     }
 
     public function store(Request $request)
@@ -51,18 +56,27 @@ class PembimbingController extends Controller
         ]);
 
         // dd($request);
-        Pembimbing::create([
+        $pembimbing = Pembimbing::create([
              'nama' => $request->nama,
              'jenkel' => $request->jenkel,
              'no_telp' => $request->no_telp,
              'nip' => $request->nip,
-             'perusahaan_id' => $request -> jurusan_id,
              'tahun_id' => $this -> tahun
         ]);
+
+        PembimbingPerusahaan::create([
+            'pembimbing_id' => $pembimbing -> id,
+            'perusahaan_id' => $request -> jurusan_id,
+            'tahun_id' => $this -> tahun
+        ]);
+
         Alert::success('Create Berhasil', 'Data Berhasil Di Tambah');
 
         return redirect()->route('admin.pembimbing.index')->with(['created' => 'created']);
     }
+
+   
+
 
     public function edit(Pembimbing $pembimbing)
     {

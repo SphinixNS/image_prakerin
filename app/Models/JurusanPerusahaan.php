@@ -29,7 +29,7 @@ class JurusanPerusahaan extends Model
     }
     public function pembimbing()
     {
-        return $this->belongsTo(Pembimbing::class, 'id', 'perusahaan_id');
+        return $this->belongsTo(PembimbingPerusahaan::class, 'id', 'perusahaan_id',);
     }
    
 

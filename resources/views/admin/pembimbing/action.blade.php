@@ -13,7 +13,7 @@
                             <form action="{{ $data ? route('admin.pembimbing.update', $data->id) : route('admin.pembimbing.store') }}" method="POST">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="{{ $jurusan_perusahaanId ? 'col-12' : 'col-6' }}">
                                         <label class="form-label">Nama Pembimbing</label>
                                         <input type="text" name="nama" class="form-control mb-3" value="{{ old('nama', $data->nama ?? '') }}" required>
 
@@ -35,6 +35,9 @@
                                             @endif
                                         </select>
                                     </div>
+                                    @if ($jurusan_perusahaanId)
+                                        <input type="text" value="{{$jurusan_perusahaanId}}" name="jurusan_id" hidden>
+                                    @else
                                     <div class="col-6">
                                         <div class="mb-4">
                                             <label class="form-label mb-2">Perusahaan</label>
@@ -43,6 +46,7 @@
                                         <label class="form-label">Jurusan</label>
                                         <div id="jurusanContainer"></div>
                                     </div>
+                                    @endif
                                 </div>
                                 <button type="submit" class="btn btn-primary float-end">Save</button>
                             </form>

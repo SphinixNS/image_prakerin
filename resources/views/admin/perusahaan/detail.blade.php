@@ -144,7 +144,6 @@
                                                 </ul>
                                             </div>
                                         </td>
-                                        <td> </td>
 
 
                                     </tr>
@@ -178,23 +177,23 @@
                                         <tr>
                                             <th scope="col">Nama</th>
                                             <td>:</td>
-                                            <td>{{ $jurusan -> pembimbing -> nama }}</td>
+                                            <td>{{ $jurusan -> pembimbing -> pembimbing -> nama }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="col">NIP</th>
                                             <td>:</td>
-                                            <td>{{ $jurusan -> pembimbing -> nip }}</td>
+                                            <td>{{ $jurusan -> pembimbing -> pembimbing -> nip }}</td>
                                         </tr>
                                         <tr>
                                         <tr>
                                         <th scope="col">No. Telp</th>
                                             <td>:</td>
-                                            <td>{{ $jurusan -> pembimbing -> no_telp }}</td>
+                                            <td>{{ $jurusan -> pembimbing -> pembimbing -> no_telp }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="col">Jenis Kelamin</th>
                                             <td>:</td>
-                                            <td>{{ $jurusan -> pembimbing -> jenkel }}</td>
+                                            <td>{{ $jurusan -> pembimbing -> pembimbing -> jenkel }}</td>
                                         </tr>
                                       
                                         </thead>
@@ -203,6 +202,14 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
+                        @else
+                        <div class="card-body">
+                            <a href="{{ route('admin.pembimbing.create', ['id' => encrypt($jurusan->id)]) }}">
+                                <button class="btn btn-primary">
+                                    Tambah Pembimbing
+                                </button>
+                            </a>
                         </div>
                         @endif
 

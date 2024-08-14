@@ -31,6 +31,12 @@ Route::get('/', function () {
     return view('frontend.pages.landingpage');
 });
 
+
+Route::get('/home', function () {
+    
+    return redirect(route('admin.dashboard'));
+});
+
 // Tampilan Login
 Route::get('/login-siswa', function () {
     return view('auth.loginSiswa');

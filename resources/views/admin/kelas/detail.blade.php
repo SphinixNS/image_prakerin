@@ -95,6 +95,9 @@
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h5 class="card-title mb-0">Data {{ $kelas->nama }}</h5>
+                            <a href="{{ route('admin.pemetaan.create', $kelas -> id) }}">
+                            <button class="btn btn-primary" >Pemetaan</button>
+                        </a>
                         </div>
                         <div class="card-body">
 
@@ -137,6 +140,8 @@
             $('#table-kelas').DataTable({
                 // Data: (Jika data diambil secara asynchronous, letakkan di sini)
                 data: [], // Contoh jika data kosong saat inisialisasi
+                autoWidth: false,
+
 
                 // Kolom: Sesuaikan dengan nama properti di data JSON
                 columns: [{

@@ -56,6 +56,8 @@
             $('#table-pembimbing').DataTable({
                 // Data: (Jika data diambil secara asynchronous, letakkan di sini)
                 data: [], // Contoh jika data kosong saat inisialisasi
+                autoWidth: false,
+
 
                 // Kolom: Sesuaikan dengan nama properti di data JSON
                 columns: [{
@@ -69,8 +71,15 @@
                         name: 'nama'
                     },
                     {
-                        data: 'perusahaan.perusahaan.nama',
-                        name: 'perusahaan.perusahaan.nama'
+                        data: 'perusahaan',
+                        name: 'perusahaan',
+                        render: function(data) {
+                            let names = '';
+                            data.forEach(function(perusahaan) {
+                                names += perusahaan.perusahaan.perusahaan.nama  + '<br>';
+                            });
+                            return names;
+                        }
                     },
                     {
                         data: 'id',
@@ -82,11 +91,12 @@
                             <img src="/backend/align-justify.svg">
                           </button>
                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#"
-                                onclick="deleteData(${id})">Delete</a></li>
+                            
                             <li><a class="dropdown-item"
                                href="/admin/pembimbing/edit/${id}"">Edit</a>
                             </li>
+                            <li><a class="dropdown-item" href="#"
+                                onclick="deleteData(${id})">Delete</a></li>
                           </ul>
                         </div>
                 `
