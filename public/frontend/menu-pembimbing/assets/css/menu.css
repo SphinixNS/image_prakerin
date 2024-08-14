@@ -14,6 +14,19 @@
   text-transform: lowercase;
 }
 
+.btn-green {
+    background-color: #009688;
+    border-color: #009688;
+    color: rgb(255, 255, 255);
+}
+
+.btn-green:hover {
+    background-color: #00796b;
+    border-color: #00796b;
+    color: #FFFFFF;
+}
+
+
 /*---------------------------------------
   SIDEBAR
 -----------------------------------------*/
@@ -67,16 +80,18 @@
 }
 
 
-.btn-primary {
-    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+.btn-pink {
+    background-color: #FB48C4;
+    border: 1px solid #FB48C4;
+  }
 
-.btn-primary:hover {
-    background: linear-gradient(135deg, #0056b3 0%, #003d79 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
+  .btn-pink i {
+    margin-right: 5px;
+  }
+
+  .btn-pink:hover {
+    background-color: #FCE4EC;
+  }
 
 .btn-danger {
     background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
@@ -227,12 +242,15 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    animation: fadeInUp 0.8s ease-out forwards;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .card:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
 }
+
 
 .card-header {
     display: flex;
@@ -244,16 +262,16 @@
 .card-header h2 {
     font-size: 1.2em;
     margin: 0;
-    color: #333;
+    color: #ec407a;
     transition: color 0.3s ease;
 }
 
 .card-header:hover h2 {
-    color: #007bff;
+    color: #d81b60;
 }
 
 .card .badge {
-    background-color: #F39C12;
+    background-color: #ec407a;
     color: #fff;
     padding: 5px 10px;
     border-radius: 20px;
@@ -272,7 +290,7 @@
 }
 
 .card-btn {
-    background-color: #007BFF;
+    background-color: #ec407a;
     color: #fff;
     border: none;
     padding: 10px;
@@ -283,8 +301,9 @@
 }
 
 .card-btn:hover {
-    background-color: #0056b3;
+    background-color: #d81b60;
     transform: translateY(-2px);
+    color: #fff;
 }
 
 .attendance-container {
@@ -382,28 +401,6 @@
     }
 }
 
-.card-btn {
-    background-color: #007bff;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.card-btn:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-}
-
-.card-icon {
-    font-size: 24px;
-    color: #007bff;
-    margin-right: 10px;
-}
-
 @media (max-width: 1200px) {
     .cards-container {
         grid-template-columns: repeat(3, 1fr);
@@ -450,6 +447,24 @@
         padding: 8px 16px;
     }
 }
+
+.card-icon {
+    font-size: 24px;
+    color: #ec407a;
+    margin-right: 10px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 /*---------------------------------------
   ABSEN
@@ -869,6 +884,7 @@ td {
 /*---------------------------------------
   PROFILE
 -----------------------------------------*/
+
 .container-profile {
     overflow-x: hidden;
 }
@@ -976,7 +992,7 @@ td {
 }
 
 /*---------------------------------------
-  NILAI
+  DETAIL RINCIAN
 -----------------------------------------*/
 h1 {
     font-size: 2.5rem;
@@ -1003,13 +1019,8 @@ h3 {
 
 .table-nilai th, .table-nilai td {
     padding: 10px;
-    text-align: center;
+    text-align: start;
     transition: background-color 0.3s ease;
-}
-
-.table-nilai thead {
-    background-color: #007bff;
-    color: #ffffff;
 }
 
 .table-nilai tbody tr:nth-child(even) {
@@ -1030,8 +1041,17 @@ h3 {
 }
 
 .accordion-button:not(.collapsed) {
-    background-color: #007bff;
+    background-color: #009688;
     color: #ffffff;
+}
+
+.card-header{
+    background-color: #009688;
+    color: #ffffff;
+}
+
+#nestedAccordion {
+    margin-top: 20px;
 }
 
 @media (max-width: 768px) {
@@ -1054,6 +1074,232 @@ h3 {
     .table-nilai th, .table-nilai td {
         padding: 8px;
         font-size: 0.9rem;
+    }
+}
+
+/*---------------------------------------
+  SISWA PERUSAHAAN
+-----------------------------------------*/
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-padding {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.section-padding-dump {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #ffffff;
+}
+
+.card-container-student {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card-student {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+    margin-bottom: 20px;
+}
+
+.card-content-student {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.card-icon-student {
+    text-align: center;
+}
+
+.card-title-student h6 {
+    color: #009688;
+    font-size: 14px;
+    margin: 15px 0;
+}
+
+.card-description-student p {
+    font-size: 12px;
+    color: #555;
+}
+
+.card-footer {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.card-buttons-student {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.info-btn, .apply-btn {
+    border: none;
+    background-color: #009688;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.info-btn .info-icon {
+    margin-right: 5px;
+}
+
+.apply-btn {
+    background-color: #009688;
+}
+
+.info-btn:hover, .apply-btn:hover {
+    opacity: 0.9;
+}
+
+.section-bg {
+  background-color: var(--section-bg-color);
+}
+
+.section-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  opacity: 0.85;
+}
+
+.section-overlay + .container {
+  position: relative;
+}
+
+.tab-content {
+  background-color: var(--white-color);
+  border-radius: var(--border-radius-medium);
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #ecf3f2;
+  margin-bottom: 40px;
+  justify-content: center;
+}
+
+.nav-tabs .nav-link {
+  border-radius: 0;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  color: var(--p-color);
+  font-family: var(--title-font-family);
+  font-size: var(--btn-font-size);
+  font-weight: var(--font-weight-medium);
+  padding: 15px 25px;
+  transition: all 0.3s;
+}
+
+.nav-tabs .nav-link:first-child {
+  margin-right: 20px;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover {
+  border-bottom-color: #009688;
+  color: #009688;
+}
+
+@media (max-width: 768px) {
+    .card-container-student {
+        grid-template-columns: repeat(2, 1fr);
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .card-student {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .card-content-student {
+        align-items: center;
+        text-align: center;
+    }
+
+    .card-title-student h6 {
+        font-size: 18px;
+    }
+
+    .card-description-student p {
+        font-size: 14px;
+    }
+
+    .card-footer {
+        margin-top: 15px;
+        font-size: 12px;
+    }
+
+    .info-btn, .apply-btn {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-container-student {
+        grid-template-columns: 1fr;
+    }
+
+    .card-student {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .card-content-student {
+        align-items: center;
+        text-align: center;
+    }
+
+    .card-title-student h6 {
+        font-size: 16px;
+    }
+
+    .card-description-student p {
+        font-size: 12px;
+    }
+
+    .card-footer {
+        margin-top: 10px;
+        font-size: 10px;
+    }
+
+    .info-btn, .apply-btn {
+        font-size: 12px;
+        padding: 8px 10px;
     }
 }
 
@@ -1082,6 +1328,7 @@ h3 {
         padding: 10px;
     }
 }
+
 
 
 

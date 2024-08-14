@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 <div class="card-buttons-login">
-                    <a href="/login-perusahaan" class="apply-btn-link">
+                    <a href="/login-pembimbing" class="apply-btn-link">
                         <button class="apply-btn">Ke Aplikasi</button>
                     </a>
                 </div>
