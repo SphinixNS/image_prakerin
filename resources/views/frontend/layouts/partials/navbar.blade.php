@@ -24,12 +24,6 @@
                     <a class="nav-link click-scroll" href="#section_3">Teamplay</a>
                 </li>
             </ul>
-
-            <a class="btn btn-outline-light me-3" href="login" role="button">Login</a>
-            <a class="btn btn-outline-pink me-3" href="/login-guru" role="button">Login</a>
-            <a class="btn btn-outline-danger me-3" href="/login-perusahaan" role="button">Login</a>
-
-            </ul>
         </div>
     </div>
 </nav>
