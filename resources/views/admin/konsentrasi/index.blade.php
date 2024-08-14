@@ -56,6 +56,8 @@
             $('#table-konsentrasi').DataTable({
                 // Data: (Jika data diambil secara asynchronous, letakkan di sini)
                 data: [], // Contoh jika data kosong saat inisialisasi
+                autoWidth: false,
+
 
                 // Kolom: Sesuaikan dengan nama properti di data JSON
                 columns: [{

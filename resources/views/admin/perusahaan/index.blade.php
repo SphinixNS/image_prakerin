@@ -55,8 +55,8 @@
             // Pastikan tabel HTML dengan ID 'table-perusahaan' sudah ada di DOM
             $('#table-perusahaan').DataTable({
                 // Data: (Jika data diambil secara asynchronous, letakkan di sini)
+                autoWidth: false,
                 data: [], // Contoh jika data kosong saat inisialisasi
-
                 // Kolom: Sesuaikan dengan nama properti di data JSON
                 columns: [{
                         data: null,

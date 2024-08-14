@@ -31,6 +31,11 @@ Route::get('/', function () {
     return view('frontend.pages.landingpage');
 });
 
+
+Route::get('/home', function () {
+    return redirect(route('admin.dashboard'));
+});
+
 // Tampilan Login
 Route::get('/login-siswa', function () {
     return view('auth.loginSiswa');
@@ -110,8 +115,6 @@ Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 Route::group(['namespace' => 'App\Http\Controllers\Backend','prefix' => 'admin', 'as' => 'admin.'], function () {
     // Auth::routes();
     Route::middleware('auth')->group(function () {
-
-
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::group(['prefix' => 'perusahaan' ,'as' => 'perusahaan.'], function(){
@@ -186,6 +189,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend','prefix' => 'admin',
         Route::group(['prefix' => 'pembimbing' ,'as' => 'pembimbing.'], function(){
             Route::get('/pembimbing', [PembimbingController::class, 'pembimbing'])->name('pembimbing');
             Route::get('/', [PembimbingController::class, 'index'])->name('index');
+            Route::get('/detail/{pembimbing}', [PembimbingController::class, 'detail'])->name('detail');
             Route::get('/create', [PembimbingController::class, 'create'])->name('create');
             Route::post('/store', [PembimbingController::class, 'store'])->name('store');
             Route::get('edit/{pembimbing}', [PembimbingController::class , 'edit'])->name('edit');

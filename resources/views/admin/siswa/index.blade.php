@@ -264,6 +264,7 @@
         $(document).ready(function() {
             $('#table-siswa').DataTable({
                 data: [],
+                autoWidth: false,
                 responsive: true, // Menambahkan opsi responsif
                 columns: [{
                         data: null,

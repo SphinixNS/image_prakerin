@@ -10,24 +10,31 @@
                             <h1 class="card-title mb-0">{{ $data ? 'Edit Data' : 'Tambah Data' }} Pembimbing</h1>
                         </div>
                         <div class="card-body">
-                            <form action="{{ $data ? route('admin.pembimbing.update', $data->id) : route('admin.pembimbing.store') }}" method="POST">
+                            <form
+                                action="{{ $data ? route('admin.pembimbing.update', $data->id) : route('admin.pembimbing.store') }}"
+                                method="POST">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="{{ $jurusan_perusahaanId ? 'col-12' : 'col-6' }}">
                                         <label class="form-label">Nama Pembimbing</label>
-                                        <input type="text" name="nama" class="form-control mb-3" value="{{ old('nama', $data->nama ?? '') }}" required>
+                                        <input type="text" name="nama" class="form-control mb-3"
+                                            value="{{ old('nama', $data->nama ?? '') }}" required>
 
                                         <label class="form-label">NIP</label>
-                                        <input type="text" name="nip" class="form-control mb-3" value="{{ old('nip', $data->nip ?? '') }}" required>
+                                        <input type="text" name="nip" class="form-control mb-3"
+                                            value="{{ old('nip', $data->nip ?? '') }}" required>
 
                                         <label class="form-label">No Telp</label>
-                                        <input type="text" name="no_telp" class="form-control mb-3" value="{{ old('no_telp', $data->no_telp ?? '') }}">
+                                        <input type="text" name="no_telp" class="form-control mb-3"
+                                            value="{{ old('no_telp', $data->no_telp ?? '') }}">
 
                                         <label class="form-label">Jenkel</label>
                                         <select name="jenkel" class="form-select mb-3" required>
                                             @if ($data)
-                                                <option value="Laki-Laki" {{ $data->jenkel == "Laki-Laki" ? 'selected' : '' }}>Laki-Laki</option>
-                                                <option value="Perempuan" {{ $data->jenkel == "Perempuan" ? 'selected' : '' }}>Perempuan</option>
+                                                <option value="Laki-Laki"
+                                                    {{ $data->jenkel == 'Laki-Laki' ? 'selected' : '' }}>Laki-Laki</option>
+                                                <option value="Perempuan"
+                                                    {{ $data->jenkel == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
                                             @else
                                                 <option value="" selected hidden>Pilih Jenis Kelamin</option>
                                                 <option value="Laki-Laki">Laki-Laki</option>
@@ -35,14 +42,19 @@
                                             @endif
                                         </select>
                                     </div>
-                                    <div class="col-6">
-                                        <div class="mb-4">
-                                            <label class="form-label mb-2">Perusahaan</label>
-                                            <select id="perusahaanDropdown" name="perusahaan_id" class="form-select select2" required></select>
+                                    @if ($jurusan_perusahaanId)
+                                        <input type="text" value="{{ $jurusan_perusahaanId }}" name="jurusan_id" hidden>
+                                    @else
+                                        <div class="col-6">
+                                            <div class="mb-4">
+                                                <label class="form-label mb-2">Perusahaan</label>
+                                                <select id="perusahaanDropdown" name="perusahaan_id"
+                                                    class="form-select select2" required></select>
+                                            </div>
+                                            <label class="form-label">Jurusan</label>
+                                            <div id="jurusanContainer"></div>
                                         </div>
-                                        <label class="form-label">Jurusan</label>
-                                        <div id="jurusanContainer"></div>
-                                    </div>
+                                    @endif
                                 </div>
                                 <button type="submit" class="btn btn-primary float-end">Save</button>
                             </form>
@@ -81,11 +93,11 @@
             });
 
             // Jika ada data perusahaan yang telah dipilih (saat update)
-            @if ($data && $data-> perusahaan)
-                var selectedPerusahaanId = {{ $data -> perusahaan -> perusahaan_id }};
-                var selectedPerusahaanNama = '{{ $data->perusahaan->perusahaan->nama }}';
-                var selectedJurusanId = {{ $data->perusahaan->jurusan_id}};
-                
+            @if ($data && $data->perusahaan)
+                var selectedPerusahaanId = {{ $data->perusahaan[0]->perusahaan -> perusahaan -> id }};
+                var selectedPerusahaanNama = '{{ $data->perusahaan[0]->perusahaan->perusahaan->nama }}';
+                var selectedJurusanId = {{ $data->perusahaan[0]->perusahaan->jurusan_id }};
+
                 // Set value dan text pada select2
                 var option = new Option(selectedPerusahaanNama, selectedPerusahaanId, true, true);
                 $('#perusahaanDropdown').append(option).trigger('change');
@@ -94,7 +106,7 @@
                 // Jangan langsung memuat jurusan saat halaman pertama kali dimuat
                 $('#perusahaan_id').val(selectedPerusahaanId);
                 console.log('selectedJurusanId : ', selectedJurusanId);
-                
+
                 loadJurusanUpdate(selectedPerusahaanId, selectedJurusanId);
             @endif
 
@@ -121,7 +133,9 @@
                             jurusanContainer.append('<p>Jurusan tidak ditemukan.</p>');
                         } else {
                             $.each(data, function(index, item) {
-                                var isChecked = selectedJurusanId ? (item.id == selectedJurusanId ? 'checked' : '') : (index === 0 ? 'checked' : '');
+                                var isChecked = selectedJurusanId ? (item.id ==
+                                    selectedJurusanId ? 'checked' : '') : (index === 0 ?
+                                    'checked' : '');
                                 var radioInput = `<div class="form-check">
                                     <input class="form-check-input" type="radio" name="jurusan_id" value="${item.id}" id="jurusan${item.id}" ${isChecked}>
                                     <label class="form-check-label" for="jurusan${item.id}">
@@ -138,6 +152,7 @@
                     }
                 });
             }
+
             function loadJurusanUpdate(perusahaanId, selectedJurusanId = null) {
                 var jurusanContainer = $('#jurusanContainer');
                 jurusanContainer.empty();
@@ -151,7 +166,8 @@
                             jurusanContainer.append('<p>Jurusan tidak ditemukan.</p>');
                         } else {
                             $.each(data, function(index, item) {
-                                var isChecked = (item.jurusan_id == selectedJurusanId ? 'checked' : '') ;
+                                var isChecked = (item.jurusan_id == selectedJurusanId ?
+                                    'checked' : '');
                                 var radioInput = `<div class="form-check">
                                     <input class="form-check-input" type="radio" name="jurusan_id" value="${item.id}" id="jurusan${item.id}" ${isChecked}>
                                     <label class="form-check-label" for="jurusan${item.id}">
