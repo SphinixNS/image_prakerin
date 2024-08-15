@@ -31,6 +31,10 @@ class JurusanPerusahaan extends Model
     {
         return $this->belongsTo(PembimbingPerusahaan::class, 'id', 'perusahaan_id',);
     }
+    public function guru()
+    {
+        return $this->belongsTo(PembimbingPerusahaan::class, 'id', 'guru_id',);
+    }
    
 
 }
