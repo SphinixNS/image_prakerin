@@ -37,7 +37,7 @@
             <div class="card-login">
                 <div class="card-content-login">
                     <div class="card-icon-login">
-                        <i class="fas fa-user-graduate fa-3x" style="color:#1D75D9;"></i>
+                        <i class="fas fa-user-graduate fa-3x" style="color:#13547a;"></i>
                     </div>
                     <div class="card-title-login">
                         <h3>SISWA</h3>
@@ -56,7 +56,7 @@
             <div class="card-login">
                 <div class="card-content-login">
                     <div class="card-icon-login">
-                        <i class="fas fa-chalkboard-teacher fa-3x" style="color:#1D75D9;"></i>
+                        <i class="fas fa-chalkboard-teacher fa-3x" style="color:#13547a;"></i>
                     </div>
                     <div class="card-title-login">
                         <h3>GURU</h3>
@@ -75,7 +75,7 @@
             <div class="card-login">
                 <div class="card-content-login">
                     <div class="card-icon-login">
-                        <i class="fas fa-building fa-3x" style="color:#1D75D9;"></i>
+                        <i class="fas fa-building fa-3x" style="color:#13547a;"></i>
                     </div>
                     <div class="card-title-login">
                         <h3>Perusahaan</h3>
