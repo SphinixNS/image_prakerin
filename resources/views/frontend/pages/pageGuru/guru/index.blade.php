@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <main class="content">
+        <div class="card mb-5">
             <h1>Detail Rincian</h1>
             <h3>Siswa PKL</h3>
             <div class="accordion" id="accordionExample">
@@ -45,120 +45,122 @@
                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <table class="table-nilai">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama</th>
-                                        <th>Jumlah Siswa</th>
-                                        <th>Jurusan</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="table-border-bottom-0">
-                                    <tr>
-                                        <td><strong>1</strong>
-                                        </td>
-                                        <td>Perusahaan</td>
-                                        <td><span class="me-1">20</span></td>
-                                        <td><span class="me-1">Rekayasa Perangkat Lunak</span></td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                                    data-bs-toggle="dropdown">
-                                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                                </button>
+                            <div class="table-wrapper">
+                                <table class="table-nilai">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>Jumlah Siswa</th>
+                                            <th>Jurusan</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-border-bottom-0">
+                                        <tr>
+                                            <td><strong>1</strong>
+                                            </td>
+                                            <td>Perusahaan</td>
+                                            <td><span class="me-1">20</span></td>
+                                            <td><span class="me-1">Rekayasa Perangkat Lunak</span></td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                        data-bs-toggle="dropdown">
+                                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="/detail-page">
+                                                            <i class="bx bx-info-circle me-1"></i> Detail
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>2</strong>
+                                            </td>
+                                            <td>Perusahaan</td>
+                                            <td><span class="me-1">20</span></td>
+                                            <td><span class="me-1">Rekayasa Perangkat Lunak</span></td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                        data-bs-toggle="dropdown">
+                                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="/detail-page">
+                                                            <i class="bx bx-info-circle me-1"></i> Detail
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>3</strong>
+                                            </td>
+                                            <td>Perusahaan</td>
+                                            <td><span class="me-1">20</span></td>
+                                            <td><span class="me-1">Rekayasa Perangkat Lunak</span></td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                        data-bs-toggle="dropdown">
+                                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="/detail-page">
+                                                            <i class="bx bx-info-circle me-1"></i> Detail
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>4</strong>
+                                            </td>
+                                            <td>Perusahaan</td>
+                                            <td><span class="me-1">20</span></td>
+                                            <td><span class="me-1">Rekayasa Perangkat Lunak</span></td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                        data-bs-toggle="dropdown">
+                                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="/detail-page">
+                                                            <i class="bx bx-info-circle me-1"></i> Detail
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>5</strong>
+                                            </td>
+                                            <td>Perusahaan</td>
+                                            <td><span class="me-1">20</span></td>
+                                            <td><span class="me-1">Rekayasa Perangkat Lunak</span></td>
+                                            <td>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item" href="/detail-page">
                                                         <i class="bx bx-info-circle me-1"></i> Detail
                                                     </a>
                                                 </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>2</strong>
-                                        </td>
-                                        <td>Perusahaan</td>
-                                        <td><span class="me-1">20</span></td>
-                                        <td><span class="me-1">Rekayasa Perangkat Lunak</span></td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                                    data-bs-toggle="dropdown">
-                                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="/detail-page">
-                                                        <i class="bx bx-info-circle me-1"></i> Detail
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>3</strong>
-                                        </td>
-                                        <td>Perusahaan</td>
-                                        <td><span class="me-1">20</span></td>
-                                        <td><span class="me-1">Rekayasa Perangkat Lunak</span></td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                                    data-bs-toggle="dropdown">
-                                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="/detail-page">
-                                                        <i class="bx bx-info-circle me-1"></i> Detail
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>4</strong>
-                                        </td>
-                                        <td>Perusahaan</td>
-                                        <td><span class="me-1">20</span></td>
-                                        <td><span class="me-1">Rekayasa Perangkat Lunak</span></td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                                    data-bs-toggle="dropdown">
-                                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="/detail-page">
-                                                        <i class="bx bx-info-circle me-1"></i> Detail
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>5</strong>
-                                        </td>
-                                        <td>Perusahaan</td>
-                                        <td><span class="me-1">20</span></td>
-                                        <td><span class="me-1">Rekayasa Perangkat Lunak</span></td>
-                                        <td>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="/detail-page">
-                                                    <i class="bx bx-info-circle me-1"></i> Detail
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="text-end">
-                                <a href="#" class="btn btn-danger mt-5" target="_blank">Download PDF</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="text-end">
+                                    <a href="#" class="btn btn-danger mt-5" target="_blank">Download PDF</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
     </div>>
 @endsection

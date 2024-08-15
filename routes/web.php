@@ -92,6 +92,26 @@ Route::get('/pembimbing', function () {
     return view('frontend.pages.pagePembimbing.pembimbing.index');
 });
 
+Route::get('/detail-siswa', function () {
+    return view('frontend.pages.pagePembimbing.detailSiswa.index');
+});
+
+Route::get('/pembimbing-nilai', function () {
+    return view('frontend.pages.pagePembimbing.nilaiPembimbing.index');
+});
+
+Route::get('/edit-nilai', function () {
+    return view('frontend.pages.pagePembimbing.editNilai.index');
+});
+
+Route::get('/pembimbing-catatan', function () {
+    return view('frontend.pages.pagePembimbing.catatanPembimbing.index');
+});
+
+Route::get('/edit-catatan-pembimbing', function () {
+    return view('frontend.pages.pagePembimbing.editCatatanPembimbing.index');
+});
+
 // Tampilan profile admin
 Route::get('/profile-admin', function () {
     return view('admin.profile.index');
