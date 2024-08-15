@@ -173,7 +173,7 @@
 
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
-                                <h5 class="card-title mb-0"> Pembimbing </h5>
+                                <h5 class="card-title mb-0"> Pembimbing Perusahaan</h5>
                             </div>
 
                             @if ($jurusan->pembimbing)
@@ -223,6 +223,54 @@
                                         </button>
                                     </a>
                                 </div>
+                            @endif
+
+                        </div>
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="card-title mb-0"> Pembimbing Sekolah</h5>
+                            </div>
+
+                            @if ($jurusan->guru)
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table ">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Nama</th>
+                                                    <td>:</td>
+                                                    <td>
+                                                        <a href="{{ route('admin.guru.detail', $jurusan->guru->id) }}"
+                                                            style="text-decoration: none; color: inherit;">
+                                                            {{ $jurusan->guru->nama }}
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="col">NIP</th>
+                                                    <td>:</td>
+                                                    <td>{{ $jurusan->guru->nip }}</td>
+                                                </tr>
+                                                <tr>
+                                                <tr>
+                                                    <th scope="col">No. Telp</th>
+                                                    <td>:</td>
+                                                    <td>{{ $jurusan->guru->telp }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="col">Jenis Kelamin</th>
+                                                    <td>:</td>
+                                                    <td>{{ $jurusan->guru->jenkel }}</td>
+                                                </tr>
+
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                          
                             @endif
 
                         </div>
