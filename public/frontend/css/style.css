@@ -603,7 +603,7 @@ p {
 }
 
 .login-btn-perusahaan {
-    background: red;
+    background: #2e7d32;
     color: #ffffff;
     border: none;
     padding: 12px 0;
@@ -616,8 +616,10 @@ p {
 }
 
 .login-btn-perusahaan:hover {
+    background: #1b5e20;
     transform: scale(1.02);
 }
+
 
 .main-page-btn-perusahaan {
     display: block;

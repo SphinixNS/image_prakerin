@@ -49,7 +49,7 @@
                 </form>
             </div>
             <div class="login-right">
-                <img src="{{ asset('frontend/img/company.jpg') }}" alt="Right Image">
+                <img src="{{ asset('frontend/img/3500305.jpg') }}" alt="Right Image">
             </div>
         </div>
     </div>

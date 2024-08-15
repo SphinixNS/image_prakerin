@@ -45,8 +45,8 @@ Route::get('/login-guru', function () {
     return view('auth.loginGuru');
 });
 
-Route::get('/login-perusahaan', function () {
-    return view('auth.loginPerusahaan');
+Route::get('/login-pembimbing', function () {
+    return view('auth.loginPembimbing');
 });
 
 // Tampilan Siswa
@@ -83,6 +83,14 @@ Route::get('/detail-page', function () {
     return view('frontend.pages.pageGuru.detailPerusahaan.index');
 });
 
+Route::get('/edit-profile-guru', function () {
+    return view('frontend.pages.pageGuru.editProfile.index');
+});
+
+// Tampilan Pembimbing Perusahaan
+Route::get('/pembimbing', function () {
+    return view('frontend.pages.pagePembimbing.pembimbing.index');
+});
 
 // Tampilan profile admin
 Route::get('/profile-admin', function () {
