@@ -24,9 +24,7 @@
                                         <td>No</td>
                                         <td>Nama</td>
                                         <td>NIP</td>
-                                        <td>Alamat</td>
                                         <td>Jenis Kelamin</td>
-                                        <td>Telepon</td>
                                         <td>Action</td>
                                     </tr>
                                 </thead>
@@ -83,13 +81,7 @@
                             return data ? data : '';
                         }
                     },
-                    {
-                        data: 'alamat',
-                        name: 'alamat',
-                        render: function(data, type, row) {
-                            return data ? data : '';
-                        }
-                    },
+                    
                     {
                         data: 'jenkel',
                         name: 'jenkel',
@@ -97,13 +89,7 @@
                             return data ? data : '';
                         }
                     },
-                    {
-                        data: 'telp',
-                        name: 'telp',
-                        render: function(data, type, row) {
-                            return data ? data : '';
-                        }
-                    },
+                    
                     {
                         data: 'id',
                         render: (id) => /* html */ `
