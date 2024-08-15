@@ -33,7 +33,7 @@ class JurusanPerusahaan extends Model
     }
     public function guru()
     {
-        return $this->belongsTo(PembimbingPerusahaan::class, 'id', 'guru_id',);
+        return $this->belongsTo(Guru::class);
     }
    
 

@@ -100,10 +100,15 @@
                             <img src="/backend/align-justify.svg">
                           </button>
                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#"
-                                onclick="deleteData(${id})">Delete</a></li>
+                           
+                            <li><a class="dropdown-item"
+                               href="/admin/guru/detail/${id}"">Detail</a>
+                            </li>
                             <li><a class="dropdown-item"
                                href="/admin/guru/edit/${id}"">Edit</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#"
+                                onclick="deleteData(${id})">Delete</a>
                             </li>
                           </ul>
                         </div>

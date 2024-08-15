@@ -33,6 +33,14 @@ class PerusahaanController extends Controller
         $jurusan = JurusanPerusahaan::with('jurusan')->where('perusahaan_id', $perusahaan->id)->get();
         return response()->json($jurusan);
     }
+    public function guru(Perusahaan $perusahaan)
+    {
+        $jurusan = JurusanPerusahaan::with('jurusan')
+        ->where('perusahaan_id', $perusahaan->id)
+        ->doesntHave('guru')
+        ->get();
+        return response()->json($jurusan);
+    }
 
     public function search(Request $request)
     {

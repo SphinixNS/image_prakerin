@@ -129,7 +129,7 @@
                                             @foreach ($jurusan->siswa as $siswa)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td><a href="/admin/siswa/detail/ {{ $siswa->siswa->id }}"
+                                                    <td><a href="/admin/siswa/detail/{{ $siswa->siswa->id }}"
                                                             style="text-decoration: none; color: inherit;">
                                                             {{ $siswa->siswa->nama }}</a></td>
                                                     <td> {{ $siswa->siswa->kelas->nama }}</td>
