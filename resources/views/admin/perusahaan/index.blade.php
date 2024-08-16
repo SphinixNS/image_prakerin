@@ -24,11 +24,13 @@
                                         <tr>
                                             <td style="width: 10%">No</td>
                                             <td>Nama</td>
+                                            <td>Image</td>
                                             <td>Action</td>
                                         </tr>
                                     </thead>
 
                                 </table>
+                                
                         </div>
                     </div>
                 </div>
@@ -68,6 +70,12 @@
                     {
                         data: 'nama',
                         name: 'nama'
+                    },
+                    {
+                        data: 'image',
+                        render: (image) => /* html */ `
+                        <img src="${image}" alt="logo" width="100px" height="100px">
+                        `
                     },
                     {
                         data: 'id',

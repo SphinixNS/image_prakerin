@@ -9,6 +9,118 @@
         .wizard-step.active {
             display: block;
         }
+
+        .file-upload {
+            background-color: #ffffff;
+            width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .file-upload-btn {
+            width: 100%;
+            margin: 0;
+            color: #fff;
+            background: #1FB264;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            border-bottom: 4px solid #15824B;
+            transition: all .2s ease;
+            outline: none;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .file-upload-btn:hover {
+            background: #1AA059;
+            color: #ffffff;
+            transition: all .2s ease;
+            cursor: pointer;
+        }
+
+        .file-upload-btn:active {
+            border: 0;
+            transition: all .2s ease;
+        }
+
+        .file-upload-content {
+            display: none;
+            text-align: center;
+        }
+
+        .file-upload-input {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            outline: none;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .image-upload-wrap {
+            margin-top: 20px;
+            border: 4px dashed #1FB264;
+            position: relative;
+        }
+
+        .image-dropping,
+        .image-upload-wrap:hover {
+            background-color: #1FB264;
+            border: 4px dashed #ffffff;
+        }
+
+        .image-title-wrap {
+            padding: 0 15px 15px 15px;
+            color: #222;
+        }
+
+        .drag-text {
+            text-align: center;
+        }
+
+        .drag-text h3 {
+            font-weight: 100;
+            text-transform: uppercase;
+            color: #15824B;
+            padding: 60px 0;
+        }
+
+        .file-upload-image {
+            max-height: 200px;
+            max-width: 200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .remove-image {
+            width: 200px;
+            margin: 0;
+            color: #fff;
+            background: #cd4535;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            border-bottom: 4px solid #b02818;
+            transition: all .2s ease;
+            outline: none;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .remove-image:hover {
+            background: #c13b2a;
+            color: #ffffff;
+            transition: all .2s ease;
+            cursor: pointer;
+        }
+
+        .remove-image:active {
+            border: 0;
+            transition: all .2s ease;
+        }
     </style>
 
 
@@ -28,11 +140,33 @@
 
                             <form id="wizardForm"
                                 action="{{ $data ? route('admin.perusahaan.update', $data->id) : route('admin.perusahaan.store') }}"
-                                method="POST">
+                                method="POST" enctype="multipart/form-data">
                                 @csrf
+                               
 
 
                                 <div id="step1" class="wizard-step active">
+
+                                    <div class="file-upload">
+                                        <button class="file-upload-btn" type="button"
+                                            onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
+    
+                                        <div class="image-upload-wrap">
+                                            <input class="file-upload-input" type='file' name="image" onchange="readURL(this);"
+                                                accept="image/*" />
+                                            <div class="drag-text">
+                                                <h3>Drag and drop a file or select add Image</h3>
+                                            </div>
+                                        </div>
+                                        <div class="file-upload-content">
+                                            <img class="file-upload-image" src="#" alt="your image" />
+                                            <div class="image-title-wrap">
+                                                <button type="button" onclick="removeUpload()" class="remove-image">Remove
+                                                    <span class="image-title">Uploaded Image</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
@@ -189,6 +323,8 @@
 @endsection
 
 @section('scripts')
+<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
     <script>
         function nextStep() {
             document.getElementById('step1').classList.remove('active');
@@ -204,110 +340,40 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
-    {{-- <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const jurusanContainer = document.getElementById('jurusan-inputs');
-            const kuotaContainer = document.getElementById('kuota-inputs');
-
-            document.getElementById('btn-add').addEventListener('click', function() {
-                // Add new jurusan input
-                const newJurusan = document.createElement('div');
-                newJurusan.className = 'input-group mb-2';
-                newJurusan.innerHTML = `
-                    <select name="jurusan[]" class="form-select" required>
-                        <option value="" hidden selected>Pilih Jurusan</option>
-                        @foreach ($jurusan as $jrs)
-                            <option value="{{ $jrs->id }}">{{ $jrs->nama }}</option>
-                        @endforeach
-                    </select>
-                `;
-                jurusanContainer.appendChild(newJurusan);
-
-                // Add new kuota input
-                const newKuota = document.createElement('div');
-                newKuota.className = 'input-group mb-2';
-                newKuota.innerHTML = `
-                    <input type="number" name="kuota[]" class="form-control" placeholder="" required>
-                `;
-                kuotaContainer.appendChild(newKuota);
-            });
-
-            document.getElementById('btn-remove').addEventListener('click', function() {
-                const jurusanInputs = jurusanContainer.querySelectorAll('.input-group');
-                const kuotaInputs = kuotaContainer.querySelectorAll('.input-group');
-
-                if (jurusanInputs.length > 0 && kuotaInputs.length > 0) {
-                    jurusanContainer.removeChild(jurusanInputs[jurusanInputs.length - 1]);
-                    kuotaContainer.removeChild(kuotaInputs[kuotaInputs.length - 1]);
-                }
-            });
-        });
-    </script> --}}
-    {{-- 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const btnAdd = document.getElementById('btn-add');
-            const btnRemove = document.getElementById('btn-remove');
-            const jurusanInputs = document.getElementById('jurusan-inputs');
-            const kuotaInputs = document.getElementById('kuota-inputs');
+        function readURL(input) {
+            if (input.files && input.files[0]) {
 
-            // Mengambil data jurusan yang sudah ada dari elemen HTML
-            const jurusanOptions = Array.from(document.querySelectorAll('#jurusan-inputs select option')).map(opt =>
-                ({
-                    value: opt.value,
-                    text: opt.textContent
-                }));
+                var reader = new FileReader();
 
-            function updateJurusanOptions() {
-                const selectedValues = Array.from(document.querySelectorAll('#jurusan-inputs select'))
-                    .map(select => select.value);
+                reader.onload = function(e) {
+                    $('.image-upload-wrap').hide();
 
-                document.querySelectorAll('#jurusan-inputs select').forEach(select => {
-                    Array.from(select.options).forEach(option => {
-                        option.style.display = selectedValues.includes(option.value) ? 'none' : '';
-                    });
-                });
+                    $('.file-upload-image').attr('src', e.target.result);
+                    $('.file-upload-content').show();
+
+                    $('.image-title').html(input.files[0].name);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+
+            } else {
+                removeUpload();
             }
+        }
 
-            function addField() {
-                const newJurusanGroup = document.createElement('div');
-                newJurusanGroup.classList.add('input-group', 'mb-2', 'jurusan-group');
-                newJurusanGroup.innerHTML = `
-            <select name="jurusan[]" class="form-select" required>
-                <option value="" hidden selected>Pilih Jurusan</option>
-                ${jurusanOptions.map(opt => `<option value="${opt.value}">${opt.text}</option>`).join('')}
-            </select>
-        `;
-                jurusanInputs.appendChild(newJurusanGroup);
-
-                const newKuotaGroup = document.createElement('div');
-                newKuotaGroup.classList.add('input-group', 'mb-2', 'kuota-group');
-                newKuotaGroup.innerHTML =
-                    `<input type="number" name="kuota[]" class="form-control" placeholder="" required>`;
-                kuotaInputs.appendChild(newKuotaGroup);
-
-                updateJurusanOptions();
-            }
-
-            function removeField() {
-                const jurusanGroups = document.querySelectorAll('#jurusan-inputs .jurusan-group');
-                const kuotaGroups = document.querySelectorAll('#kuota-inputs .kuota-group');
-
-                if (jurusanGroups.length > 1) {
-                    jurusanInputs.removeChild(jurusanGroups[jurusanGroups.length - 1]);
-                    kuotaInputs.removeChild(kuotaGroups[kuotaGroups.length - 1]);
-
-                    updateJurusanOptions();
-                }
-            }
-
-            btnAdd.addEventListener('click', addField);
-            btnRemove.addEventListener('click', removeField);
-
-            // Initial update of options
-            updateJurusanOptions();
+        function removeUpload() {
+            $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+            $('.file-upload-content').hide();
+            $('.image-upload-wrap').show();
+        }
+        $('.image-upload-wrap').bind('dragover', function() {
+            $('.image-upload-wrap').addClass('image-dropping');
         });
-    </script> --}}
+        $('.image-upload-wrap').bind('dragleave', function() {
+            $('.image-upload-wrap').removeClass('image-dropping');
+        });
+    </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

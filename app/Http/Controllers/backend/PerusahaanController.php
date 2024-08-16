@@ -7,8 +7,9 @@ use App\Models\Perusahaan;
 use App\Models\TahunAjaran;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
-use App\Http\Controllers\Controller;
 use App\Models\JurusanPerusahaan;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PerusahaanController extends Controller
@@ -36,9 +37,9 @@ class PerusahaanController extends Controller
     public function guru(Perusahaan $perusahaan)
     {
         $jurusan = JurusanPerusahaan::with('jurusan')
-        ->where('perusahaan_id', $perusahaan->id)
-        ->doesntHave('guru')
-        ->get();
+            ->where('perusahaan_id', $perusahaan->id)
+            ->doesntHave('guru')
+            ->get();
         return response()->json($jurusan);
     }
 
@@ -53,16 +54,16 @@ class PerusahaanController extends Controller
     public function pemetaan(Request $request, Jurusan $jurusan)
     {
         $search = $request->q;
-        $perusahaan = Perusahaan::with(['jurusan' => function($query) use($jurusan) {
+        $perusahaan = Perusahaan::with(['jurusan' => function ($query) use ($jurusan) {
             $query->where('jurusan_id', $jurusan->id)
-                  ->where('kuota', '>=', 1);
+                ->where('kuota', '>=', 1);
         }])
-        ->whereHas('jurusan', function($query) use($jurusan){
-            $query->where('jurusan_id', $jurusan->id)
-                  ->where('kuota', '>=', 1);
-        })
-        ->where('nama', 'like', '%' . $search . '%')
-        ->get();
+            ->whereHas('jurusan', function ($query) use ($jurusan) {
+                $query->where('jurusan_id', $jurusan->id)
+                    ->where('kuota', '>=', 1);
+            })
+            ->where('nama', 'like', '%' . $search . '%')
+            ->get();
         // $perusahaan = Perusahaan::where('nama', 'like', '%' . $search . '%')->get();
         return response()->json($perusahaan);
     }
@@ -89,7 +90,38 @@ class PerusahaanController extends Controller
             'jurusan' => 'required',
             // Add other validation rules as needed
         ]);
+        $imageUrl = null;
+        if ($request->image) {
+            // Menyimpan gambar ke folder sementara
+            $tempPath = $request->file('image')->store('temp');
 
+            // Path repository Git relatif dari root project
+            $repoPath = base_path('image_prakerin');
+
+            // Pindahkan file ke repository Git (folder images)
+            $imageName = basename($tempPath);
+            $destinationPath = $repoPath . '/perusahaan/' . $imageName;
+
+            // Gunakan fungsi copy() untuk menyalin file
+            copy(storage_path('app/' . $tempPath), $destinationPath);
+
+            // Jalankan perintah Git untuk menambahkan, commit, dan push file baru
+            chdir($repoPath);
+            exec('git add ' . escapeshellarg('perusahaan/' . $imageName));
+            exec('git commit -m "Add new perusahaan: ' . $imageName . '"');
+            exec('git push origin main');
+
+            // Hapus file dari folder images setelah berhasil di-push ke Git
+            if (file_exists($destinationPath)) {
+                unlink($destinationPath);
+            }
+
+            // Hapus file sementara
+            Storage::delete($tempPath);
+            $imageUrl = "https://gitlab.com/aghif1126/image_prakerin/-/raw/main/perusahaan/" . $imageName;
+        }
+
+        // Dapatkan URL gambar
 
         $perusahaan = Perusahaan::create(
             [
@@ -100,6 +132,7 @@ class PerusahaanController extends Controller
                 "email" => $request->email,
                 "no_telp" => $request->no_telp,
                 "website" => $request->website,
+                "image" => $imageUrl,
                 "tahun_id" => $this->tahun
             ]
         );
@@ -142,24 +175,56 @@ class PerusahaanController extends Controller
             'kuota' => 'required',
         ]);
 
+        $imageUrl = $perusahaan->image;
+        if ($request->image) {
+            // Menyimpan gambar ke folder sementara
+            $tempPath = $request->file('image')->store('temp');
+
+            // Path repository Git relatif dari root project
+            $repoPath = base_path('image_prakerin');
+
+            // Pindahkan file ke repository Git (folder images)
+            $imageName = basename($tempPath);
+            $destinationPath = $repoPath . '/perusahaan/' . $imageName;
+
+            // Gunakan fungsi copy() untuk menyalin file
+            copy(storage_path('app/' . $tempPath), $destinationPath);
+
+            // Jalankan perintah Git untuk menambahkan, commit, dan push file baru
+            chdir($repoPath);
+            exec('git add ' . escapeshellarg('perusahaan/' . $imageName));
+            exec('git commit -m "Add new perusahaan: ' . $imageName . '"');
+            exec('git push origin main');
+
+            // Hapus file dari folder images setelah berhasil di-push ke Git
+            if (file_exists($destinationPath)) {
+                unlink($destinationPath);
+            }
+            // Hapus file sementara
+            Storage::delete($tempPath);
+            $imageUrl = "https://gitlab.com/aghif1126/image_prakerin/-/raw/main/perusahaan/" . $imageName;
+        }
+
         $perusahaan->update([
-            'nama' => $request->nama,
-            'alamat' => $request->alamat,
-            'lokasi' => $request->lokasi,
-            'email' => $request->email,
-            'no_telp' => $request->no_telp,
-            'website' => $request->website,
-            'mou' => $request->mou,
+            "nama" => $request->nama,
+            "mou" => $request->mou,
+            "alamat" => $request->alamat,
+            "lokasi" => $request->lokasi,
+            "email" => $request->email,
+            "no_telp" => $request->no_telp,
+            "website" => $request->website,
+            "image" => $imageUrl,
+            "tahun_id" => $this->tahun
         ]);
 
-        
+
         foreach ($request->jurusan as $key => $jurusan) {
-            $JurusanPerusahaan = JurusanPerusahaan::where('tahun_id', $this->tahun)->where('perusahaan_id', $perusahaan->id) -> where('jurusan_id', $jurusan) -> first();
-            if($JurusanPerusahaan){
-                $JurusanPerusahaan -> kuota = $JurusanPerusahaan -> kuota + ($request->kuota[$key] - $JurusanPerusahaan -> total);
-                $JurusanPerusahaan -> total = $request->kuota[$key];
-                $JurusanPerusahaan -> save();
-            }else {
+            $JurusanPerusahaan = JurusanPerusahaan::where('tahun_id', $this->tahun)->where('perusahaan_id', $perusahaan->id)->where('jurusan_id', $jurusan)->first();
+            if ($JurusanPerusahaan) {
+                $JurusanPerusahaan->kuota = $JurusanPerusahaan->kuota + ($request->kuota[$key] - $JurusanPerusahaan->total);
+                $JurusanPerusahaan->total = $request->kuota[$key];
+                $JurusanPerusahaan->save();
+            } else {
                 JurusanPerusahaan::create([
                     'jurusan_id'    => $jurusan,
                     'perusahaan_id' => $perusahaan->id,
@@ -168,7 +233,6 @@ class PerusahaanController extends Controller
                     "tahun_id"      => $this->tahun
                 ]);
             }
-           
         }
         Alert::success('Update Berhasil', 'Data Berhasil Di Ubah');
 
