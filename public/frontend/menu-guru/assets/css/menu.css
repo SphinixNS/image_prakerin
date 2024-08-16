@@ -1009,6 +1009,11 @@ h3 {
     transition: font-size 0.3s ease;
 }
 
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
 .table-nilai {
     width: 100%;
     margin-top: 20px;
@@ -1018,7 +1023,7 @@ h3 {
 
 .table-nilai th, .table-nilai td {
     padding: 10px;
-    text-align: center;
+    text-align: start;
     transition: background-color 0.3s ease;
 }
 
@@ -1070,8 +1075,6 @@ h3 {
         font-size: 0.9rem;
     }
 }
-
-
 
 /*---------------------------------------
   FOOTER

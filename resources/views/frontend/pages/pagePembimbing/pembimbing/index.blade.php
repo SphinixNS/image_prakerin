@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <main class="content">
+        <div class="card mb-5">
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOne">
@@ -64,7 +64,7 @@
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
 
         <div class="card">
             <h5 class="card-header">Daftar Siswa</h5>
@@ -85,7 +85,7 @@
                                 </div>
                             </div>
                             <div class="card-buttons-student">
-                                <a href="student" class="apply-btn-link">
+                                <a href="/detail-siswa" class="apply-btn-link">
                                     <button class="apply-btn">Detail Siswa</button>
                                 </a>
                             </div>
@@ -104,7 +104,7 @@
                                 </div>
                             </div>
                             <div class="card-buttons-student">
-                                <a href="student" class="apply-btn-link">
+                                <a href="/detail-siswa" class="apply-btn-link">
                                     <button class="apply-btn">Detail Siswa</button>
                                 </a>
                             </div>
@@ -123,7 +123,7 @@
                                 </div>
                             </div>
                             <div class="card-buttons-student">
-                                <a href="student" class="apply-btn-link">
+                                <a href="/detail-siswa" class="apply-btn-link">
                                     <button class="apply-btn">Detail Siswa</button>
                                 </a>
                             </div>
@@ -142,26 +142,7 @@
                                 </div>
                             </div>
                             <div class="card-buttons-student">
-                                <a href="student" class="apply-btn-link">
-                                    <button class="apply-btn">Detail Siswa</button>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-student">
-                            <div class="card-icon-student">
-                                <i class="fas fa-user-graduate fa-3x" style="color:#009688;"></i>
-                            </div>
-                            <div class="card-content-student">
-                                <div class="card-title-student">
-                                    <h6>RIZKY ALFIN PRATAMA</h6>
-                                </div>
-                                <div class="card-description-student">
-                                    <p>Rekayasa Perangkat Lunak</p>
-                                    <p>"Ini Orang Awikwok Banget"</p>
-                                </div>
-                            </div>
-                            <div class="card-buttons-student">
-                                <a href="student" class="apply-btn-link">
+                                <a href="/detail-siswa" class="apply-btn-link">
                                     <button class="apply-btn">Detail Siswa</button>
                                 </a>
                             </div>

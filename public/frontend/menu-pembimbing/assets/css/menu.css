@@ -1010,6 +1010,11 @@ h3 {
     transition: font-size 0.3s ease;
 }
 
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
 .table-nilai {
     width: 100%;
     margin-top: 20px;
@@ -1045,7 +1050,7 @@ h3 {
     color: #ffffff;
 }
 
-.card-header{
+.card-header {
     background-color: #009688;
     color: #ffffff;
 }
@@ -1076,6 +1081,7 @@ h3 {
         font-size: 0.9rem;
     }
 }
+
 
 /*---------------------------------------
   SISWA PERUSAHAAN

@@ -6,7 +6,7 @@
             <div class="col-12">
                 <div class="card">
                     <h5 class="card-header">Tempat PKL</h5>
-                    <div class="table-responsive text-nowrap">
+                    <div class="table-nilai text-nowrap">
                         <table class="table">
                             <tbody class="table-border-bottom-0">
                                 <tr>

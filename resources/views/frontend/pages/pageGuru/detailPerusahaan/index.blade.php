@@ -10,7 +10,7 @@
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h5 class="mb-0">SAMSAT PAJAJARAN BDG</h5>
                         </div>
-                        <div class="table-responsive">
+                        <div class="table-nilai">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -59,20 +59,22 @@
                                 <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        <table class="table-nilai">
-                                            <thead class="head-nilai">
-                                                <tr>
-                                                    <th>Kuota</th>
-                                                    <th>Siswa</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td>3</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <div class="table-wrapper">
+                                            <table class="table-nilai">
+                                                <thead class="head-nilai">
+                                                    <tr>
+                                                        <th>Kuota</th>
+                                                        <th>Siswa</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>5</td>
+                                                        <td>3</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -87,32 +89,34 @@
                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        <table class="table-nilai">
-                                            <thead class="head-nilai">
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Nama</th>
-                                                    <th>Perusahaan</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Bapak Test</td>
-                                                    <td>Perusahaan</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Bapak Test</td>
-                                                    <td>Perusahaan</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>Bapak Test</td>
-                                                    <td>Perusahaan</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <div class="table-wrapper">
+                                            <table class="table-nilai">
+                                                <thead class="head-nilai">
+                                                    <tr>
+                                                        <th>No</th>
+                                                        <th>Nama</th>
+                                                        <th>Perusahaan</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>Bapak Test</td>
+                                                        <td>Perusahaan</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>Bapak Test</td>
+                                                        <td>Perusahaan</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td>Bapak Test</td>
+                                                        <td>Perusahaan</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -131,47 +135,7 @@
                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <table class="table-nilai">
-                                <thead class="head-nilai">
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama</th>
-                                        <th>Kelas</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Siswa Test</td>
-                                        <td>Rekayasa Perangkat Lunak</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Siswa Test</td>
-                                        <td>Rekayasa Perangkat Lunak</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Siswa Test</td>
-                                        <td>Rekayasa Perangkat Lunak</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                <div class="jarak mb-4">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingFour">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                List Siswa
-                            </button>
-                        </h2>
-                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
+                            <div class="table-wrapper">
                                 <table class="table-nilai">
                                     <thead class="head-nilai">
                                         <tr>
@@ -202,18 +166,63 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="jarak mb-4">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            List Siswa
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="table-wrapper">
+                                <table class="table-nilai">
+                                    <thead class="head-nilai">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>Kelas</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Siswa Test</td>
+                                            <td>Rekayasa Perangkat Lunak</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Siswa Test</td>
+                                            <td>Rekayasa Perangkat Lunak</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Siswa Test</td>
+                                            <td>Rekayasa Perangkat Lunak</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                <div class="jarak mb-4">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingFive">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                List Siswa
-                            </button>
-                        </h2>
-                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
+            <div class="jarak mb-4">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            List Siswa
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="table-wrapper">
                                 <table class="table-nilai">
                                     <thead class="head-nilai">
                                         <tr>
@@ -246,6 +255,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     {{-- <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
