@@ -106,7 +106,11 @@ class PerusahaanController extends Controller
             copy(storage_path('app/' . $tempPath), $destinationPath);
 
             // Jalankan perintah Git untuk menambahkan, commit, dan push file baru
+            $token = env('GITHUB_PERSONAL_ACCESS_TOKEN');
+            $repoUrl = 'github.com/SphinixNS/image_prakerin.git';
+
             chdir($repoPath);
+            exec("git remote set-url origin https://SphinixNS:$token@$repoUrl");
             exec('git add ' . escapeshellarg('perusahaan/' . $imageName));
             exec('git commit -m "Add new perusahaan: ' . $imageName . '"');
             exec('git push origin main');
@@ -118,7 +122,7 @@ class PerusahaanController extends Controller
 
             // Hapus file sementara
             Storage::delete($tempPath);
-            $imageUrl = "https://gitlab.com/aghif1126/image_prakerin/-/raw/main/perusahaan/" . $imageName;
+            $imageUrl = "https://github.com/SphinixNS/image_prakerin/raw/main/perusahaan/" . $imageName;
         }
 
         // Dapatkan URL gambar
@@ -191,7 +195,11 @@ class PerusahaanController extends Controller
             copy(storage_path('app/' . $tempPath), $destinationPath);
 
             // Jalankan perintah Git untuk menambahkan, commit, dan push file baru
+            $token = env('GITHUB_PERSONAL_ACCESS_TOKEN');
+            $repoUrl = 'github.com/SphinixNS/image_prakerin.git';
+
             chdir($repoPath);
+            exec("git remote set-url origin https://SphinixNS:$token@$repoUrl");
             exec('git add ' . escapeshellarg('perusahaan/' . $imageName));
             exec('git commit -m "Add new perusahaan: ' . $imageName . '"');
             exec('git push origin main');
@@ -202,7 +210,7 @@ class PerusahaanController extends Controller
             }
             // Hapus file sementara
             Storage::delete($tempPath);
-            $imageUrl = "https://gitlab.com/aghif1126/image_prakerin/-/raw/main/perusahaan/" . $imageName;
+            $imageUrl = "https://github.com/SphinixNS/image_prakerin/raw/main/perusahaan/" . $imageName;
         }
 
         $perusahaan->update([
